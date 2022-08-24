@@ -1,6 +1,7 @@
 import React from 'react';
 import { createRoot } from "react-dom/client";
 import ProductDetail from ".//ProductDetail.jsx";
+import ProductOverview from './components/maincomponentpage.jsx'
 const root = createRoot(document.getElementById("root"));
 
 // Huzzah for jsx!
@@ -9,6 +10,7 @@ const App = () => {
     <div>
       <h1>Hello World</h1>
       <ProductDetail />
+      <ProductOverview/>
     </div>
   )
 }
