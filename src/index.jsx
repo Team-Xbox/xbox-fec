@@ -5,13 +5,13 @@ const root = createRoot(document.getElementById("root"));
 
 // Huzzah for jsx!
 const App = () => {
-  return (<div>
-    <h1>Hello World</h1>
+  return (
     <div>
-    <ProductOverview/>
+      <h1>Hello World</h1>
+      <div>
+        <ProductOverview/>
+      </div>
     </div>
-
-  </div>
   )
 }
 
