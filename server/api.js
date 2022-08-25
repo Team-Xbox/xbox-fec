@@ -2,18 +2,26 @@ const axios = require('axios');
 const tokens = require('../tokens.js');
 
 let options = {
-  url: `https://app-hrsei-api.herokuapp.com/api/fec2/:${tokens.CAMPUS}/`,
+  url: `https://app-hrsei-api.herokuapp.com/api/fec2/${tokens.CAMPUS}/`,
   headers: {
     'Authorization': tokens.TOKEN,
   }
 }
 
-const getAtelierData = () => {
-  return axios.get(options.url, options.headers)
-  .then(data => {
-    return data;
-  })
-  .catch(err => console.log(err))
+const getProductData = (endpoint, parameter, value, optionalVal, optionalParam) => {
+  if (optionalVal || optionalParam) {
+    return axios.get(options.url + `${endpoint}?${parameter}=${value}&${optionalParam}=${optionalVal}`, options.headers)
+    .then(data => {
+      return data;
+    })
+    .catch(err => console.log(err))
+  } else {
+    return axios.get(options.url + `${endpoint}?${parameter}=${value}`, options.headers)
+    .then(data => {
+      return data;
+    })
+    .catch(err => console.log(err))
+  }
 }
 
-module.exports.getAtelierData = getAtelierData;
+module.exports.getProductData = getProductData;
