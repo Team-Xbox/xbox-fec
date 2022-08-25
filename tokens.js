@@ -1,4 +1,4 @@
 module.exports = {
-  TOKEN: 'token-here',
+  TOKEN: '',
   CAMPUS: 'rfc'
 }
