@@ -1,4 +1,5 @@
 import React from 'react'
+import StarRating from './starRating.jsx'
 
 var reviewData = {
   "product": "2",
@@ -52,20 +53,20 @@ var month = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"][mydate.getMonth()];
 var day = mydate.getDay();
 var date = month + ' ' + day + ', ' + mydate.getFullYear();
-console.log(date);
+//console.log(date);
 
 // ==================  Nickname ==================================================
 
 var nickname = reviewData.results[0].reviewer_name;
-console.log(nickname);
+//console.log(nickname);
 
 // =================== Review Summary ===========================================
 var reviewSummary = reviewData.results[0].summary;
-console.log(reviewSummary);
+//console.log(reviewSummary);
 
 // =================== Summary Body =============================================
 var summaryBody = reviewData.results[0].body;
-console.log(summaryBody);
+//console.log(summaryBody);
 
 //==================== Images ===================================================
 
@@ -85,7 +86,7 @@ class Reviews extends React.Component {
     return (
       <div>
         <div>Hello from Reviews.jsx</div>
-        <div>{this.state.numberOfReviews} reviews, sorted by
+        {/* <div>{this.state.numberOfReviews} reviews, sorted by
           <button>relevance</button>
         </div>
         <div>
@@ -96,8 +97,10 @@ class Reviews extends React.Component {
         </div>
         <div>
           {summaryBody}
+        </div> */}
+        <div>
+         <StarRating/>
         </div>
-
       </div>
     )
   }
