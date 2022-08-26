@@ -6,7 +6,7 @@ const cors = require('cors');
 
 app.use(express.json());
 app.use(cors());
-app.use('src', express.static(path.join(__dirname, 'ProductDetail', 'components')));
+app.use(express.static('src'));
 
 app.get('/styles', (req, res) => {
   api.getStyleData(66642)

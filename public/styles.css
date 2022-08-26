@@ -10,3 +10,28 @@ button {
 .off {
   color: #ccc;
 }
+
+/* PRODUCT DETAIL SLIDESHOW */
+
+.style-image {
+  max-width: 300px;
+  max-height: 300px;
+}
+
+.slideshow-btn {
+  background-color: limegreen;
+  border: black solid 2px;
+  border-radius: 20%;
+  width: 30px;
+  height: 100%;
+  display: inline-block;
+  margin: 5px;
+}
+
+#slideshow {
+  max-width: 75%;
+  border: black solid 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 5px 5px 0px 5px;
+}

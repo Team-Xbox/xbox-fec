@@ -3,7 +3,7 @@ import Slideshow from '../ProductDetail/components/Slideshow.jsx'
 
 const ProductDetail = (props) => {
   return (
-    <div>
+    <div id="product-detail">
       <Slideshow />
     </div>
   )
