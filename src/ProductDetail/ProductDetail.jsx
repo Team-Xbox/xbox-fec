@@ -1,8 +1,11 @@
 import React from 'react'
+import Slideshow from '../ProductDetail/components/Slideshow.jsx'
 
 const ProductDetail = (props) => {
   return (
-    <div>Product Information would show here.</div>
+    <div>
+      <Slideshow />
+    </div>
   )
 }
 

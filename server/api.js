@@ -24,4 +24,14 @@ const getProductData = (endpoint, parameter, value, optionalVal, optionalParam) 
   }
 }
 
+const getStyleData = (product_id) => {
+  console.log('running...')
+  return axios.get(options.url + `products/${product_id}/styles`, {headers: options.headers})
+  .then(data => {
+    return data;
+  })
+  .catch(err => console.log(err))
+}
+
 module.exports.getProductData = getProductData;
+module.exports.getStyleData = getStyleData;
