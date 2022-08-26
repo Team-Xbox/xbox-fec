@@ -27,10 +27,19 @@ const Slideshow = (props) => {
           <button className="slideshow-btn"
             onClick={() => { if (index > 0) { setIndex(index - 1) } }}> {'<'}
           </button>
-          <img className="style-image" src={styleData[photosIndex].photos[index].url} />
+          <img className="main-image" src={styleData[photosIndex].photos[index].url} />
           <button className="slideshow-btn"
             onClick={() => { if (index < styleData[photosIndex].photos.length - 1) { setIndex(index + 1) } }}> {'>'}
           </button>
+        </div>
+      }
+      {!styleData[0] ? <div></div> :
+        <div id="style-selector">
+          {styleData.map(style =>
+            <img className="style-image" src={style.photos[0].thumbnail_url}
+              onClick={() => { setPhotosIndex(photosIndex) }}
+            />
+          )}
         </div>
       }
     </div>

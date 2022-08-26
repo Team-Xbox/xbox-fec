@@ -13,9 +13,14 @@ button {
 
 /* PRODUCT DETAIL SLIDESHOW */
 
-.style-image {
+.main-image {
   max-width: 300px;
   max-height: 300px;
+}
+
+.style-image {
+  max-width: 100px;
+  max-height: 100px;
 }
 
 .slideshow-btn {
@@ -29,9 +34,25 @@ button {
 }
 
 #slideshow {
-  max-width: 75%;
+  max-width: 50%;
   border: black solid 5px;
   margin-top: 10px;
   margin-bottom: 10px;
   padding: 5px 5px 0px 5px;
+}
+
+#images {
+  border: red solid 2px;
+  width: fit-content;
+  height: fit-content;
+  display: inline-block;
+  margin: 0px 5px 5px 0px;
+}
+
+#style-selector {
+  border: royalblue solid 2px;
+  width: fit-content;
+  height: fit-content;
+  display: inline-block;
+  margin: 0px 5px 5px 0px;
 }
