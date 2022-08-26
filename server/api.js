@@ -33,5 +33,14 @@ const getStyleData = (product_id) => {
   .catch(err => console.log(err))
 }
 
+const getQuestionsList = (product_id) => {
+  return axios.get(options.url + `qa/questions?product_id=${product_id}`, {headers: options.headers})
+    .then(data => {
+      return data;
+    })
+    .catch(err => console.log(err))
+}
+
 module.exports.getProductData = getProductData;
 module.exports.getStyleData = getStyleData;
+module.exports.getQuestionsList = getQuestionsList;
