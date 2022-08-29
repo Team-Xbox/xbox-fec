@@ -10,3 +10,43 @@ button {
 .off {
   color: #ccc;
 }
+
+.main-review {
+  max-width: 700px;
+  max-height: 220px;
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+  padding: 5px;
+}
+.top-review {
+  max-width: 700px;
+  height:25px;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.summary-review {
+  max-width: 700px;
+  max-height: 75px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-weight: bold;
+  padding: 5px;
+}
+
+.body-review {
+  max-width: 700px;
+  max-height: 90px;
+  min-height: 50px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 5px;
+}
+
+.helpful-review {
+  padding: 5px;
+}

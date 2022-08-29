@@ -25,8 +25,17 @@ const getProductData = (endpoint, parameter, value, optionalVal, optionalParam) 
 }
 
 const getStyleData = (product_id) => {
-  console.log('running...')
+  console.log('running getStyleData...')
   return axios.get(options.url + `products/${product_id}/styles`, {headers: options.headers})
+  .then(data => {
+    return data;
+  })
+  .catch(err => console.log(err))
+}
+
+const getReviewData = (product_id, sortOn='relevant', count=3) => {
+  console.log('running getReviewData...')
+  return axios.get(options.url + `reviews?product_id=${product_id}&sort=${sortOn}&count=${count}&page=1`, {headers: options.headers})
   .then(data => {
     return data;
   })
@@ -35,3 +44,4 @@ const getStyleData = (product_id) => {
 
 module.exports.getProductData = getProductData;
 module.exports.getStyleData = getStyleData;
+module.exports.getReviewData = getReviewData;
