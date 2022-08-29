@@ -33,8 +33,8 @@ const getStyleData = (product_id) => {
   .catch(err => console.log(err))
 }
 
-const getQuestionsList = (product_id) => {
-  return axios.get(options.url + `qa/questions?product_id=${product_id}`, {headers: options.headers})
+const getQuestionsList = ({id, page, count}) => {
+  return axios.get(options.url + `qa/questions?product_id=${id}&page=${page}&count=${count}`, {headers: options.headers})
     .then(data => {
       return data;
     })

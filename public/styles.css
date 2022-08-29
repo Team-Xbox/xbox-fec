@@ -22,4 +22,10 @@ button {
   background-color: white;
 }
 
+.questionSection {
+  display: flex;
+  justify-content: space-between;
+  width: 70%
+}
+
 /* End of Q&A css styles section */

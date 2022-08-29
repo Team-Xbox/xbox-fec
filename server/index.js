@@ -14,8 +14,9 @@ app.get('/styles', (req, res) => {
   .catch(err => console.log(err))
 })
 
-app.get('/qa/questions', (req, res) => {
-  api.getQuestionsList(66641)
+app.get('/questions/:id/:page/:count', (req, res) => {
+  console.log(req.params)
+  api.getQuestionsList(req.params)
   .then(response => { res.status(200).send(response.data) })
   .catch(err => console.error(err));
 })

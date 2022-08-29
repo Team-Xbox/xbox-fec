@@ -4,29 +4,53 @@ import SearchQuestions from './SearchQuestions.jsx'
 const axios = require('axios');
 
 const QuestionsList = (props) => {
-  const [questionData, setQuestionData] = useState([])
+  const [id, setId] = useState(66641)
+  const [page, setPage] = useState(1)
+  const [displayedQuestionData, setDisplayedQuestionData] = useState([])
+  const [nextQuestions, setNextQuestions] = useState([])
 
   let url = 'http://localhost:1337'
 
   useEffect(() => {
-    axios.get(url + '/qa/questions')
+    axios.get(url + `/questions/${id}/${page}/6`)
       .then(response => {
         console.log('show questions please = ', response.data.results)
-        setQuestionData(response.data.results)
+        const firstFour = [];
+        const rest = [];
+        response.data.results.forEach((el, index) => {
+          if (index < 4) {
+            firstFour.push(el);
+          } else {
+            rest.push(el);
+          }
+        })
+        setDisplayedQuestionData(firstFour)
+        setNextQuestions(rest)
+        setPage(4)
       })
       .catch(err => {
         console.log(err)
       })
   }, [])
 
+  const handleMoreQuestions = () => {
+    console.log('fire!')
+    setDisplayedQuestionData([... displayedQuestionData, ... nextQuestions])
+    axios.get(url + `/questions/${id}/${page}/2`)
+      .then(response => {
+        setNextQuestions(response.data.results)
+        setPage(page + 1)
+      })
+  }
+
   return (
     <div>
       <h3>Questions &amp; Answers</h3>
       <SearchQuestions />
-      {questionData.map((question) => {
+      {displayedQuestionData.map((question) => {
         return <CurrentQuestion key={question.question_id} question={question}/>
       })}
-      <button className='questionButtons'>MORE ANSWERED QUESTIONS</button>
+      {nextQuestions.length > 0 && <button className='questionButtons' onClick={handleMoreQuestions}>MORE ANSWERED QUESTIONS</button>}
       <button className='questionButtons'>ADD A QUESTION +</button>
     </div>
   )
