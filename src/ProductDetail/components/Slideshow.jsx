@@ -7,6 +7,7 @@ const Slideshow = (props) => {
   const [photosIndex, setPhotosIndex] = useState(0)
 
   let expressUrl = 'http://localhost:1337';
+  let counter = 0;
 
   useEffect(() => {
     axios.get(expressUrl + '/styles')
@@ -36,8 +37,8 @@ const Slideshow = (props) => {
       {!styleData[0] ? <div></div> :
         <div id="style-selector">
           {styleData.map(style =>
-            <img className="style-image" src={style.photos[0].thumbnail_url}
-              onClick={() => { setPhotosIndex(photosIndex) }}
+            <img data-value={counter++} className="style-image" src={style.photos[0].thumbnail_url}
+              onClick={(e) => { setPhotosIndex(e.target.getAttribute('data-value'), setIndex(0)) }}
             />
           )}
         </div>
