@@ -1,20 +1,22 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect, useCallback  } from 'react'
 
-const DropDownMenu = function () {
-  const [sortOn, setSortOn] = useState();
+const DropDownMenu = function ({parentCallback}) {
+  const [sortOn, setSortOn] = useState('relevant');
   return (
     <div>
       <select
         onChange={(e) => {
-      const selectedMenuOption = e.target.value;
+          const selectedMenuOption = e.target.value;
           setSortOn(selectedMenuOption);
         }}>
-          <option value = 'relevance'>Relevance</option>
-          <option value = 'helpful'>Helpful</option>
-          <option value = 'newest'>Newest</option>
+        <option value='relevant'>Relevance</option>
+        <option value='helpful'>Helpful</option>
+        <option value='newest'>Newest</option>
       </select>
-      {console.log(sortOn)}
+      {useEffect(()=> {
+        parentCallback(sortOn)
+      }, [sortOn])}
     </div>
   );
 }

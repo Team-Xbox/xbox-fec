@@ -6,10 +6,7 @@ const ReviewList = ({reviewData}) => {
 
   return (
     <div>
-
-
       {reviewData.map((review, i)=> (<Review key = {i} reviewData = {review}/>))}
-
     </div>
   )
 }

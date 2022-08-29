@@ -28,6 +28,15 @@ const Review = ({reviewData}) => {
           <div className='helpful-review'>
             Helpful? Yes ({reviewData.helpfulness}) | Report
           </div>
+          <div className = 'thumbnail-review'>
+            {reviewData.photos.map((review, i)=> (<img className = 'thumbnail-src' key = {i} src = {review.url}></img>))}
+          </div>
+          <div className = 'thumbnail-response'>
+            <span className="checkbox">&#10003;</span> I recommend this product!
+          </div>
+          <div>
+          {console.log(reviewData)}
+          </div>
         </div>
       }
     </div>

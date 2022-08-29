@@ -16,10 +16,6 @@ app.get('/styles', (req, res) => {
 })
 
 app.get('/reviews', (req, res) => {
-  // get sortOn and count from RatingsAndReviews.jsx
-
-  console.log(req.query);
-
   api.getReviewData(66642, req.query.sortOn, req.query.count)
   .then(response => { res.send(response.data) })
   .catch(err => console.log(err))
