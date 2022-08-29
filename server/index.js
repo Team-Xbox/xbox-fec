@@ -8,8 +8,8 @@ app.use(express.json());
 app.use(cors());
 app.use(express.static('src'));
 
-app.get('/styles', (req, res) => {
-  api.getStyleData(66642)
+app.post('/styles', (req, res) => {
+  api.getStyleData(req.body.product)
   .then(response => { res.send(response.data) })
   .catch(err => console.log(err))
 })
