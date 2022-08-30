@@ -14,6 +14,18 @@ app.get('/styles', (req, res) => {
   .catch(err => console.log(err))
 })
 
+app.get('/questions/:id/:page/:count', (req, res) => {
+  api.getQuestionsList(req.params)
+  .then(response => { res.status(200).send(response.data) })
+  .catch(err => console.error(err));
+})
+
+app.get('/answers/:question_id/:page/:count', (req, res) => {
+  api.getAnswersList(req.params)
+  .then(response => { res.status(200).send(response.data) })
+  .catch(err => console.error(err));
+})
+
 app.listen(1337, () => {
   console.log('Listening on port 1337');
 })

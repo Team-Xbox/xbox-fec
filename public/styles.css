@@ -10,3 +10,73 @@ button {
 .off {
   color: #ccc;
 }
+
+/* Beginning of Q&A css styles section */
+.qaListSection {
+  border: 1px solid green
+}
+
+.searchInput {
+  width: 70%;
+}
+
+.questionButtons {
+  border: 1px solid black;
+  background-color: white;
+}
+
+.questionSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+}
+
+.qaContainer {
+  display: flex;
+  margin: 0 0 10px 0;
+}
+
+.qaLabel {
+  margin: 0 6px 0 0;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.questionBody {
+  font-size: 15px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.answerSection {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.answerBody {
+  margin: 0;
+  font-size: 14px;
+}
+
+.answerSideBody {
+  font-size: 14px;
+}
+
+.answerWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.moreAnswersButton {
+  width: 155px;
+  padding: 0;
+  text-align: left;
+  font-weight: bold;
+  margin: 10px 0;
+  font-size: 12.5px;
+}
+
+/* End of Q&A css styles section */
