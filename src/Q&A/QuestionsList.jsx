@@ -4,7 +4,7 @@ import SearchQuestions from './SearchQuestions.jsx'
 const axios = require('axios');
 
 const QuestionsList = (props) => {
-  const [id, setId] = useState(66641)
+  const [id, setId] = useState(66690)
   const [page, setPage] = useState(1)
   const [displayedQuestionData, setDisplayedQuestionData] = useState([])
   const [nextQuestions, setNextQuestions] = useState([])
@@ -34,7 +34,6 @@ const QuestionsList = (props) => {
   }, [])
 
   const handleMoreQuestions = () => {
-    console.log('fire!')
     setDisplayedQuestionData([... displayedQuestionData, ... nextQuestions])
     axios.get(url + `/questions/${id}/${page}/2`)
       .then(response => {

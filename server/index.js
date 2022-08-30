@@ -15,8 +15,13 @@ app.get('/styles', (req, res) => {
 })
 
 app.get('/questions/:id/:page/:count', (req, res) => {
-  console.log(req.params)
   api.getQuestionsList(req.params)
+  .then(response => { res.status(200).send(response.data) })
+  .catch(err => console.error(err));
+})
+
+app.get('/answers/:question_id/:page/:count', (req, res) => {
+  api.getAnswersList(req.params)
   .then(response => { res.status(200).send(response.data) })
   .catch(err => console.error(err));
 })
