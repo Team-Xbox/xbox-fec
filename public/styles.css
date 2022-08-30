@@ -12,6 +12,9 @@ button {
 }
 
 /* Beginning of Q&A css styles section */
+.qaListSection {
+  border: 1px solid green
+}
 
 .searchInput {
   width: 70%;

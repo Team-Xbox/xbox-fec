@@ -43,7 +43,7 @@ const QuestionsList = (props) => {
   }
 
   return (
-    <div>
+    <div className="qaListSection">
       <h3>Questions &amp; Answers</h3>
       <SearchQuestions />
       {displayedQuestionData.map((question) => {
