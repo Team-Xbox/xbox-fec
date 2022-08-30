@@ -86,10 +86,11 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 5px;
 }
 
 .mini-image {
-  margin: 3px;
+  margin-bottom: 3px;
 }
 
 .mini-image:hover {

@@ -21,16 +21,13 @@ const Slideshow = (props) => {
     })
     .then(() => console.log('styledata', styleData))
     .catch(err => console.log(err))
-  }, [JSON.stringify(styleData)])
+  }, [JSON.stringify(styleData)]);
 
   return (
     <div id="slideshow">
       {!styleData[0] ? <div> This Item Does Not Exist </div> :
         <div id="main-images">
           <div id="mini-carousel">
-            <button className="mini-slideshow-btn"
-              onClick={() => { console.log('bye') }}> {'^'}
-            </button>
             {styleData[photosIndex].photos.map(photo =>
               <img className="mini-image" data-index={miniCounter++}
                 src={photo.url}
@@ -39,9 +36,6 @@ const Slideshow = (props) => {
                 onClick={(e) => { setIndex(e.target.getAttribute('data-index')) }}
               />
             )}
-            <button className="mini-slideshow-btn"
-              onClick={() => { console.log('hello') }}> {'v'}
-            </button>
           </div>
           <button className="slideshow-btn"
             onClick={() => { if (index > 0) { setIndex(index - 1) } }}> {'<'}
