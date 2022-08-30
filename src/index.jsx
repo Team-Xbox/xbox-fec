@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import ProductDetail from "./ProductDetail/ProductDetail.jsx";
 import QuestionsList from "./Q&A/QuestionsList.jsx";
 import RelatedProductsList from "./RelatedItems/RelatedProductsList.jsx";
-import Reviews from "./RatingsAndReviews/Reviews.jsx";
+import RatingsAndReviews from "./RatingsAndReviews/RatingsAndReviews.jsx";
 const root = createRoot(document.getElementById("root"));
 
 // Huzzah for jsx!
@@ -14,7 +14,7 @@ const App = () => {
       <ProductDetail />
       <RelatedProductsList />
       <QuestionsList />
-      <Reviews/>
+      <RatingsAndReviews/>
     </div>
   )
 }
