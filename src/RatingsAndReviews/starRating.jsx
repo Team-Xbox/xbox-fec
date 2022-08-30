@@ -4,7 +4,8 @@ import { useState, useEffect } from 'react'
 const StarRating = (props) => {
   const [rating, setRating] = useState(0);
   useEffect(() => {
-    setRating(props.reviewData.rating);
+    //console.log('StarRating input =',props.rating);
+    setRating(props.rating);
   }, [rating]);
   return (
     <div className="star-rating">

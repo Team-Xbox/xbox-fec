@@ -42,6 +42,17 @@ const getReviewData = (product_id, sortOn='relevant', count=2) => {
   .catch(err => console.log(err))
 }
 
+const getRatings = (product_id) => {
+  console.log('running getRatings...')
+  return axios.get(options.url + `reviews/meta?product_id=${product_id}`, {headers: options.headers})
+  .then(data => {
+    return data;
+  })
+  .catch(err => console.log(err))
+}
+
+
 module.exports.getProductData = getProductData;
 module.exports.getStyleData = getStyleData;
 module.exports.getReviewData = getReviewData;
+module.exports.getRatings = getRatings;

@@ -17,7 +17,7 @@ const Review = ({reviewData}) => {
       {!reviewData ? <div></div> :
         <div className="main-review">
           <div className='top-review'>
-            <StarRating reviewData={reviewData} />{reviewData.reviewer_name} {convertDate(reviewData.date)}
+            <StarRating rating={reviewData.rating} />{reviewData.reviewer_name} {convertDate(reviewData.date)}
           </div>
           <div className="summary-review">
             {reviewData.summary}
@@ -35,7 +35,7 @@ const Review = ({reviewData}) => {
             <span className="checkbox">&#10003;</span> I recommend this product!
           </div>
           <div>
-          {console.log(reviewData)}
+          {/* {console.log(reviewData)} */}
           </div>
         </div>
       }

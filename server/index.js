@@ -21,6 +21,12 @@ app.get('/reviews', (req, res) => {
   .catch(err => console.log(err))
 })
 
+app.get('/ratings', (req, res) => {
+  api.getRatings(66642)
+  .then(response => { res.send(response.data) })
+  .catch(err => console.log(err))
+})
+
 
 app.listen(1337, () => {
   console.log('Listening on port 1337');
