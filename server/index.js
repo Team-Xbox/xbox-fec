@@ -14,6 +14,13 @@ app.post('/styles', (req, res) => {
   .catch(err => console.log(err))
 })
 
+app.post('/product', (req, res) => {
+  console.log('REQYEST BODY:', req.body);
+  api.getProductData('products', req.body.product)
+  .then(response => { res.send(response.data) })
+  .catch(err => console.log(err))
+})
+
 app.get('/reviews', (req, res) => {
   api.getReviewData(66642, req.query.sortOn, req.query.count)
   .then(response => { res.send(response.data) })
