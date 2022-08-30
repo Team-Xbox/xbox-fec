@@ -14,7 +14,6 @@ const QuestionsList = (props) => {
   useEffect(() => {
     axios.get(url + `/questions/${id}/${page}/6`)
       .then(response => {
-        console.log('show questions please = ', response.data.results)
         const firstFour = [];
         const rest = [];
         response.data.results.forEach((el, index) => {

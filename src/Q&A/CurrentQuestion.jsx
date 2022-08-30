@@ -13,7 +13,6 @@ const CurrentQuestion = (props) => {
   useEffect(() => {
     axios.get(url + `/answers/${questionId}/${page}/4`)
       .then(response => {
-        console.log('show answers please = ', response.data.results)
         const firstTwo = [];
         const rest = [];
         response.data.results.forEach((el, index) => {
