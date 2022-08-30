@@ -51,8 +51,26 @@ const getRatings = (product_id) => {
   .catch(err => console.log(err))
 }
 
+const getQuestionsList = ({id, page, count}) => {
+  return axios.get(options.url + `qa/questions?product_id=${id}&page=${page}&count=${count}`, {headers: options.headers})
+    .then(data => {
+      return data;
+    })
+    .catch(err => console.log(err))
+}
+
+const getAnswersList = ({question_id, page, count}) => {
+  return axios.get(options.url + `qa/questions/${question_id}/answers?page=${page}&count=${count}`, {headers: options.headers})
+    .then(data => {
+      return data;
+    })
+    .catch(err => console.log(err))
+}
 
 module.exports.getProductData = getProductData;
 module.exports.getStyleData = getStyleData;
+module.exports.getQuestionsList = getQuestionsList;
+module.exports.getAnswersList = getAnswersList;
 module.exports.getReviewData = getReviewData;
 module.exports.getRatings = getRatings;
+
