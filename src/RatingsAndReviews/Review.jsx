@@ -12,9 +12,11 @@ var convertDate = function (isoDate) {
 }
 
 const Review = ({reviewData}) => {
+  console.log('reviewData =', reviewData)
+  console.log('review rating value =',reviewData.rating)
   return (
     <div>
-      {!reviewData ? <div></div> :
+      {!reviewData  ? <div></div> :
         <div className="main-review">
           <div className='top-review'>
             <StarRating rating={reviewData.rating} />{reviewData.reviewer_name} {convertDate(reviewData.date)}

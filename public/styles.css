@@ -103,8 +103,12 @@ button {
 /* PRODUCT DETAIL SLIDESHOW */
 
 /* BEGIN REVIEW STYLES */
+
+@import "rsuite/dist/rsuite.css";
+#root{ padding: 10px; }
+
 .main-review {
-  max-width: 700px;
+  width: 700px;
   max-height: 300px;
   border-color: black;
   border-style: solid;
@@ -244,7 +248,7 @@ button {
 
 .reviews {
   position: relative; top: -43px;
-  width: auto;
+  width: 720px;
   height: auto;
   border-color: blue;
   padding: 10px;
@@ -267,6 +271,17 @@ button {
 .starrating {
   position: relative; top: -30px;
 }
+
+.recommended-rating {
+  display: flex;
+  padding-left: 8px;
+}
+
+.buttons-reviews {
+  display: flex;
+  justify-content: flex-start;
+}
+
 /* END REVIEW STYLES */
 
 /* Beginning of Q&A css styles section */

@@ -12,9 +12,11 @@ var weightedAverage = function (a, b, c, d, e) {
 
 
 
+//var starObject = {1:false, 2:false, 3:false, 4:false, 5: false};
 
-const Ratings = ({ ratings }) => {
+const Ratings = ({ ratings, recommended, parentCallbackFive, parentCallbackFour, parentCallbackThree, parentCallbackTwo, parentCallbackOne }) => {
   //console.log('ratings from ratings =', ratings['5']);
+  //console.log('recommended from ratings =', recommended);
   var average = weightedAverage(ratings['1'], ratings['2'], ratings['3'], ratings['4'], ratings['5']);
   //console.log(average);
   var ave = (Math.round(average));
@@ -28,8 +30,45 @@ const Ratings = ({ ratings }) => {
   var ratingArray = [oneStar, twoStar, threeStar, fourStar, fiveStar];
   var denominator = Math.max(...ratingArray);
   //console.log(denominator);
-
+  var totalRecommendations = Number(recommended.true) + Number(recommended.false);
+  var percentRecommended = Math.round(100 * Number(recommended.true) / totalRecommendations);
   //console.log('total ratings =', totalRatings);
+
+  const [fiveStarButton, setFiveStarButton] = useState(false);
+  {
+    useEffect(() => {
+      parentCallbackFive(fiveStarButton)
+    }, [fiveStarButton])
+  }
+
+  const [fourStarButton, setFourStarButton] = useState(false);
+  {
+    useEffect(() => {
+      parentCallbackFour(fourStarButton)
+    }, [fourStarButton])
+  }
+
+  const [threeStarButton, setThreeStarButton] = useState(false);
+  {
+    useEffect(() => {
+      parentCallbackThree(threeStarButton)
+    }, [threeStarButton])
+  }
+
+  const [twoStarButton, setTwoStarButton] = useState(false);
+  {
+    useEffect(() => {
+      parentCallbackTwo(twoStarButton)
+    }, [twoStarButton])
+  }
+
+  const [oneStarButton, setOneStarButton] = useState(false);
+  {
+    useEffect(() => {
+      parentCallbackOne(oneStarButton)
+    }, [oneStarButton])
+  }
+
   return (
     <div>
       {(!ave) ? <div></div> :
@@ -38,29 +77,54 @@ const Ratings = ({ ratings }) => {
             <div className='average-rating banner-rating'>{average}</div>
             <div className='starrating banner-rating'> <StarRating rating={ave} /></div>
           </ul>
-          <div>
-
+          <div className='recommended-rating'>
+            {percentRecommended}% of reviews recommend this product.
           </div>
           <table className="table-ratings">
             <tbody>
               <tr>
-                <td><button>5 stars</button></td>
+                <td><button className = 'button-review' role = 'button' onClick={(e) => {
+                  console.log('clicked 5 star');
+                  setFiveStarButton(!fiveStarButton);
+                  //console.log(fiveStarButton);
+                }}>5 stars</button>
+                </td>
                 <td><ProgressBar bgcolor="#696969" progress={Math.round(fiveStar / denominator * 100)} /></td>
               </tr>
               <tr>
-                <td><button>4 stars</button></td>
+                <td><button className = 'button-review' role = 'button' onClick={(e) => {
+                    console.log('clicked 4 star');
+                    setFourStarButton(!fourStarButton);
+                    //console.log(fourStarButton);
+                  }}>4 stars</button></td>
                 <td><ProgressBar bgcolor="#696969" progress={Math.round(fourStar / denominator * 100)} /></td>
               </tr>
               <tr>
-                <td><button>3 stars</button></td>
+                <td><button className = 'button-review' role = 'button' onClick={(e) => {
+                  console.log('clicked 3 star');
+                  setThreeStarButton(!threeStarButton);
+                  //console.log(threeStarButton);
+                }}
+                >3 stars</button></td>
                 <td><ProgressBar bgcolor="#696969" progress={Math.round(threeStar / denominator * 100)} /></td>
               </tr>
               <tr>
-                <td><button>2 stars</button></td>
+                <td><button className = 'button-review' role = 'button' onClick={(e) => {
+                  console.log('clicked 2 star');
+                  setTwoStarButton(!twoStarButton);
+                  //console.log(twoStarButton);
+                }}
+                >2 stars</button></td>
                 <td><ProgressBar bgcolor="#696969" progress={Math.round(twoStar / denominator * 100)} /></td>
               </tr>
               <tr>
-                <td><button>1 star</button></td>
+                <td><button className = 'button-review' role = 'button' onClick={(e) => {
+                  console.log('clicked 1 star');
+                  setOneStarButton(!oneStarButton);
+                  //console.log(oneStarButton);
+                }}
+
+                >1 star</button></td>
                 <td><ProgressBar bgcolor="#696969" progress={Math.round(oneStar / denominator * 100)} /></td>
               </tr>
             </tbody>
@@ -69,6 +133,8 @@ const Ratings = ({ ratings }) => {
       }
     </div>
   )
+
 }
 
 export default Ratings;
+
