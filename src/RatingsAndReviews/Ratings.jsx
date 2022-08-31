@@ -45,23 +45,23 @@ const Ratings = ({ ratings }) => {
             <tbody>
               <tr>
                 <td><button>5 stars</button></td>
-                <td><ProgressBar bgcolor="#696969" progress={Math.round(fiveStar / totalRatings * 100)} /></td>
+                <td><ProgressBar bgcolor="#696969" progress={Math.round(fiveStar / denominator * 100)} /></td>
               </tr>
               <tr>
                 <td><button>4 stars</button></td>
-                <td><ProgressBar bgcolor="#696969" progress={Math.round(fourStar / totalRatings * 100)} /></td>
+                <td><ProgressBar bgcolor="#696969" progress={Math.round(fourStar / denominator * 100)} /></td>
               </tr>
               <tr>
                 <td><button>3 stars</button></td>
-                <td><ProgressBar bgcolor="#696969" progress={Math.round(threeStar / totalRatings * 100)} /></td>
+                <td><ProgressBar bgcolor="#696969" progress={Math.round(threeStar / denominator * 100)} /></td>
               </tr>
               <tr>
                 <td><button>2 stars</button></td>
-                <td><ProgressBar bgcolor="#696969" progress={Math.round(twoStar / totalRatings * 100)} /></td>
+                <td><ProgressBar bgcolor="#696969" progress={Math.round(twoStar / denominator * 100)} /></td>
               </tr>
               <tr>
                 <td><button>1 star</button></td>
-                <td><ProgressBar bgcolor="#696969" progress={Math.round(oneStar / totalRatings * 100)} /></td>
+                <td><ProgressBar bgcolor="#696969" progress={Math.round(oneStar / denominator * 100)} /></td>
               </tr>
             </tbody>
           </table>

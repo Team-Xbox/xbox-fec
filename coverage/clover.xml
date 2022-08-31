@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1661908946018" clover="3.2.0">
-  <project timestamp="1661908946019" name="All files">
-    <metrics statements="158" coveredstatements="78" conditionals="24" coveredconditionals="4" methods="59" coveredmethods="18" elements="241" coveredelements="100" complexity="0" loc="158" ncloc="158" packages="6" files="16" classes="16"/>
+<coverage generated="1661918310491" clover="3.2.0">
+  <project timestamp="1661918310492" name="All files">
+    <metrics statements="158" coveredstatements="56" conditionals="24" coveredconditionals="1" methods="59" coveredmethods="11" elements="241" coveredelements="68" complexity="0" loc="158" ncloc="158" packages="6" files="16" classes="16"/>
     <package name="src">
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="app.jsx" path="/Users/adamblomberg/xbox-fec/src/app.jsx">
@@ -11,33 +11,33 @@
       </file>
     </package>
     <package name="src.ProductDetail">
-      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="ProductDetail.jsx" path="/Users/adamblomberg/xbox-fec/src/ProductDetail/ProductDetail.jsx">
-        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.ProductDetail.components">
-      <metrics statements="22" coveredstatements="12" conditionals="8" coveredconditionals="2" methods="12" coveredmethods="2"/>
+      <metrics statements="22" coveredstatements="2" conditionals="8" coveredconditionals="0" methods="12" coveredmethods="0"/>
       <file name="Slideshow.jsx" path="/Users/adamblomberg/xbox-fec/src/ProductDetail/components/Slideshow.jsx">
-        <metrics statements="22" coveredstatements="12" conditionals="8" coveredconditionals="2" methods="12" coveredmethods="2"/>
+        <metrics statements="22" coveredstatements="2" conditionals="8" coveredconditionals="0" methods="12" coveredmethods="0"/>
         <line num="2" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="15" count="1" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
         <line num="17" count="0" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
         <line num="22" count="0" type="stmt"/>
         <line num="23" count="0" type="stmt"/>
-        <line num="26" count="1" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
         <line num="32" count="0" type="stmt"/>
         <line num="36" count="0" type="stmt"/>
         <line num="41" count="0" type="cond" truecount="0" falsecount="2"/>
@@ -47,7 +47,7 @@
       </file>
     </package>
     <package name="src.Q&A">
-      <metrics statements="57" coveredstatements="17" conditionals="8" coveredconditionals="1" methods="18" coveredmethods="3"/>
+      <metrics statements="57" coveredstatements="7" conditionals="8" coveredconditionals="0" methods="18" coveredmethods="0"/>
       <file name="CurrentAnswer.jsx" path="/Users/adamblomberg/xbox-fec/src/Q&A/CurrentAnswer.jsx">
         <metrics statements="3" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="2" count="1" type="stmt"/>
@@ -84,16 +84,16 @@
         <line num="56" count="0" type="stmt"/>
       </file>
       <file name="QuestionsList.jsx" path="/Users/adamblomberg/xbox-fec/src/Q&A/QuestionsList.jsx">
-        <metrics statements="26" coveredstatements="11" conditionals="4" coveredconditionals="1" methods="8" coveredmethods="2"/>
+        <metrics statements="26" coveredstatements="2" conditionals="4" coveredconditionals="0" methods="8" coveredmethods="0"/>
         <line num="4" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="15" count="1" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
         <line num="17" count="0" type="stmt"/>
         <line num="18" count="0" type="stmt"/>
         <line num="19" count="0" type="stmt"/>
@@ -104,18 +104,18 @@
         <line num="27" count="0" type="stmt"/>
         <line num="28" count="0" type="stmt"/>
         <line num="31" count="0" type="stmt"/>
-        <line num="35" count="1" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
         <line num="36" count="0" type="stmt"/>
         <line num="37" count="0" type="stmt"/>
         <line num="39" count="0" type="stmt"/>
         <line num="40" count="0" type="stmt"/>
-        <line num="44" count="1" type="stmt"/>
+        <line num="44" count="0" type="stmt"/>
         <line num="49" count="0" type="stmt"/>
       </file>
       <file name="SearchQuestions.jsx" path="/Users/adamblomberg/xbox-fec/src/Q&A/SearchQuestions.jsx">
-        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.RatingsAndReviews">
@@ -219,11 +219,11 @@
       </file>
     </package>
     <package name="src.RelatedItems">
-      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="RelatedProductsList.jsx" path="/Users/adamblomberg/xbox-fec/src/RelatedItems/RelatedProductsList.jsx">
-        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
       </file>
     </package>
   </project>

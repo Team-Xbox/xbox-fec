@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">8.33% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>12/24</span>
+                <span class='fraction'>2/24</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/8</span>
+                <span class='fraction'>0/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">16.66% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/12</span>
+                <span class='fraction'>0/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">54.54% </span>
+                <span class="strong">9.09% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>12/22</span>
+                <span class='fraction'>2/22</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -134,17 +134,17 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -155,7 +155,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -200,18 +200,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, {useState, useEffect} from 'react';
 const axios = require('axios');
 &nbsp;
-const Slideshow = (props) =&gt; {
-  const [styleData, setStyleData] = useState({});
-  const [index, setIndex] = useState(0);
-  const [photosIndex, setPhotosIndex] = useState(0);
-  const [product_id, setProductId] = useState(66642);
+const Slideshow = <span class="fstat-no" title="function not covered" >(p</span>rops) =&gt; {
+  const [styleData, setStyleData] = <span class="cstat-no" title="statement not covered" >useState({});</span>
+  const [index, setIndex] = <span class="cstat-no" title="statement not covered" >useState(0);</span>
+  const [photosIndex, setPhotosIndex] = <span class="cstat-no" title="statement not covered" >useState(0);</span>
+  const [product_id, setProductId] = <span class="cstat-no" title="statement not covered" >useState(66642);</span>
 &nbsp;
-  let expressUrl = 'http://localhost:1337';
-  let styleCounter = 0;
-  let miniCounter = 0;
+  let expressUrl = <span class="cstat-no" title="statement not covered" >'http://localhost:1337';</span>
+  let styleCounter = <span class="cstat-no" title="statement not covered" >0;</span>
+  let miniCounter = <span class="cstat-no" title="statement not covered" >0;</span>
 &nbsp;
-  useEffect(() =&gt; {
-    axios.post(expressUrl + '/styles', {product: product_id})
+<span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    axios.post(expressUrl + '/styles', {product: product_id})</span>
     .then(<span class="fstat-no" title="function not covered" >re</span>sponse =&gt; {
 <span class="cstat-no" title="statement not covered" >      return response.data.results;</span>
     })
@@ -222,10 +222,10 @@ const Slideshow = (props) =&gt; {
     .catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt; <span class="cstat-no" title="statement not covered" >console.log(err))</span>
   }, [JSON.stringify(styleData)]);
 &nbsp;
-  return (
+<span class="cstat-no" title="statement not covered" >  return (</span>
     &lt;div id="slideshow"&gt;
       {!styleData[0] ? &lt;div&gt; This Item Does Not Exist &lt;/div&gt; :
-<span class="branch-1 cbranch-no" title="branch not covered" >        &lt;div id="main-images"&gt;</span>
+        &lt;div id="main-images"&gt;
           &lt;div id="mini-carousel"&gt;
             {styleData[photosIndex].photos.map(<span class="fstat-no" title="function not covered" >ph</span>oto =&gt;
 <span class="cstat-no" title="statement not covered" >              &lt;img className="mini-image" data-index={miniCounter++}</span>
@@ -250,7 +250,7 @@ const Slideshow = (props) =&gt; {
         &lt;/div&gt;
       }
       {!styleData[0] ? &lt;div&gt; No Other Styles Found &lt;/div&gt; :
-<span class="branch-1 cbranch-no" title="branch not covered" >        &lt;div id="style-selector"&gt;</span>
+        &lt;div id="style-selector"&gt;
           &lt;h2 className="styles-title"&gt; Style: &lt;em&gt;{styleData[photosIndex].name}&lt;/em&gt; &lt;/h2&gt;
           {styleData.map(<span class="fstat-no" title="function not covered" >st</span>yle =&gt;
 <span class="cstat-no" title="statement not covered" >            &lt;img data-value={styleCounter++} className="style-image"</span>
@@ -271,7 +271,7 @@ export default Slideshow</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-08-31T01:22:25.939Z
+                at 2022-08-31T03:58:30.320Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

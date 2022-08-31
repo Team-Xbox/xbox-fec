@@ -8,11 +8,11 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'http://localhost:3000';
 
-describe('Jest+RTL Workshop', function() {
+describe('app.jsx', function() {
   const user = userEvent.setup();
 
   render(<App />)
 
-  it('should increase the counter', () => {
+  it('should have the title Hello World', () => {
          expect(screen.getByTestId('hello-world')).toHaveTextContent('Hello World');})
   });

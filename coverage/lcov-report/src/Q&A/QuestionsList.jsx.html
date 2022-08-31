@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">42.3% </span>
+                <span class="strong">7.69% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>11/26</span>
+                <span class='fraction'>2/26</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/4</span>
+                <span class='fraction'>0/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/8</span>
+                <span class='fraction'>0/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">42.3% </span>
+                <span class="strong">7.69% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>11/26</span>
+                <span class='fraction'>2/26</span>
             </div>
         
             
@@ -125,17 +125,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -143,6 +132,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -153,16 +153,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -180,16 +180,16 @@ import CurrentQuestion from './CurrentQuestion.jsx';
 import SearchQuestions from './SearchQuestions.jsx'
 const axios = require('axios');
 &nbsp;
-const QuestionsList = (props) =&gt; {
-  const [id, setId] = useState(66690)
-  const [page, setPage] = useState(1)
-  const [displayedQuestionData, setDisplayedQuestionData] = useState([])
-  const [nextQuestions, setNextQuestions] = useState([])
+const QuestionsList = <span class="fstat-no" title="function not covered" >(p</span>rops) =&gt; {
+  const [id, setId] = <span class="cstat-no" title="statement not covered" >useState(66690)</span>
+  const [page, setPage] = <span class="cstat-no" title="statement not covered" >useState(1)</span>
+  const [displayedQuestionData, setDisplayedQuestionData] = <span class="cstat-no" title="statement not covered" >useState([])</span>
+  const [nextQuestions, setNextQuestions] = <span class="cstat-no" title="statement not covered" >useState([])</span>
 &nbsp;
-  let url = 'http://localhost:1337'
+  let url = <span class="cstat-no" title="statement not covered" >'http://localhost:1337'</span>
 &nbsp;
-  useEffect(() =&gt; {
-    axios.get(url + `/questions/${id}/${page}/6`)
+<span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    axios.get(url + `/questions/${id}/${page}/6`)</span>
       .then(<span class="fstat-no" title="function not covered" >re</span>sponse =&gt; {
         const firstFour = <span class="cstat-no" title="statement not covered" >[];</span>
         const rest = <span class="cstat-no" title="statement not covered" >[];</span>
@@ -209,7 +209,7 @@ const QuestionsList = (props) =&gt; {
       })
   }, [])
 &nbsp;
-  const handleMoreQuestions = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
+  const handleMoreQuestions = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    setDisplayedQuestionData([... displayedQuestionData, ... nextQuestions])</span>
 <span class="cstat-no" title="statement not covered" >    axios.get(url + `/questions/${id}/${page}/2`)</span>
       .then(<span class="fstat-no" title="function not covered" >re</span>sponse =&gt; {
@@ -218,14 +218,14 @@ const QuestionsList = (props) =&gt; {
       })
   }
 &nbsp;
-  return (
+<span class="cstat-no" title="statement not covered" >  return (</span>
     &lt;div className="qaListSection"&gt;
       &lt;h3&gt;Questions &amp;amp; Answers&lt;/h3&gt;
       &lt;SearchQuestions /&gt;
       {displayedQuestionData.map(<span class="fstat-no" title="function not covered" >(q</span>uestion) =&gt; {
 <span class="cstat-no" title="statement not covered" >        return &lt;CurrentQuestion key={question.question_id} question={question}/&gt;</span>
       })}
-      {nextQuestions.length &gt; 0 &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >&lt;button className='questionButtons' onClick={handleMoreQuestions}&gt;MORE ANSWERED QUESTIONS&lt;/button&gt;}</span>
+      {nextQuestions.length &gt; 0 &amp;&amp; &lt;button className='questionButtons' onClick={handleMoreQuestions}&gt;MORE ANSWERED QUESTIONS&lt;/button&gt;}
       &lt;button className='questionButtons'&gt;ADD A QUESTION +&lt;/button&gt;
     &lt;/div&gt;
   )
@@ -238,7 +238,7 @@ export default QuestionsList;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-08-31T01:22:25.939Z
+                at 2022-08-31T03:58:30.320Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
