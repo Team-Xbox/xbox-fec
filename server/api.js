@@ -9,7 +9,6 @@ let options = {
 }
 
 const getProductData = (endpoint, value) => {
-
   return axios.get(options.url + `${endpoint}/${value}`, {headers: options.headers})
   .then(data => {
     return data;
@@ -18,7 +17,6 @@ const getProductData = (endpoint, value) => {
 }
 
 const getStyleData = (product_id) => {
-  console.log('running getStyleData...');
   return axios.get(options.url + `products/${product_id}/styles`, {headers: options.headers})
   .then(data => {
     return data;

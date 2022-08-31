@@ -15,7 +15,6 @@ app.post('/styles', (req, res) => {
 })
 
 app.post('/product', (req, res) => {
-  console.log('REQYEST BODY:', req.body);
   api.getProductData('products', req.body.product)
   .then(response => { res.send(response.data) })
   .catch(err => console.log(err))
