@@ -1,4 +1,3 @@
-
 import React from 'react';
 import '@testing-library/react/dont-cleanup-after-each';
 import '@testing-library/jest-dom';
@@ -9,17 +8,11 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'http://localhost:3000';
 
-//Yari
-describe('', function() {
+describe('Jest+RTL Workshop', function() {
+  const user = userEvent.setup();
 
-});
+  render(<App />)
 
-//Selina
-describe('', function() {
-
-});
-
-//Adam
-describe('', function() {
-
-});
+  it('should increase the counter', () => {
+         expect(screen.getByTestId('hello-world')).toHaveTextContent('Hello World');})
+  });
