@@ -67,10 +67,28 @@ const getAnswersList = ({question_id, page, count}) => {
     .catch(err => console.log(err))
 }
 
+const updateHelpQCount = ({question_id}, body) => {
+  return axios.put(options.url + `qa/questions/${question_id}/helpful`, body, {headers: options.headers})
+    .then(() => {
+      console.log('success!')
+    })
+    .catch(err => console.log(err))
+}
+
+const updateHelpACount = ({answer_id}, body) => {
+  return axios.put(options.url + `qa/answers/${answer_id}/helpful`, body, {headers: options.headers})
+  .then(() => {
+    console.log('success!')
+  })
+  .catch(err => console.log(err))
+}
+
 module.exports.getProductData = getProductData;
 module.exports.getStyleData = getStyleData;
 module.exports.getQuestionsList = getQuestionsList;
 module.exports.getAnswersList = getAnswersList;
+module.exports.updateHelpQCount = updateHelpQCount;
+module.exports.updateHelpACount = updateHelpACount;
 module.exports.getReviewData = getReviewData;
 module.exports.getRatings = getRatings;
 

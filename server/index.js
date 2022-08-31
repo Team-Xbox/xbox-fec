@@ -38,6 +38,25 @@ app.get('/answers/:question_id/:page/:count', (req, res) => {
   .catch(err => console.error(err));
 })
 
+app.put('/helpfulQ/:question_id', (req, res) => {
+  api.updateHelpQCount(req.params, req.body)
+  .then(() => { res.status(204).send() })
+  .catch(err => {
+    console.error(err);
+    res.status(404).send(err);
+  })
+})
+
+app.put('/helpfulA/:answer_id', (req, res) => {
+  api.updateHelpACount(req.params, req.body)
+  .then(() => { res.status(204).send() })
+  .catch(err => {
+    console.error(err);
+    res.status(404).send(err);
+  })
+  console.log("show me server input = ", req.body)
+})
+
 app.listen(1337, () => {
   console.log('Listening on port 1337');
 })
