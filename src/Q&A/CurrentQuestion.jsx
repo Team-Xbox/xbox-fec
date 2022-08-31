@@ -41,7 +41,7 @@ const CurrentQuestion = (props) => {
   }
 
   return (
-    <div>
+    <div data-testid="questionComp">
       <div className="questionSection">
         <div className="qaContainer">
           <p className="qaLabel">Q:</p>
