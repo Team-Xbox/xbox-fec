@@ -84,12 +84,12 @@ const CurrentQuestion = (props) => {
           </div>
         </div>
       </div>
-      <Modal open={open} onClose={handleClose}>
+      <Modal size="lg" open={open} onClose={handleClose}>
         <Modal.Header>
           <Modal.Title>
             <div>
               <h3>Submit Your Answer</h3>
-              <h4>Product Name: Question Body</h4>
+              <h4>Product Name: {props.question.question_body}</h4>
             </div>
           </Modal.Title>
         </Modal.Header>
@@ -97,16 +97,16 @@ const CurrentQuestion = (props) => {
           <div>
             <form>
               <h6>* Your Answer</h6>
-              <input type="text" maxLength="1000"/>
+              <textarea type="text" maxLength="1000"/>
             </form>
             <form>
               <h6>* Your Nickname</h6>
-              <input type="text" maxLength="60" placeholder="Example:jack543!"/>
+              <input size="40" type="text" maxLength="60" placeholder="Example: jack543!"/>
               <p>For privacy reasons, do not use your full name or email address.</p>
             </form>
             <form>
               <h6>* Your Email</h6>
-              <input type="text" maxLength="60" placeholder="Example:jack@email.com"/>
+              <input size="40" type="text" maxLength="60" placeholder="Example: jack@email.com"/>
               <p>For authentication reasons, you will not be emailed.</p>
             </form>
             <Button>Upload your photos</Button>
