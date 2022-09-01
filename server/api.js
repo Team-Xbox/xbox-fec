@@ -8,24 +8,15 @@ let options = {
   }
 }
 
-const getProductData = (endpoint, parameter, value, optionalVal, optionalParam) => {
-  if (optionalVal || optionalParam) {
-    return axios.get(options.url + `${endpoint}?${parameter}=${value}&${optionalParam}=${optionalVal}`, options.headers)
-    .then(data => {
-      return data;
-    })
-    .catch(err => console.log(err))
-  } else {
-    return axios.get(options.url + `${endpoint}?${parameter}=${value}`, options.headers)
-    .then(data => {
-      return data;
-    })
-    .catch(err => console.log(err))
-  }
+const getProductData = (endpoint, value) => {
+  return axios.get(options.url + `${endpoint}/${value}`, {headers: options.headers})
+  .then(data => {
+    return data;
+  })
+  .catch(err => console.log('API ERROR', err))
 }
 
 const getStyleData = (product_id) => {
-  console.log('running getStyleData...')
   return axios.get(options.url + `products/${product_id}/styles`, {headers: options.headers})
   .then(data => {
     return data;

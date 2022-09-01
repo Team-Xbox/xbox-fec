@@ -1,5 +1,3 @@
-
-
 button {
   background-color: transparent;
   border: none;
@@ -16,18 +14,21 @@ button {
 /* PRODUCT DETAIL SLIDESHOW */
 
 #product-detail {
-  border: rgb(174, 4, 174) solid 2px;
+  background-color: rgb(203, 114, 255);
+  border: black solid 2px;
   max-width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 5px 15px 10px 15px;
 }
 
 #slideshow {
+  background-color: #000;
   border: black solid 5px;
   margin-top: 10px;
   margin-bottom: 10px;
-  padding: 5px 5px 5px 5px;
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -35,35 +36,62 @@ button {
 
 #main-images {
   border: red solid 2px;
-  width: fit-content;
-  height: fit-content;
-  margin: 0px 5px 5px 0px;
+  width: 100%;
+  margin: 0px;
   padding: 10px;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
 }
 
-.main-image {
-  max-width: 700px;
+.minimize {
+  color: white;
 }
 
-.slideshow-btn {
-  background-color: limegreen;
-  border: black solid 2px;
-  border-radius: 20%;
-  width: 30px;
-  height: 100%;
+.main-image {
+  height: 550px;
+  object-fit: cover;
+}
+
+.slideshow-btn-left {
+  color: white;
+  border-radius: 5px;
+  width: fit-content;
+  height: fit-content;
   display: inline-block;
-  margin: 5px;
+  margin: 225px 10px 5px 5px;
+}
+
+.slideshow-btn-right {
+  color: white;
+  border-radius: 5px;
+  width: fit-content;
+  height: fit-content;
+  display: inline-block;
+  margin: 225px 5px 5px 5px;
+}
+
+#style-div {
+  border: lime solid 2px;
+  background-color: rgb(215, 160, 255);
+  height: 570px;
+  width: 700px;
+}
+
+#style-header {
+  font-family: 'Raleway', sans-serif;
+  border: transparent solid 2px;
+  background-color: rgb(178, 99, 247);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #style-selector {
-  border: royalblue solid 2px;
-  width: 410px;
+  border: transparent solid 2px;
+  width: 400px;
   height: 250px;
-  display: inline-block;
-  margin: 0px 5px 5px 5px;
+  display: block;
   padding: 5px;
 }
 
@@ -78,17 +106,34 @@ button {
 }
 
 .styles-title {
-  margin: 5px 0px 0px 5px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  margin: 3px 0px 5px 5px;
+}
+
+.product-cat {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  height: 3px;
+}
+
+.product-title {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+}
+
+.product-price {
+  margin-bottom: 5px;
 }
 
 #mini-carousel {
-  border: green solid 2px;
   width: 60px;
   margin-right: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 5px;
+  float: left;
 }
 
 .mini-image {
@@ -100,7 +145,34 @@ button {
   cursor: pointer;
 }
 
-/* PRODUCT DETAIL SLIDESHOW */
+#description {
+  width: 100%;
+}
+
+.slogan {
+  font-family: 'EB Garamond', serif;
+  font-weight: 900;
+  font-size: 32px;
+  padding: 5px;
+  margin: 5px;
+}
+
+#desc {
+  margin: 5px;
+  padding: 5px;
+  max-width: 50%;
+  display: inline-block;
+}
+
+#features {
+  border-left: black solid 2px;
+  margin: 5px;
+  padding: 5px 5px 5px 15px;
+  max-width: 50%;
+  display: inline-block;
+}
+
+/* END PRODUCT DETAIL SLIDESHOW */
 
 /* BEGIN REVIEW STYLES */
 @import "rsuite/dist/rsuite.css";
@@ -116,10 +188,9 @@ button {
 }
 .top-review {
   max-width: 700px;
-  height:25px;
+  height: 25px;
   display: flex;
   justify-content: space-between;
-
 }
 
 .summary-review {
@@ -156,10 +227,10 @@ button {
   padding: 5px;
 }
 
-.thumbnail-src{
+.thumbnail-src {
   width: 75px;
   height: 75px;
-  object-fit:cover;
+  object-fit: cover;
   margin-inline: 25px;
   padding: 4px;
   border: 1px solid black;
@@ -167,22 +238,23 @@ button {
 
 .button-review {
   align-items: center;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: .25rem;
+  border-radius: 0.25rem;
   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
   box-sizing: border-box;
   color: rgba(0, 0, 0, 0.85);
   cursor: pointer;
   display: inline-flex;
-  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
   font-size: 16px;
   font-weight: 600;
   justify-content: center;
   line-height: 1.25;
   margin: 0;
   min-height: 3rem;
-  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
   position: relative;
   text-decoration: none;
   transition: all 250ms;
@@ -205,7 +277,7 @@ button {
 }
 
 .button-review:active {
-  background-color: #F0F0F1;
+  background-color: #f0f0f1;
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
   color: rgba(0, 0, 0, 0.65);
@@ -224,7 +296,7 @@ button {
 }
 
 .ratings-and-reviews-heading {
-  color:darkgray;
+  color: darkgray;
   width: 1075px;
   height: auto;
   margin: 2px;
@@ -246,7 +318,8 @@ button {
 }
 
 .reviews {
-  position: relative; top: -43px;
+  position: relative;
+  top: -43px;
   width: auto;
   height: auto;
   border-color: blue;
@@ -268,13 +341,14 @@ button {
 }
 
 .starrating {
-  position: relative; top: -30px;
+  position: relative;
+  top: -30px;
 }
 /* END REVIEW STYLES */
 
 /* Beginning of Q&A css styles section */
 .qaListSection {
-  border: 1px solid green
+  border: 1px solid green;
 }
 
 .searchInput {
@@ -341,4 +415,3 @@ button {
 }
 
 /* End of Q&A css styles section */
-
