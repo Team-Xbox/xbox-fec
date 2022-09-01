@@ -62,31 +62,31 @@ const QuestionsList = (props) => {
           return <CurrentQuestion key={question.question_id} question={question}/>
         })}
         {nextQuestions.length > 0 && <button className='questionButtons' onClick={handleMoreQuestions}>MORE ANSWERED QUESTIONS</button>}
-        <ButtonToolbar>
-          <Button className='questionButtons' onClick={handleOpen}>ADD A QUESTION +</Button>
-        </ButtonToolbar>
+        <button className='questionButtons' onClick={handleOpen}>ADD A QUESTION +</button>
       </div>
       <Modal open={open} onClose={handleClose}>
         <Modal.Header>
           <Modal.Title>
-            <h3>Ask Your Question</h3>
-            <h4>About the Product</h4>
+            <div>
+              <h3>Ask Your Question</h3>
+              <h4>About the Product</h4>
+            </div>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div>
             <form>
               <h6>* Your Question</h6>
-              <input type="text"/>
+              <input type="text" maxLength="1000"/>
             </form>
             <form>
               <h6>* Your Nickname</h6>
-              <input type="text" placeholder="Example:jackson11!"/>
+              <input type="text" maxLength="60" placeholder="Example:jackson11!"/>
               <p>For privacy reasons, do not use your full name or email address.</p>
             </form>
             <form>
               <h6>* Your Email</h6>
-              <input type="text" placeholder="Why did you like the product or not?"/>
+              <input type="text" maxLength="60" placeholder="Why did you like the product or not?"/>
               <p>For authentication reasons, you will not be emailed.</p>
             </form>
           </div>

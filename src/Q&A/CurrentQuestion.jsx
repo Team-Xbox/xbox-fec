@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CurrentAnswer from './CurrentAnswer.jsx'
+import '../../public/styles.css';
+import { Modal, Button, ButtonToolbar, Placeholder } from 'rsuite';
 const axios = require('axios');
 
 const CurrentQuestion = (props) => {
@@ -8,6 +10,7 @@ const CurrentQuestion = (props) => {
   const [displayedAnswerData, setDisplayedAnswerData] = useState([])
   const [nextAnswers, setNextAnswers] = useState([])
   const [question_helpfulness, setQuestionHelpfulness] = useState(props.question.question_helpfulness)
+  const [open, setOpen] = useState(false)
 
   let url = 'http://localhost:1337'
 
@@ -53,25 +56,72 @@ const CurrentQuestion = (props) => {
       })
   }
 
+  const handleOpen = () => {
+    setOpen(true);
+  }
+
+  const handleClose = () => {
+    setOpen(false);
+  }
+
   return (
-    <div data-testid="questionComp">
-      <div className="questionSection">
+    <>
+      <div data-testid="questionComp">
+        <div className="questionSection">
+          <div className="qaContainer">
+            <p className="qaLabel">Q:</p>
+            <p className="questionBody">{props.question.question_body}</p>
+          </div>
+          <aside>Helpful? <u onClick={handleHelpfulQA}>Yes</u> ({`${question_helpfulness}`}) | <u onClick={handleOpen}>Add Answer</u></aside>
+        </div>
         <div className="qaContainer">
-          <p className="qaLabel">Q:</p>
-          <p className="questionBody">{props.question.question_body}</p>
-        </div>
-        <aside>Helpful? <u onClick={handleHelpfulQA}>Yes</u> ({`${question_helpfulness}`}) | <u>Add Answer</u></aside>
-      </div>
-      <div className="qaContainer">
-        <p className="qaLabel">A:</p>
-        <div className="answerWrapper">
-          {displayedAnswerData.map((answer) => {
-            return <CurrentAnswer key={answer.answer_id} answer={answer}/>
-          })}
-          {nextAnswers.length > 0 && <button className="moreAnswersButton" onClick={handleMoreAnswers}>LOAD MORE ANSWERS</button>}
+          <p className="qaLabel">A:</p>
+          <div className="answerWrapper">
+            {displayedAnswerData.map((answer) => {
+              return <CurrentAnswer key={answer.answer_id} answer={answer}/>
+            })}
+            {nextAnswers.length > 0 && <button className="moreAnswersButton" onClick={handleMoreAnswers}>LOAD MORE ANSWERS</button>}
+          </div>
         </div>
       </div>
-    </div>
+      <Modal open={open} onClose={handleClose}>
+        <Modal.Header>
+          <Modal.Title>
+            <div>
+              <h3>Submit Your Answer</h3>
+              <h4>Product Name: Question Body</h4>
+            </div>
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div>
+            <form>
+              <h6>* Your Answer</h6>
+              <input type="text" maxLength="1000"/>
+            </form>
+            <form>
+              <h6>* Your Nickname</h6>
+              <input type="text" maxLength="60" placeholder="Example:jack543!"/>
+              <p>For privacy reasons, do not use your full name or email address.</p>
+            </form>
+            <form>
+              <h6>* Your Email</h6>
+              <input type="text" maxLength="60" placeholder="Example:jack@email.com"/>
+              <p>For authentication reasons, you will not be emailed.</p>
+            </form>
+            <Button>Upload your photos</Button>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={handleClose} appearance="primary">
+            Submit Answer
+          </Button>
+          <Button onClick={handleClose} appearance="subtle">
+            Cancel
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
   )
 }
 
