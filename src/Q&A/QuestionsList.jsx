@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import CurrentQuestion from './CurrentQuestion.jsx';
-import SearchQuestions from './SearchQuestions.jsx'
+import SearchQuestions from './SearchQuestions.jsx';
+import '../../public/styles.css';
+import { Modal, Button, ButtonToolbar, Placeholder } from 'rsuite';
 const axios = require('axios');
 
 const QuestionsList = (props) => {
@@ -8,6 +10,7 @@ const QuestionsList = (props) => {
   const [page, setPage] = useState(1)
   const [displayedQuestionData, setDisplayedQuestionData] = useState([])
   const [nextQuestions, setNextQuestions] = useState([])
+  const [open, setOpen] = useState(false)
 
   let url = 'http://localhost:1337'
 
@@ -42,16 +45,62 @@ const QuestionsList = (props) => {
       })
   }
 
+  const handleOpen = () => {
+    setOpen(true);
+  }
+
+  const handleClose = () => {
+    setOpen(false);
+  }
+
   return (
-    <div data-testid="qaList" className="qaListSection">
-      <h3>Questions &amp; Answers</h3>
-      <SearchQuestions />
-      {displayedQuestionData.map((question) => {
-        return <CurrentQuestion key={question.question_id} question={question}/>
-      })}
-      {nextQuestions.length > 0 && <button className='questionButtons' onClick={handleMoreQuestions}>MORE ANSWERED QUESTIONS</button>}
-      <button className='questionButtons'>ADD A QUESTION +</button>
-    </div>
+    <>
+      <div data-testid="qaList" className="qaListSection">
+        <h3>Questions &amp; Answers</h3>
+        <SearchQuestions />
+        {displayedQuestionData.map((question) => {
+          return <CurrentQuestion key={question.question_id} question={question}/>
+        })}
+        {nextQuestions.length > 0 && <button className='questionButtons' onClick={handleMoreQuestions}>MORE ANSWERED QUESTIONS</button>}
+        <ButtonToolbar>
+          <Button className='questionButtons' onClick={handleOpen}>ADD A QUESTION +</Button>
+        </ButtonToolbar>
+      </div>
+      <Modal open={open} onClose={handleClose}>
+        <Modal.Header>
+          <Modal.Title>
+            <h3>Ask Your Question</h3>
+            <h4>About the Product</h4>
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div>
+            <form>
+              <h6>* Your Question</h6>
+              <input type="text"/>
+            </form>
+            <form>
+              <h6>* Your Nickname</h6>
+              <input type="text" placeholder="Example:jackson11!"/>
+              <p>For privacy reasons, do not use your full name or email address.</p>
+            </form>
+            <form>
+              <h6>* Your Email</h6>
+              <input type="text" placeholder="Why did you like the product or not?"/>
+              <p>For authentication reasons, you will not be emailed.</p>
+            </form>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={handleClose} appearance="primary">
+            Submit Question
+          </Button>
+          <Button onClick={handleClose} appearance="subtle">
+            Cancel
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
   )
 }
 
