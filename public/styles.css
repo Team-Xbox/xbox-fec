@@ -20,6 +20,7 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 5px 15px 10px 15px;
 }
 
 #slideshow {
@@ -27,15 +28,15 @@ button {
   border: black solid 5px;
   margin-top: 10px;
   margin-bottom: 10px;
-  width: 98%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
 }
 
 #main-images {
-  width: 960px;
-  height: fit-content;
+  border: red solid 2px;
+  width: 100%;
   margin: 0px;
   padding: 10px;
   display: flex;
@@ -48,8 +49,7 @@ button {
 }
 
 .main-image {
-  max-height: 550px;
-  max-width: 550px;
+  height: 550px;
   object-fit: cover;
 }
 
@@ -75,6 +75,7 @@ button {
   border: lime solid 2px;
   background-color: rgb(215, 160, 255);
   height: 570px;
+  width: 700px;
 }
 
 #style-header {
@@ -144,7 +145,34 @@ button {
   cursor: pointer;
 }
 
-/* PRODUCT DETAIL SLIDESHOW */
+#description {
+  width: 100%;
+}
+
+.slogan {
+  font-family: 'EB Garamond', serif;
+  font-weight: 900;
+  font-size: 32px;
+  padding: 5px;
+  margin: 5px;
+}
+
+#desc {
+  margin: 5px;
+  padding: 5px;
+  max-width: 50%;
+  display: inline-block;
+}
+
+#features {
+  border-left: black solid 2px;
+  margin: 5px;
+  padding: 5px 5px 5px 15px;
+  max-width: 50%;
+  display: inline-block;
+}
+
+/* END PRODUCT DETAIL SLIDESHOW */
 
 /* BEGIN REVIEW STYLES */
 .main-review {
