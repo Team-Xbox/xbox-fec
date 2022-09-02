@@ -75,7 +75,7 @@ const CurrentQuestion = (props) => {
           <aside>Helpful? <u onClick={handleHelpfulQA}>Yes</u> ({`${question_helpfulness}`}) | <u onClick={handleOpen}>Add Answer</u></aside>
         </div>
         <div className="qaContainer">
-          <p className="qaLabel">A:</p>
+          {displayedAnswerData.length > 0 && <p className="qaLabel">A:</p>}
           <div className="answerWrapper">
             {displayedAnswerData.map((answer) => {
               return <CurrentAnswer key={answer.answer_id} answer={answer}/>
@@ -89,7 +89,7 @@ const CurrentQuestion = (props) => {
           <Modal.Title>
             <div>
               <h3>Submit Your Answer</h3>
-              <h4>Product Name: {props.question.question_body}</h4>
+              <h4>{props.productName}: {props.question.question_body}</h4>
             </div>
           </Modal.Title>
         </Modal.Header>

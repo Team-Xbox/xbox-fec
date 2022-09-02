@@ -63,6 +63,18 @@ app.put('/helpfulA/:answer_id', (req, res) => {
   console.log("show me server input = ", req.body)
 })
 
+app.get('/productname/:id', (req, res) => {
+  api.getProductName(req.params)
+  .then(response => { res.status(200).send(response.data) })
+  .catch(err => console.error(err));
+})
+
+app.post('/addquestion', (req, res) => {
+  api.addNewQuestion(req.body)
+  .then(response => { res.status(201).send(response.data) })
+  .catch(err => console.log(err));
+})
+
 app.listen(1337, () => {
   console.log('Listening on port 1337');
 })
