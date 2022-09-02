@@ -75,6 +75,12 @@ app.post('/addquestion', (req, res) => {
   .catch(err => console.log(err));
 })
 
+app.post('/addanswer/:questionId', (req, res) => {
+  api.addNewAnswer(req.params, req.body)
+  .then(response => { res.status(201).send(response.data) })
+  .catch(err => console.log(err));
+})
+
 app.listen(1337, () => {
   console.log('Listening on port 1337');
 })

@@ -90,6 +90,14 @@ const addNewQuestion = (body) => {
     .catch(err => console.log(err))
 }
 
+const addNewAnswer = ({questionId}, body) => {
+  return axios.post(options.url + `qa/questions/${questionId}/answers`, body, {headers: options.headers})
+    .then(data => {
+      return data;
+    })
+    .catch(err => console.log(err))
+}
+
 module.exports.getProductData = getProductData;
 module.exports.getStyleData = getStyleData;
 module.exports.getQuestionsList = getQuestionsList;
@@ -98,6 +106,7 @@ module.exports.updateHelpQCount = updateHelpQCount;
 module.exports.updateHelpACount = updateHelpACount;
 module.exports.getProductName = getProductName;
 module.exports.addNewQuestion = addNewQuestion;
+module.exports.addNewAnswer = addNewAnswer;
 module.exports.getReviewData = getReviewData;
 module.exports.getRatings = getRatings;
 
