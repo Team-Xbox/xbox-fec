@@ -2,10 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Select from '../components/Select.jsx'
 
 const StyleSelector = (props) => {
-  const [skuIndex, setSkuIndex] = useState(props.photosIndex);
-
   let styleCounter = 0;
-  let miniCounter = 0;
 
   return (
     <div>
@@ -21,8 +18,7 @@ const StyleSelector = (props) => {
             {props.styleData.map(style =>
               <img data-value={styleCounter++} className="style-image"
                 src={style.photos[0].thumbnail_url} width="93" height="93"
-                onClick={(e) => { props.setPhotosIndex(e.target.getAttribute('data-value'), props.setIndex(0)),
-                  setSkuIndex(props.photosIndex), props.setSkuData([props.styleData[skuIndex].skus])
+                onClick={(e) => { props.setPhotosIndex(e.target.getAttribute('data-value'), props.setIndex(0))
                 }}
               />
             )}

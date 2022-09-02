@@ -78,6 +78,7 @@ body {
 }
 
 #style-header {
+  color: white;
   font-family: 'Raleway', sans-serif;
   border: black solid 2px;
   background-color: #496F5D;
@@ -93,6 +94,23 @@ body {
   width: 700px;
 }
 
+#size-select,
+#quantity-select,
+.add-cart {
+  color: white;
+  background-color: #496F5D;
+  border: black solid 2px;
+  width: 200px;
+  height: 75px;
+  font-size: 30px;
+  margin: 5px;
+  padding-left: 5px;
+}
+
+
+#quantity-select {
+  width: 100px;
+}
 
 #style-selector {
   border: transparent solid 2px;
@@ -113,6 +131,7 @@ body {
 }
 
 .styles-title {
+  color: white;
   font-family: 'Raleway', sans-serif;
   font-weight: 400;
   margin: 3px 0px 5px 5px;

@@ -31,7 +31,7 @@ const Slideshow = (props) => {
       }
       {!props.styleData[0] ? <div> Style Selector </div> :
         <StyleSelector styleData={props.styleData} productData={props.productData} setPhotosIndex={setPhotosIndex} setIndex={setIndex}
-          photosIndex={photosIndex} index={index} minimized={minimized} skuData={skuData} setSkuData={setSkuData}
+          photosIndex={photosIndex} index={index} minimized={minimized} skuData={props.styleData[photosIndex].skus}
         />
       }
     </div>
