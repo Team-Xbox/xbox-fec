@@ -42,6 +42,15 @@ const getReviewData = (product_id, sortOn='relevant', count=2) => {
   .catch(err => console.log(err))
 }
 
+const postReviewData = (product_id, body) => {
+  console.log('running postReviewData...')
+  return axios.post(options.url + 'reviews', body, {headers: options.headers})
+  .then(response => {
+    console.log(response.status);
+  })
+  .catch((err)=> res.send(err));
+}
+
 const getRatings = (product_id) => {
   console.log('running getRatings...')
   return axios.get(options.url + `reviews/meta?product_id=${product_id}`, {headers: options.headers})
@@ -73,4 +82,5 @@ module.exports.getQuestionsList = getQuestionsList;
 module.exports.getAnswersList = getAnswersList;
 module.exports.getReviewData = getReviewData;
 module.exports.getRatings = getRatings;
+module.exports.postReviewData = postReviewData;
 

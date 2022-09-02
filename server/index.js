@@ -20,6 +20,13 @@ app.get('/reviews', (req, res) => {
   .catch(err => console.log(err))
 })
 
+app.post('/reviews', (req, res) => {
+  console.log('this is the request body at server review post =',req.body);
+  api.postReviewData(66642, req.body)
+  .then(response => (res.send(response)))
+  .catch(err => console.log(err))
+})
+
 app.get('/ratings', (req, res) => {
   api.getRatings(66642)
   .then(response => { res.send(response.data) })

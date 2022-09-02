@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 
 const StarRating = (props) => {
-  console.log('StarRating input =',props.rating);
+  //console.log('StarRating input =',props.rating);
   // const [rating, setRating] = useState(0);
   // useEffect(() => {
   //   setRating(props.rating);

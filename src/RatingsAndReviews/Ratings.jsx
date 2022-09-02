@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react'
 import StarRating from './StarRating.jsx'
 import ReviewList from './ReviewList.jsx'
 import ProgressBar from './BarGraph.jsx'
+import ProductBreakdown from './Factors.jsx'
 const axios = require('axios');
 
 
@@ -14,9 +15,10 @@ var weightedAverage = function (a, b, c, d, e) {
 
 //var starObject = {1:false, 2:false, 3:false, 4:false, 5: false};
 
-const Ratings = ({ ratings, recommended, parentCallbackFive, parentCallbackFour, parentCallbackThree, parentCallbackTwo, parentCallbackOne }) => {
+const Ratings = ({ characteristics, ratings, recommended, parentCallbackFive, parentCallbackFour, parentCallbackThree, parentCallbackTwo, parentCallbackOne }) => {
   //console.log('ratings from ratings =', ratings['5']);
   //console.log('recommended from ratings =', recommended);
+
   var average = weightedAverage(ratings['1'], ratings['2'], ratings['3'], ratings['4'], ratings['5']);
   //console.log(average);
   var ave = (Math.round(average));
@@ -33,6 +35,21 @@ const Ratings = ({ ratings, recommended, parentCallbackFive, parentCallbackFour,
   var totalRecommendations = Number(recommended.true) + Number(recommended.false);
   var percentRecommended = Math.round(100 * Number(recommended.true) / totalRecommendations);
   //console.log('total ratings =', totalRatings);
+  console.log('characteristics from ratings =', characteristics);
+
+  if(characteristics) {
+    if(characteristics.Size) {
+    var sizeFactor = Math.round(characteristics.Size.value/5*100);
+    console.log(sizeFactor);
+    } else {
+      var sizeFactor = 50;
+    }
+    if(characteristics.Comfort)
+    var comfortFactor = Math.round(characteristics.Comfort.value/5*100);
+    console.log(comfortFactor);
+  } else {
+    var comfortFactor = 50;
+  }
 
   const [fiveStarButton, setFiveStarButton] = useState(false);
   {
@@ -83,7 +100,7 @@ const Ratings = ({ ratings, recommended, parentCallbackFive, parentCallbackFour,
           <table className="table-ratings">
             <tbody>
               <tr>
-                <td><button className = 'button-review' role = 'button' onClick={(e) => {
+                <td><button className='button-review' role='button' onClick={(e) => {
                   console.log('clicked 5 star');
                   setFiveStarButton(!fiveStarButton);
                   //console.log(fiveStarButton);
@@ -92,15 +109,15 @@ const Ratings = ({ ratings, recommended, parentCallbackFive, parentCallbackFour,
                 <td><ProgressBar bgcolor="#696969" progress={Math.round(fiveStar / denominator * 100)} /></td>
               </tr>
               <tr>
-                <td><button className = 'button-review' role = 'button' onClick={(e) => {
-                    console.log('clicked 4 star');
-                    setFourStarButton(!fourStarButton);
-                    //console.log(fourStarButton);
-                  }}>4 stars</button></td>
+                <td><button className='button-review' role='button' onClick={(e) => {
+                  console.log('clicked 4 star');
+                  setFourStarButton(!fourStarButton);
+                  //console.log(fourStarButton);
+                }}>4 stars</button></td>
                 <td><ProgressBar bgcolor="#696969" progress={Math.round(fourStar / denominator * 100)} /></td>
               </tr>
               <tr>
-                <td><button className = 'button-review' role = 'button' onClick={(e) => {
+                <td><button className='button-review' role='button' onClick={(e) => {
                   console.log('clicked 3 star');
                   setThreeStarButton(!threeStarButton);
                   //console.log(threeStarButton);
@@ -109,7 +126,7 @@ const Ratings = ({ ratings, recommended, parentCallbackFive, parentCallbackFour,
                 <td><ProgressBar bgcolor="#696969" progress={Math.round(threeStar / denominator * 100)} /></td>
               </tr>
               <tr>
-                <td><button className = 'button-review' role = 'button' onClick={(e) => {
+                <td><button className='button-review' role='button' onClick={(e) => {
                   console.log('clicked 2 star');
                   setTwoStarButton(!twoStarButton);
                   //console.log(twoStarButton);
@@ -118,7 +135,7 @@ const Ratings = ({ ratings, recommended, parentCallbackFive, parentCallbackFour,
                 <td><ProgressBar bgcolor="#696969" progress={Math.round(twoStar / denominator * 100)} /></td>
               </tr>
               <tr>
-                <td><button className = 'button-review' role = 'button' onClick={(e) => {
+                <td><button className='button-review' role='button' onClick={(e) => {
                   console.log('clicked 1 star');
                   setOneStarButton(!oneStarButton);
                   //console.log(oneStarButton);
@@ -129,9 +146,29 @@ const Ratings = ({ ratings, recommended, parentCallbackFive, parentCallbackFour,
               </tr>
             </tbody>
           </table>
+          <div>
+            <ProductBreakdown average={sizeFactor} characteristic={'Size'} />
+          </div>
+          <table style={{ width: 300, marginLeft: 10 }}>
+            <tbody>
+              <tr>
+                <td width='100' align='left'>Too Small</td><td width='100' align='center'>Perfect</td><td width='100' align='right'>Too Large</td>
+              </tr>
+            </tbody>
+          </table>
+          <div>
+            <ProductBreakdown average={comfortFactor} characteristic={'Comfort'} />
+          </div>
+          <table style={{ width: 300, marginLeft: 10 }}>
+            <tbody>
+              <tr>
+                <td width='100' align='left'>Poor</td><td width='100' align='center'></td><td width='100' align='right'>Perfect</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       }
-    </div>
+    </div >
   )
 
 }

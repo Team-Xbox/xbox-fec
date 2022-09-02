@@ -12,8 +12,8 @@ var convertDate = function (isoDate) {
 }
 
 const Review = ({reviewData}) => {
-  console.log('reviewData =', reviewData)
-  console.log('review rating value =',reviewData.rating)
+  //console.log('reviewData =', reviewData)
+  //console.log('review rating value =',reviewData.rating)
   return (
     <div>
       {!reviewData  ? <div></div> :

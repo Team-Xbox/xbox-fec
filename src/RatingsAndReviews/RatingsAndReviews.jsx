@@ -15,6 +15,7 @@ const RatingsAndReviews = (props) => {
   const [oneStarButton, setOneStarButton] = useState(false);
   const [ratings, setRatings] = useState([]);
   const [recommended, setRecommended] = useState({ false: null, true: null });
+  const [characteristics, setCharacteristics] = useState(null);
   const callbackFive = useCallback((fiveStarButton) => { (setFiveStarButton(fiveStarButton)) }, []);
   const callbackFour = useCallback((fourStarButton) => { (setFourStarButton(fourStarButton)) }, []);
   const callbackThree = useCallback((threeStarButton) => { (setThreeStarButton(threeStarButton)) }, []);
@@ -34,16 +35,17 @@ const RatingsAndReviews = (props) => {
         //console.log('response.data.ratings on ratingsandreviews =',response.data.recommended);
         setRecommended(response.data.recommended);
         setRatings(response.data.ratings);
+        setCharacteristics(response.data.characteristics);
       })
       .catch(err => console.log(err))
-  }, [JSON.stringify(ratings), JSON.stringify(recommended)])
+  }, [JSON.stringify(ratings), JSON.stringify(recommended), JSON.stringify(characteristics)])
 
   return (
     <div>
       <div className='ratings-and-reviews-heading'>
         RATINGS & REVIEWS
       </div>
-      <div className='ratings-and-reviews ratings'><Ratings ratings={ratings} recommended={recommended} parentCallbackFive={callbackFive} parentCallbackFour={callbackFour} parentCallbackThree={callbackThree} parentCallbackTwo={callbackTwo} parentCallbackOne={callbackOne}/></div>
+      <div className='ratings-and-reviews ratings'><Ratings characteristics={characteristics} ratings={ratings} recommended={recommended} parentCallbackFive={callbackFive} parentCallbackFour={callbackFour} parentCallbackThree={callbackThree} parentCallbackTwo={callbackTwo} parentCallbackOne={callbackOne}/></div>
       <div className='ratings-and-reviews reviews'><Reviews fiveStarButton = {fiveStarButton} fourStarButton = {fourStarButton} threeStarButton = {threeStarButton} twoStarButton = {twoStarButton} oneStarButton = {oneStarButton}/></div>
     </div>
   )
