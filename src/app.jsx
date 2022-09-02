@@ -8,9 +8,9 @@ const App = () => {
   return (
     <div>
       <h1 data-testid='hello-world'>Hello World</h1>
-      {/* <ProductDetail />
+      <ProductDetail />
       <RelatedProductsList />
-      <QuestionsList /> */}
+      <QuestionsList />
       <RatingsAndReviews/>
     </div>
   )
