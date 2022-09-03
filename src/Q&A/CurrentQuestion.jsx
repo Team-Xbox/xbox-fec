@@ -23,7 +23,6 @@ const CurrentQuestion = (props) => {
       .then(response => {
         const firstTwo = [];
         const rest = [];
-        console.log("show answers data = ", response.data.results)
         response.data.results.forEach((el, index) => {
           if (index < 2) {
             firstTwo.push(el);

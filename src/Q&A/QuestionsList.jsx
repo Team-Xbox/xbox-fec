@@ -35,7 +35,6 @@ const QuestionsList = (props) => {
   useEffect(() => {
     axios.get(url + `/questions/${id}/${page}/6`)
       .then(response => {
-        console.log('show question data = ', response.data.results)
         const firstFour = [];
         const rest = [];
         response.data.results.forEach((el, index) => {
@@ -57,7 +56,6 @@ const QuestionsList = (props) => {
   useEffect(() => {
     axios.get(url + `/questions/${id}/${page}/500`)
       .then(response => {
-        console.log('show all database questions = ', response.data.results)
         setDatabaseQuestions(response.data.results)
       })
       .catch(err => {
