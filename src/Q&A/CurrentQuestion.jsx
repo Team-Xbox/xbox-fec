@@ -21,6 +21,7 @@ const CurrentQuestion = (props) => {
   useEffect(() => {
     axios.get(url + `/answers/${questionId}/${page}/4`)
       .then(response => {
+        console.log("show answer data = ", response.data.results)
         const firstTwo = [];
         const rest = [];
         response.data.results.forEach((el, index) => {
@@ -141,7 +142,7 @@ const CurrentQuestion = (props) => {
               <input size="40" type="text" maxLength="60" placeholder="Example: jack@email.com" value={emailResponse} onChange={handleEmailResponseChange}/>
               <p>For authentication reasons, you will not be emailed.</p>
             </form>
-            <Uploader value={photos}/>
+            {/* <Uploader value={photos}/> */}
           </div>
         </Modal.Body>
         <Modal.Footer>

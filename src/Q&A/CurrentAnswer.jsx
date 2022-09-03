@@ -22,6 +22,9 @@ const CurrentAnswer = (props) => {
   return (
     <div data-testid="answerComp" className="answerSection">
       <p className="answerBody">{props.answer.body}</p>
+      <div>
+        {props.answer.photos.map((photo, index) => (<img className="answerThumbnail" key={index} src={photo.url}/>))}
+      </div>
       <aside className="answerSideBody">by {props.answer.answerer_name}, {moment(props.answer.date).format('MMM, DD, YYYY')} | Helpful? <u onClick={handleHelpfulAnswers}>Yes</u> ({`${helpfulness}`}) | <u>Report</u></aside>
     </div>
   )

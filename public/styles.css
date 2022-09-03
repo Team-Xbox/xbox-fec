@@ -396,7 +396,7 @@ body {
 
 /* Beginning of Q&A css styles section */
 .qaListSection {
-  border: 1px solid green;
+  border: 1px solid black;
 }
 
 .searchInput {
@@ -442,6 +442,15 @@ body {
 .answerBody {
   margin: 0;
   font-size: 14px;
+}
+
+.answerThumbnail {
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
+  margin-inline: 0px 13px;
+  padding: 4px;
+  border: 1px solid black;
 }
 
 .answerSideBody {
