@@ -1,4 +1,3 @@
-
 import React from 'react';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
@@ -51,7 +50,8 @@ describe('Q&A', () => {
   })
 })
 
-//Adam
-describe('', function() {
+  render(<App />)
 
-});
+  it('should have the title Hello World', () => {
+         expect(screen.getByTestId('hello-world')).toHaveTextContent('Hello World');})
+  });

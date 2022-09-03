@@ -21,8 +21,15 @@ app.post('/product', (req, res) => {
 })
 
 app.get('/reviews', (req, res) => {
-  api.getReviewData(66642, req.query.sortOn, req.query.count)
+  api.getReviewData(66642, req.query.sortOn, req.query.count, req.query.page)
   .then(response => { res.send(response.data) })
+  .catch(err => console.log(err))
+})
+
+app.post('/reviews', (req, res) => {
+  console.log('this is the request body at server review post =',req.body);
+  api.postReviewData(66642, req.body)
+  .then(response => (res.send(response)))
   .catch(err => console.log(err))
 })
 

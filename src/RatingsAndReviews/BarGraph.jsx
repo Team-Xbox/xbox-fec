@@ -25,7 +25,6 @@ const ProgressBar = ({bgcolor,progress}) => {
   return (
   <div style={Parentdiv}>
     <div style={Childdiv}>
-      {/* <span style={progresstext}>{`${progress}%`}</span> */}
     </div>
   </div>
   )
