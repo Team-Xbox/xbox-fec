@@ -14,6 +14,12 @@ app.post('/styles', (req, res) => {
   .catch(err => console.log(err))
 })
 
+app.post('/product', (req, res) => {
+  api.getProductData('products', req.body.product)
+  .then(response => { res.send(response.data) })
+  .catch(err => console.log(err))
+})
+
 app.get('/reviews', (req, res) => {
   api.getReviewData(66642, req.query.sortOn, req.query.count, req.query.page)
   .then(response => { res.send(response.data) })
@@ -43,6 +49,43 @@ app.get('/answers/:question_id/:page/:count', (req, res) => {
   api.getAnswersList(req.params)
   .then(response => { res.status(200).send(response.data) })
   .catch(err => console.error(err));
+})
+
+app.put('/helpfulQ/:question_id', (req, res) => {
+  api.updateHelpQCount(req.params, req.body)
+  .then(() => { res.status(204).send() })
+  .catch(err => {
+    console.error(err);
+    res.status(404).send(err);
+  })
+})
+
+app.put('/helpfulA/:answer_id', (req, res) => {
+  api.updateHelpACount(req.params, req.body)
+  .then(() => { res.status(204).send() })
+  .catch(err => {
+    console.error(err);
+    res.status(404).send(err);
+  })
+  console.log("show me server input = ", req.body)
+})
+
+app.get('/productname/:id', (req, res) => {
+  api.getProductName(req.params)
+  .then(response => { res.status(200).send(response.data) })
+  .catch(err => console.error(err));
+})
+
+app.post('/addquestion', (req, res) => {
+  api.addNewQuestion(req.body)
+  .then(response => { res.status(201).send(response.data) })
+  .catch(err => console.log(err));
+})
+
+app.post('/addanswer/:questionId', (req, res) => {
+  api.addNewAnswer(req.params, req.body)
+  .then(response => { res.status(201).send(response.data) })
+  .catch(err => console.log(err));
 })
 
 app.listen(1337, () => {

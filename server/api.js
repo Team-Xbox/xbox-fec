@@ -8,24 +8,15 @@ let options = {
   }
 }
 
-const getProductData = (endpoint, parameter, value, optionalVal, optionalParam) => {
-  if (optionalVal || optionalParam) {
-    return axios.get(options.url + `${endpoint}?${parameter}=${value}&${optionalParam}=${optionalVal}`, options.headers)
-    .then(data => {
-      return data;
-    })
-    .catch(err => console.log(err))
-  } else {
-    return axios.get(options.url + `${endpoint}?${parameter}=${value}`, options.headers)
-    .then(data => {
-      return data;
-    })
-    .catch(err => console.log(err))
-  }
+const getProductData = (endpoint, value) => {
+  return axios.get(options.url + `${endpoint}/${value}`, {headers: options.headers})
+  .then(data => {
+    return data;
+  })
+  .catch(err => console.log('API ERROR', err))
 }
 
 const getStyleData = (product_id) => {
-  console.log('running getStyleData...')
   return axios.get(options.url + `products/${product_id}/styles`, {headers: options.headers})
   .then(data => {
     return data;
@@ -76,10 +67,55 @@ const getAnswersList = ({question_id, page, count}) => {
     .catch(err => console.log(err))
 }
 
+const updateHelpQCount = ({question_id}, body) => {
+  return axios.put(options.url + `qa/questions/${question_id}/helpful`, body, {headers: options.headers})
+    .then(() => {
+      console.log('success!')
+    })
+    .catch(err => console.log(err))
+}
+
+const updateHelpACount = ({answer_id}, body) => {
+  return axios.put(options.url + `qa/answers/${answer_id}/helpful`, body, {headers: options.headers})
+    .then(() => {
+      console.log('success!')
+    })
+    .catch(err => console.log(err))
+}
+
+const getProductName = ({id}) => {
+  return axios.get(options.url + `products/${id}`, {headers: options.headers})
+    .then(data => {
+      return data;
+    })
+    .catch(err => console.log(err))
+}
+
+const addNewQuestion = (body) => {
+  return axios.post(options.url + 'qa/questions', body, {headers: options.headers})
+    .then(data => {
+      return data;
+    })
+    .catch(err => console.log(err))
+}
+
+const addNewAnswer = ({questionId}, body) => {
+  return axios.post(options.url + `qa/questions/${questionId}/answers`, body, {headers: options.headers})
+    .then(data => {
+      return data;
+    })
+    .catch(err => console.log(err))
+}
+
 module.exports.getProductData = getProductData;
 module.exports.getStyleData = getStyleData;
 module.exports.getQuestionsList = getQuestionsList;
 module.exports.getAnswersList = getAnswersList;
+module.exports.updateHelpQCount = updateHelpQCount;
+module.exports.updateHelpACount = updateHelpACount;
+module.exports.getProductName = getProductName;
+module.exports.addNewQuestion = addNewQuestion;
+module.exports.addNewAnswer = addNewAnswer;
 module.exports.getReviewData = getReviewData;
 module.exports.getRatings = getRatings;
 module.exports.postReviewData = postReviewData;

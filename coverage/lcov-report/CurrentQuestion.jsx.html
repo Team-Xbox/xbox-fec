@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/Q&amp;A/CurrentQuestion.jsx</title>
+    <title>Code coverage report for CurrentQuestion.jsx</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../prettify.css" />
-    <link rel="stylesheet" href="../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
+    <link rel="stylesheet" href="prettify.css" />
+    <link rel="stylesheet" href="base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../sort-arrow-sprite.png);
+            background-image: url(sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/Q&A</a> CurrentQuestion.jsx</h1>
+        <h1><a href="index.html">All files</a> CurrentQuestion.jsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">7.69% </span>
+                <span class="strong">42.3% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>2/26</span>
+                <span class='fraction'>11/26</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">25% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>1/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">25% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/8</span>
+                <span class='fraction'>2/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">7.69% </span>
+                <span class="strong">42.3% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>2/26</span>
+                <span class='fraction'>11/26</span>
             </div>
         
             
@@ -132,6 +132,17 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -139,17 +150,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -160,16 +160,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -195,16 +195,16 @@
 import CurrentAnswer from './CurrentAnswer.jsx'
 const axios = require('axios');
 &nbsp;
-const CurrentQuestion = <span class="fstat-no" title="function not covered" >(p</span>rops) =&gt; {
-  const [questionId, setQuestionId] = <span class="cstat-no" title="statement not covered" >useState(props.question.question_id)</span>
-  const [page, setPage] = <span class="cstat-no" title="statement not covered" >useState(1)</span>
-  const [displayedAnswerData, setDisplayedAnswerData] = <span class="cstat-no" title="statement not covered" >useState([])</span>
-  const [nextAnswers, setNextAnswers] = <span class="cstat-no" title="statement not covered" >useState([])</span>
+const CurrentQuestion = (props) =&gt; {
+  const [questionId, setQuestionId] = useState(props.question.question_id)
+  const [page, setPage] = useState(1)
+  const [displayedAnswerData, setDisplayedAnswerData] = useState([])
+  const [nextAnswers, setNextAnswers] = useState([])
 &nbsp;
-  let url = <span class="cstat-no" title="statement not covered" >'http://localhost:1337'</span>
+  let url = 'http://localhost:1337'
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    axios.get(url + `/answers/${questionId}/${page}/4`)</span>
+  useEffect(() =&gt; {
+    axios.get(url + `/answers/${questionId}/${page}/4`)
       .then(<span class="fstat-no" title="function not covered" >re</span>sponse =&gt; {
         const firstTwo = <span class="cstat-no" title="statement not covered" >[];</span>
         const rest = <span class="cstat-no" title="statement not covered" >[];</span>
@@ -224,7 +224,7 @@ const CurrentQuestion = <span class="fstat-no" title="function not covered" >(p<
       })
   }, [])
 &nbsp;
-  const handleMoreAnswers = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+  const handleMoreAnswers = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
 <span class="cstat-no" title="statement not covered" >    setDisplayedAnswerData([... displayedAnswerData, ... nextAnswers])</span>
 <span class="cstat-no" title="statement not covered" >    axios.get(url + `/answers/${questionId}/${page}/2`)</span>
       .then(<span class="fstat-no" title="function not covered" >re</span>sponse =&gt; {
@@ -233,8 +233,8 @@ const CurrentQuestion = <span class="fstat-no" title="function not covered" >(p<
       })
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
-    &lt;div&gt;
+  return (
+    &lt;div data-testid="questionComp"&gt;
       &lt;div className="questionSection"&gt;
         &lt;div className="qaContainer"&gt;
           &lt;p className="qaLabel"&gt;Q:&lt;/p&gt;
@@ -248,7 +248,7 @@ const CurrentQuestion = <span class="fstat-no" title="function not covered" >(p<
           {displayedAnswerData.map(<span class="fstat-no" title="function not covered" >(a</span>nswer) =&gt; {
 <span class="cstat-no" title="statement not covered" >            return &lt;CurrentAnswer key={answer.answer_id} answer={answer}/&gt;</span>
           })}
-          {nextAnswers.length &gt; 0 &amp;&amp; &lt;button className="moreAnswersButton" onClick={handleMoreAnswers}&gt;LOAD MORE ANSWERS&lt;/button&gt;}
+          {nextAnswers.length &gt; 0 &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >&lt;button className="moreAnswersButton" onClick={handleMoreAnswers}&gt;LOAD MORE ANSWERS&lt;/button&gt;}</span>
         &lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -262,20 +262,16 @@ export default CurrentQuestion;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-<<<<<<< HEAD
-                at 2022-08-31T03:58:30.320Z
-=======
-                at 2022-08-31T01:58:44.646Z
->>>>>>> main
+                at 2022-08-31T02:45:20.270Z
             </div>
-        <script src="../../prettify.js"></script>
+        <script src="prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../sorter.js"></script>
-        <script src="../../block-navigation.js"></script>
+        <script src="sorter.js"></script>
+        <script src="block-navigation.js"></script>
     </body>
 </html>
     
