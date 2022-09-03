@@ -10,10 +10,6 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'http://localhost:3000';
 
-<<<<<<< HEAD
-describe('app.jsx', function() {
-  const user = userEvent.setup();
-=======
 //Yari
 describe('', function() {
 
@@ -53,7 +49,6 @@ describe('Q&A', () => {
     })
   })
 })
->>>>>>> main
 
   render(<App />)
 

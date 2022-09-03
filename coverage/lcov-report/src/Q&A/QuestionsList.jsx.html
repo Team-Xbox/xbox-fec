@@ -15,65 +15,41 @@
         }
     </style>
 </head>
-    
+
 <body>
 <div class='wrapper'>
     <div class='pad1'>
         <h1><a href="../../index.html">All files</a> / <a href="index.html">src/Q&A</a> QuestionsList.jsx</h1>
         <div class='clearfix'>
-            
+
             <div class='fl pad1y space-right2'>
-<<<<<<< HEAD
-                <span class="strong">7.69% </span>
-                <span class="quiet">Statements</span>
-                <span class='fraction'>2/26</span>
-=======
                 <span class="strong">42.3% </span>
                 <span class="quiet">Statements</span>
                 <span class='fraction'>11/26</span>
->>>>>>> main
             </div>
-        
-            
+
+
             <div class='fl pad1y space-right2'>
-<<<<<<< HEAD
-                <span class="strong">0% </span>
-                <span class="quiet">Branches</span>
-                <span class='fraction'>0/4</span>
-=======
                 <span class="strong">25% </span>
                 <span class="quiet">Branches</span>
                 <span class='fraction'>1/4</span>
->>>>>>> main
             </div>
-        
-            
+
+
             <div class='fl pad1y space-right2'>
-<<<<<<< HEAD
-                <span class="strong">0% </span>
-                <span class="quiet">Functions</span>
-                <span class='fraction'>0/8</span>
-=======
                 <span class="strong">25% </span>
                 <span class="quiet">Functions</span>
                 <span class='fraction'>2/8</span>
->>>>>>> main
             </div>
-        
-            
+
+
             <div class='fl pad1y space-right2'>
-<<<<<<< HEAD
-                <span class="strong">7.69% </span>
-                <span class="quiet">Lines</span>
-                <span class='fraction'>2/26</span>
-=======
                 <span class="strong">42.3% </span>
                 <span class="quiet">Lines</span>
                 <span class='fraction'>11/26</span>
->>>>>>> main
             </div>
-        
-            
+
+
         </div>
         <p class="quiet">
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
@@ -149,17 +125,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<<<<<<< HEAD
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-=======
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -169,7 +134,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
->>>>>>> main
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -189,11 +153,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<<<<<<< HEAD
-<span class="cline-any cline-no">&nbsp;</span>
-=======
 <span class="cline-any cline-yes">1x</span>
->>>>>>> main
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -202,11 +162,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<<<<<<< HEAD
-<span class="cline-any cline-no">&nbsp;</span>
-=======
 <span class="cline-any cline-yes">1x</span>
->>>>>>> main
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -224,18 +180,6 @@ import CurrentQuestion from './CurrentQuestion.jsx';
 import SearchQuestions from './SearchQuestions.jsx'
 const axios = require('axios');
 &nbsp;
-<<<<<<< HEAD
-const QuestionsList = <span class="fstat-no" title="function not covered" >(p</span>rops) =&gt; {
-  const [id, setId] = <span class="cstat-no" title="statement not covered" >useState(66690)</span>
-  const [page, setPage] = <span class="cstat-no" title="statement not covered" >useState(1)</span>
-  const [displayedQuestionData, setDisplayedQuestionData] = <span class="cstat-no" title="statement not covered" >useState([])</span>
-  const [nextQuestions, setNextQuestions] = <span class="cstat-no" title="statement not covered" >useState([])</span>
-&nbsp;
-  let url = <span class="cstat-no" title="statement not covered" >'http://localhost:1337'</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    axios.get(url + `/questions/${id}/${page}/6`)</span>
-=======
 const QuestionsList = (props) =&gt; {
   const [id, setId] = useState(66690)
   const [page, setPage] = useState(1)
@@ -246,7 +190,6 @@ const QuestionsList = (props) =&gt; {
 &nbsp;
   useEffect(() =&gt; {
     axios.get(url + `/questions/${id}/${page}/6`)
->>>>>>> main
       .then(<span class="fstat-no" title="function not covered" >re</span>sponse =&gt; {
         const firstFour = <span class="cstat-no" title="statement not covered" >[];</span>
         const rest = <span class="cstat-no" title="statement not covered" >[];</span>
@@ -266,11 +209,7 @@ const QuestionsList = (props) =&gt; {
       })
   }, [])
 &nbsp;
-<<<<<<< HEAD
-  const handleMoreQuestions = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-=======
   const handleMoreQuestions = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
->>>>>>> main
 <span class="cstat-no" title="statement not covered" >    setDisplayedQuestionData([... displayedQuestionData, ... nextQuestions])</span>
 <span class="cstat-no" title="statement not covered" >    axios.get(url + `/questions/${id}/${page}/2`)</span>
       .then(<span class="fstat-no" title="function not covered" >re</span>sponse =&gt; {
@@ -279,23 +218,14 @@ const QuestionsList = (props) =&gt; {
       })
   }
 &nbsp;
-<<<<<<< HEAD
-<span class="cstat-no" title="statement not covered" >  return (</span>
-    &lt;div className="qaListSection"&gt;
-=======
   return (
     &lt;div data-testid="qaList" className="qaListSection"&gt;
->>>>>>> main
       &lt;h3&gt;Questions &amp;amp; Answers&lt;/h3&gt;
       &lt;SearchQuestions /&gt;
       {displayedQuestionData.map(<span class="fstat-no" title="function not covered" >(q</span>uestion) =&gt; {
 <span class="cstat-no" title="statement not covered" >        return &lt;CurrentQuestion key={question.question_id} question={question}/&gt;</span>
       })}
-<<<<<<< HEAD
-      {nextQuestions.length &gt; 0 &amp;&amp; &lt;button className='questionButtons' onClick={handleMoreQuestions}&gt;MORE ANSWERED QUESTIONS&lt;/button&gt;}
-=======
       {nextQuestions.length &gt; 0 &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >&lt;button className='questionButtons' onClick={handleMoreQuestions}&gt;MORE ANSWERED QUESTIONS&lt;/button&gt;}</span>
->>>>>>> main
       &lt;button className='questionButtons'&gt;ADD A QUESTION +&lt;/button&gt;
     &lt;/div&gt;
   )
@@ -308,11 +238,7 @@ export default QuestionsList;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-<<<<<<< HEAD
-                at 2022-08-31T03:58:30.320Z
-=======
                 at 2022-08-31T01:58:44.646Z
->>>>>>> main
             </div>
         <script src="../../prettify.js"></script>
         <script>
@@ -324,4 +250,3 @@ export default QuestionsList;</pre></td></tr></table></pre>
         <script src="../../block-navigation.js"></script>
     </body>
 </html>
-    
