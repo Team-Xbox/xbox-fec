@@ -28,6 +28,7 @@ body {
 }
 
 #slideshow {
+  border: black solid 2px;
   background-color: #49516F;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -35,16 +36,18 @@ body {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
+  height: 600px;
 }
 
 #main-images {
-  border: black solid 2px;
+  border-right: black solid 2px;
   width: 100%;
   margin: 0px;
   padding: 10px;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
+  height: 596px;
 }
 
 .minimize {
@@ -90,8 +93,14 @@ body {
 #style-div {
   border: transparent solid 2px;
   background-color: #4C9F70;
-  height: 570px;
+  height: 596px;
   width: 700px;
+}
+
+#select {
+  margin-top: 80px;
+  margin-left: 10px;
+  height: fit-content;
 }
 
 #size-select,
@@ -180,6 +189,7 @@ body {
 }
 
 .slogan {
+  color: black;
   font-family: 'EB Garamond', serif;
   font-weight: 900;
   font-size: 32px;
@@ -188,6 +198,7 @@ body {
 }
 
 #desc {
+  color: black;
   margin: 5px;
   padding: 5px;
   max-width: 50%;
@@ -196,6 +207,7 @@ body {
 }
 
 #features {
+  color: black;
   border-left: black solid 2px;
   margin: 5px;
   padding: 5px 5px 5px 15px;
