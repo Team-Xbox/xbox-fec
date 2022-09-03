@@ -11,17 +11,20 @@ const QuestionsList = (props) => {
   const [page, setPage] = useState(1)
   const [displayedQuestionData, setDisplayedQuestionData] = useState([])
   const [nextQuestions, setNextQuestions] = useState([])
+  const [databaseQuestions, setDatabaseQuestions] = useState([])
   const [open, setOpen] = useState(false)
   const [question, setQuestion] = useState("")
   const [nickname, setNickname] = useState("")
   const [email, setEmail] = useState("")
+  const [searchTerm, setSearchTerm] = useState("")
+  const [searchActivated, setSearchActivated] = useState(false)
+  const [displayedSearchQuestions, setDisplayedSearchQuestions] = useState([])
 
   let url = 'http://localhost:1337'
 
   useEffect(() => {
     axios.get(url + `/productname/${id}`)
       .then(response => {
-        // console.log('show product info = ', response.data.name)
         setProductName(response.data.name)
       })
       .catch(err => {
@@ -45,6 +48,17 @@ const QuestionsList = (props) => {
         setDisplayedQuestionData(firstFour)
         setNextQuestions(rest)
         setPage(4)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }, [])
+
+  useEffect(() => {
+    axios.get(url + `/questions/${id}/${page}/500`)
+      .then(response => {
+        console.log('show all database questions = ', response.data.results)
+        setDatabaseQuestions(response.data.results)
       })
       .catch(err => {
         console.log(err)
@@ -80,6 +94,21 @@ const QuestionsList = (props) => {
     setEmail(event.target.value)
   }
 
+  const handleSearchChange = (event) => {
+    const term = event.target.value
+    setSearchTerm(term)
+
+    if (term.length >= 3) {
+      setSearchActivated(true)
+      const filteredQuestions = databaseQuestions.filter((question) =>
+        question.question_body.toLowerCase().includes(term.toLowerCase())
+      )
+      setDisplayedSearchQuestions(filteredQuestions)
+    } else {
+      setSearchActivated(false)
+    }
+  }
+
   const questionSubmit = (event) => {
     event.preventDefault();
     const newQuestion = {
@@ -104,11 +133,14 @@ const QuestionsList = (props) => {
     <>
       <div data-testid="qaList" className="qaListSection">
         <h3>Questions &amp; Answers</h3>
-        <SearchQuestions />
-        {displayedQuestionData.map((question) => {
+        <SearchQuestions searchTerm={searchTerm} handleSearchChange={handleSearchChange}/>
+        { searchActivated ?
+          displayedSearchQuestions.map((question) => {
+            return <CurrentQuestion key={question.question_id} question={question} productName={productName}/>
+          }) : displayedQuestionData.map((question) => {
           return <CurrentQuestion key={question.question_id} question={question} productName={productName}/>
         })}
-        {nextQuestions.length > 0 && <button className='questionButtons' onClick={handleMoreQuestions}>MORE ANSWERED QUESTIONS</button>}
+        {(nextQuestions.length > 0 && !searchActivated) && <button className='questionButtons' onClick={handleMoreQuestions}>MORE ANSWERED QUESTIONS</button>}
         <button className='questionButtons' onClick={handleOpen}>ADD A QUESTION +</button>
       </div>
       <Modal size="lg" open={open} onClose={handleClose}>
