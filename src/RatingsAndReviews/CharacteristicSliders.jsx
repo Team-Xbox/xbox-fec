@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import '/Users/adamblomberg/xbox-fec/public/styles.css';
-//import './slider.less';
 
 
 import { Slider } from 'rsuite';
@@ -15,7 +14,7 @@ const Sliders = ({parentCallbackSliders}) => {
   const [value4, setValue4] = useState(0);
   const [value5, setValue5] = useState(0);
   const [value6, setValue6] = useState(0);
-  //console.log(value1, value2, value3, value4, value5, value6);
+
   var valueObject = {
     "223572" : value6,
     "223573" : value5,
@@ -37,7 +36,7 @@ const Sliders = ({parentCallbackSliders}) => {
 
 
 
-  //console.log(charObject);
+
   return (
     <div>
       {/* Size Slider */}

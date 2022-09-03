@@ -33,9 +33,9 @@ const getStyleData = (product_id) => {
   .catch(err => console.log(err))
 }
 
-const getReviewData = (product_id, sortOn='relevant', count=2) => {
+const getReviewData = (product_id, sortOn='relevant', count=2, page=1) => {
   console.log('running getReviewData...')
-  return axios.get(options.url + `reviews?product_id=${product_id}&sort=${sortOn}&count=${count}`, {headers: options.headers})
+  return axios.get(options.url + `reviews?product_id=${product_id}&sort=${sortOn}&count=${count}&page=${page}`, {headers: options.headers})
   .then(data => {
     return data;
   })

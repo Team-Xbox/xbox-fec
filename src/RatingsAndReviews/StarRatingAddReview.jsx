@@ -1,5 +1,3 @@
-//StarRatingAddReview.JSX // Dynamic for Setting Stars
-
 import React from 'react'
 import { useState, useEffect } from 'react'
 

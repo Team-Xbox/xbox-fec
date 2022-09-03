@@ -12,7 +12,7 @@ const ProductBreakdown = ({ average, characteristic }) => {
   }
   const Childdiv = {
     height: '100%',
-    width: `${average+2.5}%`,
+    width: `${average + 2.5}%`,
     backgroundColor: 'whitesmoke',
     borderRadius: 2,
     textAlign: 'right'
@@ -24,16 +24,20 @@ const ProductBreakdown = ({ average, characteristic }) => {
   }
   return (
     <div>
-      <div style = {{marginLeft:12, marginTop:15}}>
-      {characteristic}
-      </div>
-      <div style={Parentdiv}>
-        <div style={Childdiv}>
-          <div >	&#9660;</div>
-        </div>
-      </div>
-      <div>
-      </div>
+      {(!average) ? <div></div> :
+        <div>
+          <div style={{ marginLeft: 12, marginTop: 15 }}>
+            {characteristic}
+          </div>
+          <div style={Parentdiv}>
+            <div style={Childdiv}>
+
+              <div >	&#9660;</div>
+            </div>
+          </div>
+          <div>
+          </div>
+        </div>}
     </div>
   )
 }

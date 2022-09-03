@@ -2,11 +2,6 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 
 const StarRating = (props) => {
-  //console.log('StarRating input =',props.rating);
-  // const [rating, setRating] = useState(0);
-  // useEffect(() => {
-  //   setRating(props.rating);
-  // }, [rating]);
   return (
     <div className="star-rating">
       {[...Array(5)].map((star, index) => {

@@ -5,8 +5,6 @@ import Reviews from './Reviews.jsx'
 import Ratings from './Ratings.jsx'
 const axios = require('axios');
 
-// ===============  Review Function
-
 const RatingsAndReviews = (props) => {
   const [fiveStarButton, setFiveStarButton] = useState(false);
   const [fourStarButton, setFourStarButton] = useState(false);
@@ -23,16 +21,9 @@ const RatingsAndReviews = (props) => {
   const callbackOne = useCallback((oneStarButton) => { (setOneStarButton(oneStarButton)) }, []);
   let expressUrl = 'http://localhost:1337'
   useEffect(() => {
-    //console.log('running in reviews...');
-    axios.get(expressUrl + '/ratings', {
-      // params: {
-      //   sortOn: sortOn,
-      //   count: count
-      // }
-    })
+
+    axios.get(expressUrl + '/ratings')
       .then(response => {
-        //console.log('response at ratings and reviews =',response);
-        //console.log('response.data.ratings on ratingsandreviews =',response.data.recommended);
         setRecommended(response.data.recommended);
         setRatings(response.data.ratings);
         setCharacteristics(response.data.characteristics);
@@ -49,7 +40,6 @@ const RatingsAndReviews = (props) => {
       <div className='ratings-and-reviews reviews'><Reviews fiveStarButton = {fiveStarButton} fourStarButton = {fourStarButton} threeStarButton = {threeStarButton} twoStarButton = {twoStarButton} oneStarButton = {oneStarButton}/></div>
     </div>
   )
-  //console.log('fiveStarButton on RatingsAndReviews =', fiveStarButton);
 }
 
 export default RatingsAndReviews;

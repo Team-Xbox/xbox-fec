@@ -238,7 +238,7 @@ button {
 .ratings {
   width: 350px;
   margin-right: 10px;
-  height: 630px;
+  height: auto;
   padding: 10px;
   border-color: red;
   border-style: solid;
@@ -280,6 +280,12 @@ button {
 .buttons-reviews {
   display: flex;
   justify-content: flex-start;
+}
+
+.review-list-reviews {
+  max-height: 900px;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
 /* END REVIEW STYLES */

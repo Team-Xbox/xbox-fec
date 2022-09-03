@@ -4,12 +4,11 @@ import StarRatingAddReview from './StarRatingAddReview.jsx'
 import DropDownMenu from './DropDownMenu.jsx'
 import ReviewList from './ReviewList.jsx'
 import Sliders from './CharacteristicSliders.jsx'
-//import 'rsuite/dist/styles/rsuite-default.css'
-import '/Users/adamblomberg/xbox-fec/public/styles.css';
+import '../../public/styles.css';
 import { Modal, Button, ButtonToolbar, Placeholder, Toggle } from 'rsuite';
 const axios = require('axios');
 
-
+// Determining maximum reviews
 var maxReviewAmount;
 
 const ReviewsMax = () => {
@@ -25,26 +24,27 @@ const ReviewsMax = () => {
     })
 }
 ReviewsMax();
-// ===============  Review Function
 
+var arraySortOn = [];
+
+// Main Reviews Function
 const Reviews = ({ fiveStarButton, fourStarButton, threeStarButton, twoStarButton, oneStarButton }) => {
-  //console.log('star buttons from reviews = ', fiveStarButton, fourStarButton, threeStarButton, twoStarButton, oneStarButton);
   const [sortOn, setSortOn] = useState('relevant');
+  const [sorted, setSorted] = useState('false');
   const [count, setCount] = useState(2);
   const [showButton, setShowButton] = useState(true);
-  const callback = useCallback((sortOn) => { (setSortOn(sortOn)) }, []);
-  //constant for filter display data
-  // array of objects (each review)
-  // conditionally making it so that
-
+  const [page, setPage] = useState(1);
   const [reviewData, setReviewData] = useState([]);
+  const callback = useCallback((sort) => {
+    (setSortOn(sort));
+  }, []);
+  arraySortOn.unshift(sortOn);
+  if((arraySortOn[1] !== arraySortOn[2] || arraySortOn[0] !== arraySortOn[1]) && arraySortOn.length > 5) {
+    setSorted('true');
+  }
   let expressUrl = 'http://localhost:1337'
-
   useEffect(() => {
-    //console.log('running in reviews...');
-
     if (fiveStarButton || fourStarButton || threeStarButton || twoStarButton || oneStarButton) {
-      //setReviewData([]);
       var trueArray = [];
       if (fiveStarButton) {
         trueArray.push(5);
@@ -61,7 +61,6 @@ const Reviews = ({ fiveStarButton, fourStarButton, threeStarButton, twoStarButto
       if (oneStarButton) {
         trueArray.push(1);
       }
-      //console.log('trueArray = ', trueArray);
       axios.get(expressUrl + '/reviews', {
         params: {
           sortOn: sortOn,
@@ -72,41 +71,56 @@ const Reviews = ({ fiveStarButton, fourStarButton, threeStarButton, twoStarButto
           var starArray = [];
           for (var i = 0; i < response.data.results.length; i++) {
             if (trueArray.includes(response.data.results[i].rating)) {
-              starArray.push(response.data.results[i]);
+              starArray.unshift(response.data.results[i]);
             }
           }
-
           setReviewData(starArray);
         })
+    }
+    else if (sorted && arraySortOn.length > 5) {
+      axios.get(expressUrl + '/reviews', {
+        params: {
+          sortOn: sortOn,
+          page: 1,
+          count: reviewData.length
+        }
+      })
+        .then(response => {
+          console.log('axios request data =',response.data.results);
+          var tempArray = response.data.results.reverse();
+          setReviewData(tempArray);
+          setSorted(false);
+        })
+        .catch(err => console.log(err))
     }
     else {
       axios.get(expressUrl + '/reviews', {
         params: {
           sortOn: sortOn,
-          count: count
+          page: page,
+          count: 2
         }
       })
         .then(response => {
           return response.data.results;
         })
         .then(data => {
-          if (data.length === maxReviewAmount) {
+          if (reviewData.length === maxReviewAmount) {
             setShowButton(false);
           }
-          setReviewData(data);
+          var tempArray = data.concat(reviewData);
+          setReviewData(tempArray);
           return reviewData;
         })
         .catch(err => console.log(err))
     }
-  }, [JSON.stringify(reviewData), sortOn, count, fiveStarButton, fourStarButton, threeStarButton, twoStarButton, oneStarButton])
-  // console.log(count);
+  }, [sortOn, page, fiveStarButton, fourStarButton, threeStarButton, twoStarButton, oneStarButton])
 
-  //=====================  State for Modal ====================
-
-  const [open, setOpen] = useState(false); //modal opem state
-  const handleOpen = () => setOpen(true); //modal open function
-  const handleClose = () => setOpen(false); //modal close function
-  const [recommend, setRecommend] = useState(true); //modal toggle state
+  //Modal State
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  const [recommend, setRecommend] = useState(true);
   const [summary, setSummary] = useState('');
   const [body, setBody] = useState('');
   const [nickname, setNickname] = useState('');
@@ -139,8 +153,8 @@ const Reviews = ({ fiveStarButton, fourStarButton, threeStarButton, twoStarButto
         "characteristics": charObject
 
       })
-      .then((response)=>{return console.log(response)})
-      .catch((err)=>(console.log(err)))
+      .then((response) => { return console.log(response) })
+      .catch((err) => (console.log(err)))
 
     handleClose();
   }
@@ -149,16 +163,15 @@ const Reviews = ({ fiveStarButton, fourStarButton, threeStarButton, twoStarButto
     <div>
       <div className='count-and-dropdown-list-review'>{reviewData.length} reviews, sorted by </div>
       <div className='count-and-dropdown-list-review'> <DropDownMenu parentCallback={callback} /> </div>
-      <div><ReviewList reviewData={reviewData} /></div>
+      <div className='review-list-reviews'><ReviewList sortOn={sortOn} reviewData={reviewData} /></div>
       <div className='buttons-reviews'>
         {!showButton ? <div></div> :
           <button className="button-review" role="button" onClick={() => {
-            var temp = count;
-            setCount(temp + 2);
+            var temp = page;
+            setPage(temp + 1);
           }}
           >More Reviews</button>
         }
-
         <>
           <ButtonToolbar>
             <Button className="button-review" role="button" onClick={handleOpen}>Add A Review +</Button>

@@ -1,25 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import StarRating from './StarRating.jsx'
 import DropDownMenu from './DropDownMenu.jsx'
-
-// ===================  Helper Function to Convert the Date ==================================
-var convertDate = function (isoDate) {
-  var mydate = new Date(isoDate);
-  var month = ["January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"][mydate.getMonth()];
-  var day = mydate.getDate()+1;
-  return month + ' ' + day + ', ' + mydate.getFullYear();
-}
+import moment from 'moment'
 
 const Review = ({reviewData}) => {
-  //console.log('reviewData =', reviewData)
-  //console.log('review rating value =',reviewData.rating)
   return (
     <div>
       {!reviewData  ? <div></div> :
         <div className="main-review">
           <div className='top-review'>
-            <StarRating rating={reviewData.rating} />{reviewData.reviewer_name} {convertDate(reviewData.date)}
+            <StarRating rating={reviewData.rating} />{reviewData.reviewer_name} {moment(reviewData.date).format('MMM DD, YYYY')}
           </div>
           <div className="summary-review">
             {reviewData.summary}
@@ -37,7 +27,6 @@ const Review = ({reviewData}) => {
             <span className="checkbox">&#10003;</span> I recommend this product!
           </div>
           <div>
-          {/* {console.log(reviewData)} */}
           </div>
         </div>
       }
