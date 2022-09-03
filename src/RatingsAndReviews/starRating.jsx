@@ -2,11 +2,6 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 
 const StarRating = (props) => {
-  const [rating, setRating] = useState(0);
-  useEffect(() => {
-    //console.log('StarRating input =',props.rating);
-    setRating(props.rating);
-  }, [rating]);
   return (
     <div className="star-rating">
       {[...Array(5)].map((star, index) => {
@@ -15,7 +10,7 @@ const StarRating = (props) => {
           <button
             type="button"
             key={index}
-            className={index <= rating ? "on" : "off"}
+            className={index <= props.rating ? "on" : "off"}
           >
             <span className="star">&#9733;</span>
           </button>
@@ -24,5 +19,6 @@ const StarRating = (props) => {
     </div>
   );
 };
+
 
 export default StarRating;
