@@ -13,8 +13,12 @@ button {
 
 /* PRODUCT DETAIL SLIDESHOW */
 
+body {
+  background-color: #8EA4D2;
+}
+
 #product-detail {
-  background-color: rgb(203, 114, 255);
+  background-color: #6279B8;
   border: black solid 2px;
   max-width: 100%;
   display: flex;
@@ -24,8 +28,7 @@ button {
 }
 
 #slideshow {
-  background-color: #000;
-  border: black solid 5px;
+  background-color: #49516F;
   margin-top: 10px;
   margin-bottom: 10px;
   width: 100%;
@@ -35,7 +38,7 @@ button {
 }
 
 #main-images {
-  border: red solid 2px;
+  border: black solid 2px;
   width: 100%;
   margin: 0px;
   padding: 10px;
@@ -45,7 +48,10 @@ button {
 }
 
 .minimize {
-  color: white;
+  color: black;
+  background-color: #6279B8;
+  border: #000 solid 2px;
+  border-radius: 5px;
 }
 
 .main-image {
@@ -71,20 +77,43 @@ button {
   margin: 225px 5px 5px 5px;
 }
 
+#style-header {
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  border: black solid 2px;
+  background-color: #496F5D;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #style-div {
-  border: lime solid 2px;
-  background-color: rgb(215, 160, 255);
+  border: transparent solid 2px;
+  background-color: #4C9F70;
   height: 570px;
   width: 700px;
 }
 
-#style-header {
-  font-family: 'Raleway', sans-serif;
-  border: transparent solid 2px;
-  background-color: rgb(178, 99, 247);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+#size-select,
+#quantity-select,
+.add-cart {
+  color: white;
+  background-color: #496F5D;
+  border: black solid 2px;
+  width: 200px;
+  height: 75px;
+  font-size: 30px;
+  margin: 5px;
+  padding-left: 5px;
+}
+
+.add-cart {
+  display: block;
+  width: 310px;
+}
+
+#quantity-select {
+  width: 100px;
 }
 
 #style-selector {
@@ -106,6 +135,7 @@ button {
 }
 
 .styles-title {
+  color: white;
   font-family: 'Raleway', sans-serif;
   font-weight: 400;
   margin: 3px 0px 5px 5px;
@@ -137,7 +167,7 @@ button {
 }
 
 .mini-image {
-  margin-bottom: 3px;
+  margin-bottom: 6px;
 }
 
 .mini-image:hover {
@@ -161,6 +191,7 @@ button {
   margin: 5px;
   padding: 5px;
   max-width: 50%;
+  font-size: 20px;
   display: inline-block;
 }
 
@@ -168,6 +199,7 @@ button {
   border-left: black solid 2px;
   margin: 5px;
   padding: 5px 5px 5px 15px;
+  font-size: 20px;
   max-width: 50%;
   display: inline-block;
 }

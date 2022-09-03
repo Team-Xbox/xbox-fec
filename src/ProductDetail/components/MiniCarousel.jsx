@@ -13,6 +13,7 @@ const MiniCarousel = (props) => {
           onClick={(e) => { props.setIndex(e.target.getAttribute('data-index')) }}
         />
       )}
+      <button className="minimize" onClick={() => props.setMinimized(!props.minimized)}> Expand </button>
     </div>
   )
 }
