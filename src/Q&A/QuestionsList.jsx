@@ -25,6 +25,7 @@ const QuestionsList = (props) => {
   useEffect(() => {
     axios.get(url + `/productname/${id}`)
       .then(response => {
+        console.log('show product id info = ', response.data)
         setProductName(response.data.name)
       })
       .catch(err => {
@@ -35,6 +36,7 @@ const QuestionsList = (props) => {
   useEffect(() => {
     axios.get(url + `/questions/${id}/${page}/6`)
       .then(response => {
+        console.log('show question data = ', response.data.results)
         const firstFour = [];
         const rest = [];
         response.data.results.forEach((el, index) => {

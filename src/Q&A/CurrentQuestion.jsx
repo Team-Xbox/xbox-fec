@@ -115,7 +115,7 @@ const CurrentQuestion = (props) => {
           {displayedAnswerData.length > 0 && <p className="qaLabel">A:</p>}
           <div className="answerWrapper">
             {displayedAnswerData.map((answer) => {
-              return <CurrentAnswer key={answer.answer_id} answer={answer}/>
+              return <CurrentAnswer key={answer.answer_id} answer={answer} questionId={questionId}/>
             })}
             {nextAnswers.length > 0 && <button className="moreAnswersButton" onClick={handleMoreAnswers}>LOAD MORE ANSWERS</button>}
           </div>

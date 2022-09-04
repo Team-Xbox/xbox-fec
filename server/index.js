@@ -88,6 +88,12 @@ app.post('/addanswer/:questionId', (req, res) => {
   .catch(err => console.log(err));
 })
 
+app.put('/reportanswer/:question_id', (req, res) => {
+  api.reportAnswer(req.params, req.body)
+  .then(response => { res.status(204).send() })
+  .catch(err => console.log(err));
+})
+
 app.listen(1337, () => {
   console.log('Listening on port 1337');
 })
