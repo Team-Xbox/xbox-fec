@@ -57,6 +57,11 @@ body {
   border-radius: 5px;
 }
 
+.minimize:hover {
+  color: white;
+  border: white solid 2px
+}
+
 .main-image {
   height: 550px;
   object-fit: cover;
@@ -186,6 +191,7 @@ body {
 
 .product-price {
   margin-bottom: 5px;
+  display: inline;
 }
 
 #mini-carousel {

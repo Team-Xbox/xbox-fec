@@ -10,15 +10,15 @@ const MiniCarousel = (props) => {
           src={photo.url}
           width="60"
           height="60"
-          onClick={(e) => { props.setIndex(e.target.getAttribute('data-index')), setMiniCounter(index) }}
-          style={{border: index === miniCounter ? 'white solid 2px' : ''}}
+          onClick={(e) => { props.setIndex(Number(e.target.getAttribute('data-index'))), setMiniCounter(index) }}
+          style={{border: index === props.index ? 'white solid 2px' : ''}}
         />
       )}
       <button
         className="minimize"
-        onClick={() => props.setMinimized(!props.minimized)}
+        onClick={() => { props.setMinimized(!props.minimized)} }
         style={{color: !props.minimized ? 'white' : '', border: !props.minimized ? 'white solid 2px' : ''}}
-        > Expand </button>
+        > {!props.minimized ? 'Minimize' : 'Expand'} </button>
     </div>
   )
 }
