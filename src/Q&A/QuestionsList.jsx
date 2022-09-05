@@ -134,12 +134,14 @@ const QuestionsList = (props) => {
       <div data-testid="qaList" className="qaListSection">
         <h3>Questions &amp; Answers</h3>
         <SearchQuestions searchTerm={searchTerm} handleSearchChange={handleSearchChange}/>
+        <div className="qHeightContainer">
         { searchActivated ?
           displayedSearchQuestions.map((question) => {
             return <CurrentQuestion key={question.question_id} question={question} productName={productName}/>
           }) : displayedQuestionData.map((question) => {
           return <CurrentQuestion key={question.question_id} question={question} productName={productName}/>
         })}
+        </div>
         {(nextQuestions.length > 0 && !searchActivated) && <button className='questionButtons' onClick={handleMoreQuestions}>MORE ANSWERED QUESTIONS</button>}
         <button className='questionButtons' onClick={handleOpen}>ADD A QUESTION +</button>
       </div>

@@ -399,6 +399,11 @@ body {
   border: 1px solid black;
 }
 
+.qHeightContainer {
+  max-height: 500px;
+  overflow-y: scroll;
+}
+
 .searchInput {
   width: 70%;
 }
