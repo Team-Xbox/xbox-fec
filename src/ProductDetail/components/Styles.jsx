@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Select from '../components/Select.jsx'
 
 const StyleSelector = (props) => {
+
   let styleCounter = 0;
 
   return (
@@ -15,12 +16,14 @@ const StyleSelector = (props) => {
           </div>
           <div id="style-selector">
             <h2 className="styles-title"> Style: <em>{props.styleData[props.photosIndex].name}</em> </h2>
-            {props.styleData.map(style =>
-              <img data-value={styleCounter++} className="style-image"
+            {props.styleData.map((style, index) =>
+            <div class="check-selector">
+              <p class="check"> {props.photosIndex === index ? '✓' : null} </p>
+              <img data-value={index} className="style-image"
                 src={style.photos[0].thumbnail_url} width="93" height="93"
-                onClick={(e) => { props.setPhotosIndex(e.target.getAttribute('data-value'), props.setIndex(0))
-                }}
+                onClick={(e) => { props.setPhotosIndex(Number(e.target.getAttribute('data-value'))) }}
               />
+            </div>
             )}
           </div>
           <Select styleData={props.styleData} skus={props.skuData}/>

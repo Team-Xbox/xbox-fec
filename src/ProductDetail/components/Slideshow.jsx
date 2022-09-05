@@ -13,11 +13,11 @@ const Slideshow = (props) => {
     <div id="slideshow">
       {!props.styleData[0] ? <div> This Item Does Not Exist </div> :
         <div id="main-images">
-          <MiniCarousel styleData={props.styleData} photosIndex={photosIndex} setIndex={setIndex}
+          <MiniCarousel styleData={props.styleData} photosIndex={photosIndex} setIndex={setIndex} index={index}
             minimized={minimized} setMinimized={setMinimized}
           />
           <button className="slideshow-btn-left"
-            onClick={() => { if (index > 0) { setIndex(index - 1) } }}> Back
+            onClick={() => { if (index > 0) { setIndex(index - 1) } }}> ◀︎
           </button>
           <img
             className="main-image"
@@ -25,7 +25,7 @@ const Slideshow = (props) => {
             style={{'maxWidth': minimized ? '367px' : 'fit-content'}}
           />
           <button className="slideshow-btn-right"
-            onClick={() => { if (index < props.styleData[photosIndex].photos.length - 1) { setIndex(index + 1) } }}> Next
+            onClick={() => { if (index < props.styleData[photosIndex].photos.length - 1) { setIndex(index + 1) } }}> ▶︎
           </button>
         </div>
       }

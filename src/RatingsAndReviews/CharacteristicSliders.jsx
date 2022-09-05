@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
-import '/Users/adamblomberg/xbox-fec/public/styles.css';
+import '/public/styles.css';
 
 
 import { Slider } from 'rsuite';
