@@ -37,7 +37,7 @@ const CurrentAnswer = (props) => {
       <div>
         {props.answer.photos.map((photo, index) => (<img className="answerThumbnail" key={index} src={photo.url}/>))}
       </div>
-      <aside className="answerSideBody">by {props.answer.answerer_name}, {moment(props.answer.date).format('MMM, DD, YYYY')} | Helpful? <u onClick={handleHelpfulAnswers}>Yes</u> ({`${helpfulness}`}) | <u onClick={handleAnswerReport}>Report</u></aside>
+      <aside className="answerSideBody">by {props.answer.answerer_name}, {moment(props.answer.date).format('MMM, DD, YYYY')} | Helpful? <u onClick={handleHelpfulAnswers}>Yes</u> ({`${helpfulness}`}) | { reported ? <em>Reported</em> : <u onClick={handleAnswerReport}>Report</u> }</aside>
     </div>
   )
 }
