@@ -5,6 +5,7 @@ import DropDownMenu from './DropDownMenu.jsx'
 import ReviewList from './ReviewList.jsx'
 import Sliders from './CharacteristicSliders.jsx'
 import '../../public/styles.css';
+import ImageWidget from './ImageWidget.jsx'
 import { Modal, Button, ButtonToolbar, Placeholder, Toggle } from 'rsuite';
 const axios = require('axios');
 
@@ -39,7 +40,7 @@ const Reviews = ({ fiveStarButton, fourStarButton, threeStarButton, twoStarButto
     (setSortOn(sort));
   }, []);
   arraySortOn.unshift(sortOn);
-  if((arraySortOn[1] !== arraySortOn[2] || arraySortOn[0] !== arraySortOn[1]) && arraySortOn.length > 5) {
+  if ((arraySortOn[1] !== arraySortOn[2] || arraySortOn[0] !== arraySortOn[1]) && arraySortOn.length > 5) {
     setSorted('true');
   }
   let expressUrl = 'http://localhost:1337'
@@ -86,7 +87,6 @@ const Reviews = ({ fiveStarButton, fourStarButton, threeStarButton, twoStarButto
         }
       })
         .then(response => {
-          console.log('axios request data =',response.data.results);
           var tempArray = response.data.results.reverse();
           setReviewData(tempArray);
           setSorted(false);
@@ -118,7 +118,7 @@ const Reviews = ({ fiveStarButton, fourStarButton, threeStarButton, twoStarButto
 
   //Modal State
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
+  const handleOpen = () => { setOpen(true); handleProductName(); };
   const handleClose = () => setOpen(false);
   const [recommend, setRecommend] = useState(true);
   const [summary, setSummary] = useState('');
@@ -129,6 +129,7 @@ const Reviews = ({ fiveStarButton, fourStarButton, threeStarButton, twoStarButto
   const [photoUrl, setPhoto] = useState('');
   const callbackSlider = useCallback((charObject) => { (setCharObject(charObject)) }, []);
   const [rating, setRating] = useState(0);
+  const [product, setProduct] = useState('');
   const callbackStar = useCallback((rating) => { (setRating(rating)) }, []);
   var postData = function () {
     let expressUrl = 'http://localhost:1337'
@@ -159,6 +160,24 @@ const Reviews = ({ fiveStarButton, fourStarButton, threeStarButton, twoStarButto
     handleClose();
   }
 
+  var handleProductName = function (product_id) {
+    let expressUrl = 'http://localhost:1337'
+    product_id = 66642;
+    axios.get(expressUrl + `/productname/${product_id}`)
+      .then(response => {
+        setProduct(response.data.name)
+      })
+      .catch(err => console.log(err));
+
+  }
+
+  var setStateOfPhoto = (newUrl) => {
+    setPhoto(newUrl);
+    var tempUrl = photoUrl;
+    //console.log('setStateOfPhoto new photo url =', tempUrl);
+  }
+
+
   return (
     <div>
       <div className='count-and-dropdown-list-review'>{reviewData.length} reviews, sorted by </div>
@@ -179,48 +198,114 @@ const Reviews = ({ fiveStarButton, fourStarButton, threeStarButton, twoStarButto
 
           <Modal size={'lg'} open={open} onClose={handleClose}>
             <Modal.Header>
-              <Modal.Title>Create Review</Modal.Title>
+              <Modal.Title><h3>Create a Review for {product}</h3> </Modal.Title>
               <div></div>
             </Modal.Header>
             <Modal.Body>
               <div>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td width='150' height='50'>
+                        <h5 >* Overall Rating</h5>
+                      </td>
+                      <td width='150'>
+                        <div> (select a star rating)</div>
+                      </td>
+                      <td>
+                        <StarRatingAddReview parentCallbackStar={callbackStar} />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
                 <div>
-                  Overall Rating
-                  <StarRatingAddReview parentCallbackStar={callbackStar} />
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td width='310' height='50'>
+                          <h5>* Do you recommend this product?</h5>
+                        </td>
+                        <td>
+                          <Toggle size="md" unCheckedChildren="No" checkedChildren="Yes" onChange={(value) => { setRecommend(value); }} />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
                 <div>
-                  Do you recommend this product?
-                  <Toggle size="md" unCheckedChildren="No" checkedChildren="Yes" onChange={(value) => { setRecommend(value); }} />
-                </div>
-                <div>Characteristics
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td height='40'>
+                          <h5 >* Characteristics</h5>
+                        </td>
+                        <td>
+                          (select the description that describes the characteristic for the {product})
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                   <Sliders parentCallbackSliders={callbackSlider} />
+
                 </div>
-                <div>Review Summary
+                <div style={{ padding: 7 }}>
+                  <h5>* Review Summary</h5>
                   <input type="text" id="summary-modal" placeholder="Enter your review summary here..." size='60' maxLength="60" onChange={(e) => {
                     setSummary(e.target.value);
                   }} />
                 </div>
-                <div>
-                  <label>Review Body</label>
-                  <textarea rows="5" cols="60" name="description" minLength='50' maxLength='1000' defaultValue="Enter your review details here..." onChange={(e) => {
+                <div style={{ padding: 7 }}>
+                  <h5>* Review Body</h5>
+                  <textarea rows="5" cols="100" name="description" minLength='50' maxLength='1000' placeholder="Enter your review details here..." onChange={(e) => {
                     setBody(e.target.value);
                   }}>
                   </textarea>
                 </div>
-                <div>Photo URL</div>
-                <input type="text" id="photo-modal" placeholder="https://www.myhaikuclass.com/images/kitten.png" size='60' maxLength="200" onChange={(e) => {
-                  setPhoto(e.target.value);
-                }} />
-                <div>What is your nickname?</div>
-                <input type="text" id="nickname-modal" placeholder="Example: jackson11!" size='60' maxLength="60" onChange={(e) => {
-                  setNickname(e.target.value);
-                }} />
-                For privacy reasons, do not use your full name or email address.
-                <div>Your email</div>
-                <input type="text" id="email-modal" placeholder="Example: jackson11@email.com" size='60' maxLength="60" onChange={(e) => {
-                  setEmail(e.target.value);
-                }} />
-                For authentication reasons, you will not be emailed.
+                <div style={{ padding: 7 }}>
+                  <h5>* Upload Photos</h5>
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <div>
+                            <button
+                              id="upload_widget"
+                              className="cloudinary-button"
+                              onClick={() => { ImageWidget(setStateOfPhoto = { setStateOfPhoto }) }}
+                            >
+                              Upload files
+                            </button>
+                          </div>
+                        </td>
+                        <td>
+                          <div>
+                            {photoUrl ? <img className='thumbnail-src' src={photoUrl} /> : <div></div>}
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  {/* <input type="text" id="photo-modal" placeholder="https://www.myhaikuclass.com/images/kitten.png" size='60' maxLength="200" onChange={(e) => {
+                    setPhoto(e.target.value);
+                  }} /> */}
+
+                </div>
+                <div style={{ padding: 7 }}>
+                  <h5>* What is your nickname?</h5>
+                  <input type="text" id="nickname-modal" placeholder="Example: jackson11!" size='60' maxLength="60" onChange={(e) => {
+                    setNickname(e.target.value);
+                  }} />
+                  <div>For privacy reasons, do not use your full name or email address.</div>
+                </div>
+                <div style={{ padding: 7 }}>
+                  <h5>* Your email</h5>
+                  <input type="text" id="email-modal" placeholder="Example: jackson11@email.com" size='60' maxLength="60" onChange={(e) => {
+                    setEmail(e.target.value);
+                  }} />
+                  <div>For authentication reasons, you will not be emailed.</div>
+                </div>
               </div>
             </Modal.Body>
             <Modal.Footer>

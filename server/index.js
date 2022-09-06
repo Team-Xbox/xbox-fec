@@ -39,6 +39,15 @@ app.get('/ratings', (req, res) => {
   .catch(err => console.log(err))
 })
 
+app.put('/review/:id', (req, res) => {
+  api.updateHelpfulness(req.params, req.body)
+  .then(() => { res.status(204).send() })
+  .catch(err => {
+    console.log(err);
+    res.status(404).send(err);
+  })
+})
+
 app.get('/questions/:id/:page/:count', (req, res) => {
   api.getQuestionsList(req.params)
   .then(response => { res.status(200).send(response.data) })

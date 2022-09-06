@@ -27,8 +27,8 @@ const ProductDetail = (props) => {
     .then(data => {
       setProductData(data);
     })
-    .then(() => console.log('productdata', productData))
-    .then(() => console.log('styledata', styleData))
+    // .then(() => console.log('productdata', productData))
+    // .then(() => console.log('styledata', styleData))
     .catch(err => console.log(err))
 
   }, [JSON.stringify(styleData), JSON.stringify(productData)]);
