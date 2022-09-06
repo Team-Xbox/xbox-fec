@@ -21,4 +21,5 @@ var ImageWidget = function ({setStateOfPhoto}) {
   );
   myWidget.open();
 };
+
 export default ImageWidget;
