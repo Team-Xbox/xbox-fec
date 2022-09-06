@@ -31,7 +31,7 @@ const Select = (props) => {
   }
 
   return (
-    <div>
+    <div id="select">
       <select name="size" id="size-select" onChange={(e) => {
         if (e.target.value === 'Select Size') { setSize(e.target.value), setQuantity(null) }
         if (e.target.value !== 'Select Size') { setSize(e.target.value), setQuantity(1), setText('Add To Cart') }
