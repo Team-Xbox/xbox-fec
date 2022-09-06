@@ -48,7 +48,7 @@ body {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  height: 623px;
+  height: 627px;
 }
 
 .minimize {
@@ -98,7 +98,7 @@ body {
 }
 
 #style-div {
-  border: transparent solid 2px;
+  border: transparent solid 4px;
   background-color: #4C9F70;
   height: fit-content;
   width: 700px;
