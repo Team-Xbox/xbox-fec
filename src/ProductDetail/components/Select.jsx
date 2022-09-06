@@ -37,8 +37,8 @@ const Select = (props) => {
         if (e.target.value !== 'Select Size') { setSize(e.target.value), setQuantity(1), setText('Add To Cart') }
         getQuantity(e.target.value)
       }}>
-        {dropValues.map(data =>
-          <option>{data.size}</option>
+        {dropValues.map((data, i) =>
+          <option key = {i}>{data.size}</option>
         )}
       </select>
       {size === 'Select Size' ? <select id="quantity-select"><option> - </option></select> :
