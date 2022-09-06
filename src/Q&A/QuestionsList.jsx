@@ -6,7 +6,7 @@ import { Modal, Button, ButtonToolbar, Placeholder } from 'rsuite';
 const axios = require('axios');
 
 const QuestionsList = (props) => {
-  const [id, setId] = useState(66690)
+  const [id, setId] = useState(66644)
   const [productName, setProductName] = useState()
   const [page, setPage] = useState(1)
   const [displayedQuestionData, setDisplayedQuestionData] = useState([])
@@ -158,7 +158,7 @@ const QuestionsList = (props) => {
           <div>
             <form id="question-form" onSubmit={questionSubmit}>
               <h6>* Your Question</h6>
-              <textarea type="text" maxLength="1000" value={question} onChange={handleQuestionChange}/>
+              <textarea className="qaModalTextBox" type="text" maxLength="1000" value={question} onChange={handleQuestionChange}/>
               <h6>* Your Nickname</h6>
               <input size="40" type="text" maxLength="60" placeholder="Example: jackson11!" value={nickname} onChange={handleNicknameChange}/>
               <p>For privacy reasons, do not use your full name or email address.</p>

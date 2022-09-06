@@ -10,6 +10,7 @@ const CurrentQuestion = (props) => {
   const [displayedAnswerData, setDisplayedAnswerData] = useState([])
   const [nextAnswers, setNextAnswers] = useState([])
   const [question_helpfulness, setQuestionHelpfulness] = useState(props.question.question_helpfulness)
+  const [questionMarkedHelpful, setQuestionMarkedHelpful] = useState(false)
   const [open, setOpen] = useState(false)
   const [answerResponse, setAnswerResponse] = useState("")
   const [nicknameResponse, setNicknameResponse] = useState("")
@@ -54,6 +55,7 @@ const CurrentQuestion = (props) => {
     axios.put(url + `/helpfulQ/${questionId}`, updatedCount)
       .then(() => {
         setQuestionHelpfulness(updatedCount.question_helpfulness)
+        setQuestionMarkedHelpful(true)
       })
       .catch(err => {
         console.log(err)
@@ -109,7 +111,7 @@ const CurrentQuestion = (props) => {
             <p className="qaLabel">Q:</p>
             <p className="questionBody">{props.question.question_body}</p>
           </div>
-          <aside>Helpful? <u onClick={handleHelpfulQA}>Yes</u> ({`${question_helpfulness}`}) | <u onClick={handleOpen}>Add Answer</u></aside>
+          <aside>Helpful? {questionMarkedHelpful ? <u>Yes</u> : <u onClick={handleHelpfulQA}>Yes</u>} ({`${question_helpfulness}`}) | <u onClick={handleOpen}>Add Answer</u></aside>
         </div>
         <div className="qaContainer">
           {displayedAnswerData.length > 0 && <p className="qaLabel">A:</p>}
