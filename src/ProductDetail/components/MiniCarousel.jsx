@@ -5,8 +5,8 @@ const MiniCarousel = (props) => {
 
   return (
     <div id="mini-carousel">
-      {props.styleData[props.photosIndex].photos.map(photo =>
-        <img className="mini-image" data-index={miniCounter++}
+      {props.styleData[props.photosIndex].photos.map((photo,i) =>
+        <img className="mini-image" key = {i} data-index={miniCounter++}
           src={photo.url}
           width="60"
           height="60"

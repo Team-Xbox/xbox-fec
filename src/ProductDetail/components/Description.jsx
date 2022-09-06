@@ -10,8 +10,8 @@ const Description = (props) => {
       </div>
       {!props.productData.features ? <div>No Features For This Product</div> :
         <div id="features">
-          {props.features.map(feature =>
-            <p>{feature.feature}: {feature.value} </p>
+          {props.features.map((feature, i) =>
+            <p key = {i}>{feature.feature}: {feature.value} </p>
           )}
         </div>
       }

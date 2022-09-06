@@ -15,8 +15,8 @@ const StyleSelector = (props) => {
           </div>
           <div id="style-selector">
             <h2 className="styles-title"> Style: <em>{props.styleData[props.photosIndex].name}</em> </h2>
-            {props.styleData.map(style =>
-              <img data-value={styleCounter++} className="style-image"
+            {props.styleData.map((style, i) =>
+              <img key = {i} data-value={styleCounter++} className="style-image"
                 src={style.photos[0].thumbnail_url} width="93" height="93"
                 onClick={(e) => { props.setPhotosIndex(e.target.getAttribute('data-value'), props.setIndex(0))
                 }}
