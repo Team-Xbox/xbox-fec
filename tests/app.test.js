@@ -50,8 +50,8 @@ describe('Q&A', () => {
   })
 })
 
-  render(<App />)
+  // render(<App />)
 
-  it('should have the title Hello World', () => {
-         expect(screen.getByTestId('hello-world')).toHaveTextContent('Hello World');})
-  });
+  // it('should have the title Hello World', () => {
+  //        expect(screen.getByTestId('hello-world')).toHaveTextContent('Hello World');})
+  // });
