@@ -25,7 +25,7 @@ const getStyleData = (product_id) => {
 }
 
 const getReviewData = (product_id, sortOn='relevant', count=2, page=1) => {
-  console.log('running getReviewData...')
+  //console.log('running getReviewData...')
   return axios.get(options.url + `reviews?product_id=${product_id}&sort=${sortOn}&count=${count}&page=${page}`, {headers: options.headers})
   .then(data => {
     return data;
@@ -34,7 +34,7 @@ const getReviewData = (product_id, sortOn='relevant', count=2, page=1) => {
 }
 
 const postReviewData = (product_id, body) => {
-  console.log('running postReviewData...')
+  //console.log('running postReviewData...')
   return axios.post(options.url + 'reviews', body, {headers: options.headers})
   .then(response => {
     console.log(response.status);
@@ -43,12 +43,20 @@ const postReviewData = (product_id, body) => {
 }
 
 const getRatings = (product_id) => {
-  console.log('running getRatings...')
+  //console.log('running getRatings...')
   return axios.get(options.url + `reviews/meta?product_id=${product_id}`, {headers: options.headers})
   .then(data => {
     return data;
   })
   .catch(err => console.log(err))
+}
+
+const updateHelpfulness = ({id}, body) => {
+  //console.log('=====================================id===========================',id);
+  //console.log('hello from updateHelpfulness')
+  return axios.put(options.url + `reviews/${id}/helpful`, body, {headers: options.headers})
+  .then(() => console.log('increased helpfulness'))
+  .catch (err => console.log(err))
 }
 
 const getQuestionsList = ({id, page, count}) => {
@@ -119,4 +127,5 @@ module.exports.addNewAnswer = addNewAnswer;
 module.exports.getReviewData = getReviewData;
 module.exports.getRatings = getRatings;
 module.exports.postReviewData = postReviewData;
+module.exports.updateHelpfulness = updateHelpfulness;
 

@@ -5,8 +5,10 @@ const MiniCarousel = (props) => {
 
   return (
     <div id="mini-carousel">
+
       {props.styleData[props.photosIndex].photos.map((photo, index) =>
         <img className="mini-image" data-index={index}
+
           src={photo.url}
           width="60"
           height="60"

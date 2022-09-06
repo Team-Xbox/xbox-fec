@@ -107,39 +107,34 @@ const Ratings = ({ characteristics, ratings, recommended, parentCallbackFive, pa
           <table className="table-ratings">
             <tbody>
               <tr>
-                <td><button className='button-review' role='button' onClick={(e) => {
-                  console.log('clicked 5 star');
+                <td><button className={!fiveStarButton ? 'button-review' : 'button-review-clicked'} role='button' onClick={(e) => {
                   setFiveStarButton(!fiveStarButton);
                 }}>5 stars</button>
                 </td>
                 <td><ProgressBar bgcolor="#696969" progress={Math.round(fiveStar / denominator * 100)} /></td>
               </tr>
               <tr>
-                <td><button className='button-review' role='button' onClick={(e) => {
-                  console.log('clicked 4 star');
+                <td><button className={!fourStarButton ? 'button-review' : 'button-review-clicked'} role='button' onClick={(e) => {
                   setFourStarButton(!fourStarButton);
                 }}>4 stars</button></td>
                 <td><ProgressBar bgcolor="#696969" progress={Math.round(fourStar / denominator * 100)} /></td>
               </tr>
               <tr>
-                <td><button className='button-review' role='button' onClick={(e) => {
-                  console.log('clicked 3 star');
+                <td><button className={!threeStarButton ? 'button-review' : 'button-review-clicked'} role='button' onClick={(e) => {
                   setThreeStarButton(!threeStarButton);
                 }}
                 >3 stars</button></td>
                 <td><ProgressBar bgcolor="#696969" progress={Math.round(threeStar / denominator * 100)} /></td>
               </tr>
               <tr>
-                <td><button className='button-review' role='button' onClick={(e) => {
-                  console.log('clicked 2 star');
+                <td><button className={!twoStarButton ? 'button-review' : 'button-review-clicked'} role='button' onClick={(e) => {
                   setTwoStarButton(!twoStarButton);
                 }}
                 >2 stars</button></td>
                 <td><ProgressBar bgcolor="#696969" progress={Math.round(twoStar / denominator * 100)} /></td>
               </tr>
               <tr>
-                <td><button className='button-review' role='button' onClick={(e) => {
-                  console.log('clicked 1 star');
+                <td><button className={!oneStarButton ? 'button-review' : 'button-review-clicked'} role='button' onClick={(e) => {
                   setOneStarButton(!oneStarButton);
                 }}
 
