@@ -4,5 +4,4 @@ public/bundle.js
 
 tokens.js
 
-coverage/lcov-report
-coverage/clover.xml
+xbox-fec/coverage
