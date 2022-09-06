@@ -1,19 +1,26 @@
 import React, {useState, useEffect} from 'react';
 
 const MiniCarousel = (props) => {
-  let miniCounter = 0;
+  const [miniCounter, setMiniCounter] = useState(0);
 
   return (
     <div id="mini-carousel">
-      {props.styleData[props.photosIndex].photos.map((photo,i) =>
-        <img className="mini-image" key = {i} data-index={miniCounter++}
+
+      {props.styleData[props.photosIndex].photos.map((photo, index) =>
+        <img className="mini-image" data-index={index}
+
           src={photo.url}
           width="60"
           height="60"
-          onClick={(e) => { props.setIndex(e.target.getAttribute('data-index')) }}
+          onClick={(e) => { props.setIndex(Number(e.target.getAttribute('data-index'))), setMiniCounter(index) }}
+          style={{border: index === props.index ? 'white solid 2px' : ''}}
         />
       )}
-      <button className="minimize" onClick={() => props.setMinimized(!props.minimized)}> Expand </button>
+      <button
+        className="minimize"
+        onClick={() => { props.setMinimized(!props.minimized)} }
+        style={{color: !props.minimized ? 'white' : '', border: !props.minimized ? 'white solid 2px' : ''}}
+        > {!props.minimized ? 'Minimize' : 'Expand'} </button>
     </div>
   )
 }

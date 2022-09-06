@@ -6,7 +6,7 @@ import Description from '../ProductDetail/components/Description.jsx'
 const ProductDetail = (props) => {
   const [styleData, setStyleData] = useState({});
   const [productData, setProductData] = useState({});
-  const [product_id, setProductId] = useState(66642);
+  const [product_id, setProductId] = useState(66644);
 
   let expressUrl = 'http://localhost:1337';
 
@@ -27,8 +27,6 @@ const ProductDetail = (props) => {
     .then(data => {
       setProductData(data);
     })
-    // .then(() => console.log('productdata', productData))
-    // .then(() => console.log('styledata', styleData))
     .catch(err => console.log(err))
 
   }, [JSON.stringify(styleData), JSON.stringify(productData)]);
