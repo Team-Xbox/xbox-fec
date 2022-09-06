@@ -12,19 +12,20 @@ const StyleSelector = (props) => {
           <div id="style-header">
             <h3 className="product-cat">Category: <em>{props.productData.category}</em></h3>
             <h2 className="product-title">{props.productData.name}</h2>
-            <span className="product-price"
-              style={{
-                textDecoration: props.styleData[props.photosIndex].sale_price ? 'line-through' : 'none',
-                color: props.styleData[props.photosIndex].sale_price ? 'red' : ''
-              }}
-              >${props.styleData[props.photosIndex].original_price}
-            </span>
-            <span
-              style={{
-                display: props.styleData[props.photosIndex].sale_price ? 'inline' : 'none'
-              }}
-              >{props.styleData[props.photosIndex].sale_price}
-            </span>
+            <div className="product-price">
+              <span
+                style={{
+                  textDecoration: props.styleData[props.photosIndex].sale_price ? 'line-through' : 'none',
+                  color: props.styleData[props.photosIndex].sale_price ? 'red' : ''
+                }}
+                >${props.styleData[props.photosIndex].original_price}
+              </span> <span
+                style={{
+                  display: props.styleData[props.photosIndex].sale_price ? 'inline' : 'none'
+                }}
+                >{props.styleData[props.photosIndex].sale_price}
+              </span>
+            </div>
           </div>
           <div id="style-selector">
             <h2 className="styles-title"> Style: <em>{props.styleData[props.photosIndex].name}</em> </h2>
