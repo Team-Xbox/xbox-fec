@@ -48,7 +48,7 @@ body {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  height: 627px;
+  height: 712px;
 }
 
 .minimize {
@@ -121,7 +121,8 @@ body {
 
 #size-select,
 #quantity-select,
-.add-cart {
+.add-cart,
+.favorite {
   color: white;
   background-color: #496F5D;
   border: black solid 2px;
@@ -139,6 +140,10 @@ body {
 
 #quantity-select {
   width: 100px;
+}
+
+.favorite {
+  width: 75px;
 }
 
 #style-selector {
