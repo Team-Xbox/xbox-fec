@@ -117,9 +117,9 @@ const CurrentQuestion = (props) => {
             <p className="qaLabel">Q:</p>
             <p className="questionBody">{props.question.question_body}</p>
           </div>
-          <aside>Helpful? {questionMarkedHelpful ? <u>Yes</u> : <u onClick={handleHelpfulQA}>Yes</u>} ({`${question_helpfulness}`}) | <u onClick={handleOpen}>Add Answer</u></aside>
+          <p className="qHelpfulContainer">Helpful? {questionMarkedHelpful ? <u className="qadisable">Yes</u> : <u className="qalink" onClick={handleHelpfulQA}>Yes</u>} ({`${question_helpfulness}`}) | <u className="qalink" onClick={handleOpen}>Add Answer</u></p>
         </div>
-        <div className="qaContainer">
+        <div className="answerContainer">
           {displayedAnswerData.length > 0 && <p className="qaLabel">A:</p>}
           <div className="answerWrapper">
             {displayedAnswerData.map((answer) => {

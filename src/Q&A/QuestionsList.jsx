@@ -132,7 +132,7 @@ const QuestionsList = (props) => {
   return (
     <>
       <div data-testid="qaList" className="qaListSection">
-        <h3>Questions &amp; Answers</h3>
+        <h3 className="qaTitle">Questions &amp; Answers</h3>
         <SearchQuestions searchTerm={searchTerm} handleSearchChange={handleSearchChange}/>
         <div className="qHeightContainer">
         { searchActivated ?

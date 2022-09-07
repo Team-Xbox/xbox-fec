@@ -39,7 +39,7 @@ const CurrentAnswer = (props) => {
       <div>
         {props.answer.photos.map((photo, index) => (<img className="answerThumbnail" key={index} src={photo.url}/>))}
       </div>
-      <aside className="answerSideBody">by {props.answer.answerer_name === "Seller" ? <b>{props.answer.answerer_name}</b> : props.answer.answerer_name}, {moment(props.answer.date).format('MMM, DD, YYYY')} | Helpful? {answerMarkedHelpful ? <u>Yes</u> : <u onClick={handleHelpfulAnswers}>Yes</u>} ({`${helpfulness}`}) | { reported ? <em>Reported</em> : <u onClick={handleAnswerReport}>Report</u> }</aside>
+      <aside className="answerSideBody">by {props.answer.answerer_name === "Seller" ? <b>{props.answer.answerer_name}</b> : props.answer.answerer_name} | {moment(props.answer.date).format('MMM, DD, YYYY')} | Helpful? {answerMarkedHelpful ? <u className="qadisable">Yes</u> : <u className="qalink" onClick={handleHelpfulAnswers}>Yes</u>} ({`${helpfulness}`}) | { reported ? <em className="qadisable">Reported</em> : <u className="qalink" onClick={handleAnswerReport}>Report</u> }</aside>
     </div>
   )
 }
