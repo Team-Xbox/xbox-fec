@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import CurrentAnswer from './CurrentAnswer.jsx'
+import CurrentAnswer from './CurrentAnswer.jsx';
+import AnswerImageWidget from './AnswerImageWidget.jsx';
 import '../../public/styles.css';
 import { Modal, Button, ButtonToolbar, Placeholder, Uploader} from 'rsuite';
 const axios = require('axios');
@@ -15,7 +16,7 @@ const CurrentQuestion = (props) => {
   const [answerResponse, setAnswerResponse] = useState("")
   const [nicknameResponse, setNicknameResponse] = useState("")
   const [emailResponse, setEmailResponse] = useState("")
-  const [photos, setPhotos] = useState([])
+  const [answerPhotosUrl, setAnswerPhotosUrl] = useState("")
 
   let url = 'http://localhost:1337'
 
@@ -88,7 +89,7 @@ const CurrentQuestion = (props) => {
       body: answerResponse,
       name: nicknameResponse,
       email: emailResponse,
-      photos: photos
+      photos: [answerPhotosUrl]
     }
 
     axios.post(url + `/addanswer/${questionId}`, newAnswer)
@@ -96,11 +97,16 @@ const CurrentQuestion = (props) => {
       setAnswerResponse("")
       setNicknameResponse("")
       setEmailResponse("")
-      setPhotos([])
+      setAnswerPhotosUrl("")
     })
     .catch(err => {
       console.log(err)
     })
+  }
+
+  var setStateofAnswerPhotos = (newUrl) => {
+    setAnswerPhotosUrl(newUrl);
+    var tempUrl = answerPhotosUrl;
   }
 
   return (
@@ -136,7 +142,7 @@ const CurrentQuestion = (props) => {
           <div>
             <form id="answer-form" onSubmit={answerSubmit}>
               <h6>* Your Answer</h6>
-              <textarea type="text" maxLength="1000" value={answerResponse} onChange={handleAnswerChange}/>
+              <textarea type="text" rows="5" cols="50" maxLength="1000" value={answerResponse} onChange={handleAnswerChange}/>
               <h6>* Your Nickname</h6>
               <input size="40" type="text" maxLength="60" placeholder="Example: jack543!" value={nicknameResponse} onChange={handleNicknameResponseChange}/>
               <p>For privacy reasons, do not use your full name or email address.</p>
@@ -144,7 +150,10 @@ const CurrentQuestion = (props) => {
               <input size="40" type="text" maxLength="60" placeholder="Example: jack@email.com" value={emailResponse} onChange={handleEmailResponseChange}/>
               <p>For authentication reasons, you will not be emailed.</p>
             </form>
-            {/* <Uploader value={photos}/> */}
+            <button id="upload_widget" className="cloudinary-button" onClick={() => { AnswerImageWidget(setStateofAnswerPhotos = {setStateofAnswerPhotos}) }}>Upload Photo</button>
+            <div>
+              {answerPhotosUrl ? <img className="thumbnail-src" src={answerPhotosUrl}/> : <div></div>}
+            </div>
           </div>
         </Modal.Body>
         <Modal.Footer>

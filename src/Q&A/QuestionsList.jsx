@@ -158,7 +158,7 @@ const QuestionsList = (props) => {
           <div>
             <form id="question-form" onSubmit={questionSubmit}>
               <h6>* Your Question</h6>
-              <textarea className="qaModalTextBox" type="text" maxLength="1000" value={question} onChange={handleQuestionChange}/>
+              <textarea type="text" rows="5" cols="50" maxLength="1000" value={question} onChange={handleQuestionChange}/>
               <h6>* Your Nickname</h6>
               <input size="40" type="text" maxLength="60" placeholder="Example: jackson11!" value={nickname} onChange={handleNicknameChange}/>
               <p>For privacy reasons, do not use your full name or email address.</p>
