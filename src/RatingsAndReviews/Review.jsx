@@ -32,7 +32,7 @@ const Review = ({ reviewData }) => {
     setShowNo(false);
   }
   return (
-    <div>
+    <div data-testid="review">
       {!reviewData ? <div></div> :
         <div className="main-review">
           <div className='top-review'>

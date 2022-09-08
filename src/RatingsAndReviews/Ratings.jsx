@@ -11,15 +11,17 @@ var weightedAverage = function (a, b, c, d, e) {
   return ave.toFixed(1);
 }
 const Ratings = ({ characteristics, ratings, recommended, parentCallbackFive, parentCallbackFour, parentCallbackThree, parentCallbackTwo, parentCallbackOne }) => {
+  var oneStar = Number(ratings['1']) || 0;
+  console.log(oneStar);
+  var twoStar = Number(ratings['2']) || 0;
+  console.log(twoStar);
+  var threeStar = Number(ratings['3']) || 0;
+  var fourStar = Number(ratings['4']) || 0;
+  var fiveStar = Number(ratings['5']) || 0;
 
-  var average = weightedAverage(ratings['1'], ratings['2'], ratings['3'], ratings['4'], ratings['5']);
+  var average = weightedAverage(oneStar, twoStar, threeStar, fourStar, fiveStar);
   var ave = (Math.round(average));
   var totalRatings = Number(ratings['1']) + Number(ratings['2']) + Number(ratings['3']) + Number(ratings['4']) + Number(ratings['5']);
-  var oneStar = Number(ratings['1']);
-  var twoStar = Number(ratings['2']);
-  var threeStar = Number(ratings['3']);
-  var fourStar = Number(ratings['4']);
-  var fiveStar = Number(ratings['5']);
   var ratingArray = [oneStar, twoStar, threeStar, fourStar, fiveStar];
   var denominator = Math.max(...ratingArray);
   var totalRecommendations = Number(recommended.true) + Number(recommended.false);
@@ -94,9 +96,9 @@ const Ratings = ({ characteristics, ratings, recommended, parentCallbackFive, pa
   }
 
   return (
-    <div>
+    <div data-testid="ratings">
       {(!ave) ? <div></div> :
-        <div >
+        <div className = 'ratings-total'>
           <ul>
             <div className='average-rating banner-rating'>{average}</div>
             <div className='starrating banner-rating'> <StarRating rating={ave} /></div>
@@ -111,27 +113,27 @@ const Ratings = ({ characteristics, ratings, recommended, parentCallbackFive, pa
                   setFiveStarButton(!fiveStarButton);
                 }}>5 stars</button>
                 </td>
-                <td><ProgressBar bgcolor="#696969" progress={Math.round(fiveStar / denominator * 100)} /></td>
+                <td><ProgressBar bgcolor="#49516F" progress={Math.round(fiveStar / denominator * 100)} /></td>
               </tr>
               <tr>
                 <td><button className={!fourStarButton ? 'button-review' : 'button-review-clicked'} role='button' onClick={(e) => {
                   setFourStarButton(!fourStarButton);
                 }}>4 stars</button></td>
-                <td><ProgressBar bgcolor="#696969" progress={Math.round(fourStar / denominator * 100)} /></td>
+                <td><ProgressBar bgcolor="#49516F" progress={Math.round(fourStar / denominator * 100)} /></td>
               </tr>
               <tr>
                 <td><button className={!threeStarButton ? 'button-review' : 'button-review-clicked'} role='button' onClick={(e) => {
                   setThreeStarButton(!threeStarButton);
                 }}
                 >3 stars</button></td>
-                <td><ProgressBar bgcolor="#696969" progress={Math.round(threeStar / denominator * 100)} /></td>
+                <td><ProgressBar bgcolor="#49516F" progress={Math.round(threeStar / denominator * 100)} /></td>
               </tr>
               <tr>
                 <td><button className={!twoStarButton ? 'button-review' : 'button-review-clicked'} role='button' onClick={(e) => {
                   setTwoStarButton(!twoStarButton);
                 }}
                 >2 stars</button></td>
-                <td><ProgressBar bgcolor="#696969" progress={Math.round(twoStar / denominator * 100)} /></td>
+                <td><ProgressBar bgcolor="#49516F" progress={Math.round(twoStar / denominator * 100)} /></td>
               </tr>
               <tr>
                 <td><button className={!oneStarButton ? 'button-review' : 'button-review-clicked'} role='button' onClick={(e) => {
@@ -139,7 +141,7 @@ const Ratings = ({ characteristics, ratings, recommended, parentCallbackFive, pa
                 }}
 
                 >1 star</button></td>
-                <td><ProgressBar bgcolor="#696969" progress={Math.round(oneStar / denominator * 100)} /></td>
+                <td><ProgressBar bgcolor="#49516F" progress={Math.round(oneStar / denominator * 100)} /></td>
               </tr>
             </tbody>
           </table>

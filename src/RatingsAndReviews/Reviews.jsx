@@ -143,7 +143,7 @@ const Reviews = ({ fiveStarButton, fourStarButton, threeStarButton, twoStarButto
 
     axios.post(expressUrl + '/reviews',
       {
-        "product_id": 66642,
+        "product_id": 66644,
         "rating": rating,
         "summary": summary,
         "body": body,
@@ -162,7 +162,7 @@ const Reviews = ({ fiveStarButton, fourStarButton, threeStarButton, twoStarButto
 
   var handleProductName = function (product_id) {
     let expressUrl = 'http://localhost:1337'
-    product_id = 66642;
+    product_id = 66644;
     axios.get(expressUrl + `/productname/${product_id}`)
       .then(response => {
         setProduct(response.data.name)
@@ -179,145 +179,149 @@ const Reviews = ({ fiveStarButton, fourStarButton, threeStarButton, twoStarButto
 
 
   return (
-    <div>
-      <div className='count-and-dropdown-list-review'>{reviewData.length} reviews, sorted by </div>
-      <div className='count-and-dropdown-list-review'> <DropDownMenu parentCallback={callback} /> </div>
-      <div className='review-list-reviews'><ReviewList sortOn={sortOn} reviewData={reviewData} /></div>
-      <div className='buttons-reviews'>
-        {!showButton ? <div></div> :
-          <button className="button-review" role="button" onClick={() => {
-            var temp = page;
-            setPage(temp + 1);
-          }}
-          >More Reviews</button>
-        }
-        <>
-          <ButtonToolbar>
-            <Button className="button-review" role="button" onClick={handleOpen}>Add A Review +</Button>
-          </ButtonToolbar>
+    <div data-testid="reviews" >
+      <div className='reviews-total'>
+        <div className='reviews-header'>
+          <div className='count-and-dropdown-list-review'>{reviewData.length} reviews, sorted by </div>
+          <div className='count-and-dropdown-list-review'> <DropDownMenu parentCallback={callback} /> </div>
+        </div>
+        <div className='review-list-reviews'><ReviewList sortOn={sortOn} reviewData={reviewData} /></div>
+        <div className='buttons-reviews'>
+          {!showButton ? <div></div> :
+            <button className="button-review" role="button" onClick={() => {
+              var temp = page;
+              setPage(temp + 1);
+            }}
+            >More Reviews</button>
+          }
+          <>
 
-          <Modal size={'lg'} open={open} onClose={handleClose}>
-            <Modal.Header>
-              <Modal.Title><h3>Create a Review for {product}</h3> </Modal.Title>
-              <div></div>
-            </Modal.Header>
-            <Modal.Body>
-              <div>
-                <table>
-                  <tbody>
-                    <tr>
-                      <td width='150' height='50'>
-                        <h5 >* Overall Rating</h5>
-                      </td>
-                      <td width='150'>
-                        <div> (select a star rating)</div>
-                      </td>
-                      <td>
-                        <StarRatingAddReview parentCallbackStar={callbackStar} />
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+            <button className="button-review" role="button" onClick={handleOpen}>Add A Review +</button>
 
+
+            <Modal size={'lg'} open={open} onClose={handleClose}>
+              <Modal.Header>
+                <Modal.Title><h3>Create a Review for {product}</h3> </Modal.Title>
+                <div></div>
+              </Modal.Header>
+              <Modal.Body>
                 <div>
                   <table>
                     <tbody>
                       <tr>
-                        <td width='310' height='50'>
-                          <h5>* Do you recommend this product?</h5>
+                        <td width='150' height='50'>
+                          <h5 >* Overall Rating</h5>
+                        </td>
+                        <td width='150'>
+                          <div> (select a star rating)</div>
                         </td>
                         <td>
-                          <Toggle size="md" unCheckedChildren="No" checkedChildren="Yes" onChange={(value) => { setRecommend(value); }} />
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div>
-                  <table>
-                    <tbody>
-                      <tr>
-                        <td height='40'>
-                          <h5 >* Characteristics</h5>
-                        </td>
-                        <td>
-                          (select the description that describes the characteristic for the {product})
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <Sliders parentCallbackSliders={callbackSlider} />
-
-                </div>
-                <div style={{ padding: 7 }}>
-                  <h5>* Review Summary</h5>
-                  <input type="text" id="summary-modal" placeholder="Enter your review summary here..." size='60' maxLength="60" onChange={(e) => {
-                    setSummary(e.target.value);
-                  }} />
-                </div>
-                <div style={{ padding: 7 }}>
-                  <h5>* Review Body</h5>
-                  <textarea rows="5" cols="100" name="description" minLength='50' maxLength='1000' placeholder="Enter your review details here..." onChange={(e) => {
-                    setBody(e.target.value);
-                  }}>
-                  </textarea>
-                </div>
-                <div style={{ padding: 7 }}>
-                  <h5>* Upload Photos</h5>
-                  <table>
-                    <tbody>
-                      <tr>
-                        <td>
-                          <div>
-                            <button
-                              id="upload_widget"
-                              className="cloudinary-button"
-                              onClick={() => { ImageWidget(setStateOfPhoto = { setStateOfPhoto }) }}
-                            >
-                              Upload files
-                            </button>
-                          </div>
-                        </td>
-                        <td>
-                          <div>
-                            {photoUrl ? <img className='thumbnail-src' src={photoUrl} /> : <div></div>}
-                          </div>
+                          <StarRatingAddReview parentCallbackStar={callbackStar} />
                         </td>
                       </tr>
                     </tbody>
                   </table>
 
-                  {/* <input type="text" id="photo-modal" placeholder="https://www.myhaikuclass.com/images/kitten.png" size='60' maxLength="200" onChange={(e) => {
+                  <div>
+                    <table>
+                      <tbody>
+                        <tr>
+                          <td width='310' height='50'>
+                            <h5>* Do you recommend this product?</h5>
+                          </td>
+                          <td>
+                            <Toggle size="md" unCheckedChildren="No" checkedChildren="Yes" onChange={(value) => { setRecommend(value); }} />
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div>
+                    <table>
+                      <tbody>
+                        <tr>
+                          <td height='40'>
+                            <h5 >* Characteristics</h5>
+                          </td>
+                          <td>
+                            (select the description that describes the characteristic for the {product})
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <Sliders parentCallbackSliders={callbackSlider} />
+
+                  </div>
+                  <div style={{ padding: 7 }}>
+                    <h5>* Review Summary</h5>
+                    <input type="text" id="summary-modal" placeholder="Enter your review summary here..." size='60' maxLength="60" onChange={(e) => {
+                      setSummary(e.target.value);
+                    }} />
+                  </div>
+                  <div style={{ padding: 7 }}>
+                    <h5>* Review Body</h5>
+                    <textarea rows="5" cols="100" name="description" minLength='50' maxLength='1000' placeholder="Enter your review details here..." onChange={(e) => {
+                      setBody(e.target.value);
+                    }}>
+                    </textarea>
+                  </div>
+                  <div style={{ padding: 7 }}>
+                    <h5>* Upload Photos</h5>
+                    <table>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <div>
+                              <button
+                                id="upload_widget"
+                                className="cloudinary-button"
+                                onClick={() => { ImageWidget(setStateOfPhoto = { setStateOfPhoto }) }}
+                              >
+                                Upload files
+                              </button>
+                            </div>
+                          </td>
+                          <td>
+                            <div>
+                              {photoUrl ? <img className='thumbnail-src' src={photoUrl} /> : <div></div>}
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    {/* <input type="text" id="photo-modal" placeholder="https://www.myhaikuclass.com/images/kitten.png" size='60' maxLength="200" onChange={(e) => {
                     setPhoto(e.target.value);
                   }} /> */}
 
+                  </div>
+                  <div style={{ padding: 7 }}>
+                    <h5>* What is your nickname?</h5>
+                    <input type="text" id="nickname-modal" placeholder="Example: jackson11!" size='60' maxLength="60" onChange={(e) => {
+                      setNickname(e.target.value);
+                    }} />
+                    <div>For privacy reasons, do not use your full name or email address.</div>
+                  </div>
+                  <div style={{ padding: 7 }}>
+                    <h5>* Your email</h5>
+                    <input type="text" id="email-modal" placeholder="Example: jackson11@email.com" size='60' maxLength="60" onChange={(e) => {
+                      setEmail(e.target.value);
+                    }} />
+                    <div>For authentication reasons, you will not be emailed.</div>
+                  </div>
                 </div>
-                <div style={{ padding: 7 }}>
-                  <h5>* What is your nickname?</h5>
-                  <input type="text" id="nickname-modal" placeholder="Example: jackson11!" size='60' maxLength="60" onChange={(e) => {
-                    setNickname(e.target.value);
-                  }} />
-                  <div>For privacy reasons, do not use your full name or email address.</div>
-                </div>
-                <div style={{ padding: 7 }}>
-                  <h5>* Your email</h5>
-                  <input type="text" id="email-modal" placeholder="Example: jackson11@email.com" size='60' maxLength="60" onChange={(e) => {
-                    setEmail(e.target.value);
-                  }} />
-                  <div>For authentication reasons, you will not be emailed.</div>
-                </div>
-              </div>
-            </Modal.Body>
-            <Modal.Footer>
-              <Button onClick={postData} appearance="primary">
-                Submit Review
-              </Button>
-              <Button onClick={handleClose} appearance="subtle">
-                Cancel
-              </Button>
-            </Modal.Footer>
-          </Modal>
-        </>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button onClick={postData} appearance="primary">
+                  Submit Review
+                </Button>
+                <Button onClick={handleClose} appearance="subtle">
+                  Cancel
+                </Button>
+              </Modal.Footer>
+            </Modal>
+          </>
+        </div>
       </div>
     </div>
   )
