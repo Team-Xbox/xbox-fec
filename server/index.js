@@ -76,7 +76,6 @@ app.put('/helpfulA/:answer_id', (req, res) => {
     console.error(err);
     res.status(404).send(err);
   })
-  console.log("show me server input = ", req.body)
 })
 
 app.get('/productname/:id', (req, res) => {
