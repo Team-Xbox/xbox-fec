@@ -6,7 +6,8 @@ const Select = (props) => {
   const [quantity, setQuantity] = useState(null);
   const [quantityObj, setQuantityObj] = useState({});
   const [currentQ, setCurrentQ] = useState([]);
-  const [text, setText] = useState('Add To Cart');
+  const [addCartText, setAddCartText] = useState('Add To Cart');
+  const [star, setStar] = useState('☆');
 
   useEffect(() => {
     let temp = [{size: 'Select Size', quantity: 'Quantity'}];
@@ -34,7 +35,7 @@ const Select = (props) => {
     <div id="select">
       <select name="size" id="size-select" onChange={(e) => {
         if (e.target.value === 'Select Size') { setSize(e.target.value), setQuantity(null) }
-        if (e.target.value !== 'Select Size') { setSize(e.target.value), setQuantity(1), setText('Add To Cart') }
+        if (e.target.value !== 'Select Size') { setSize(e.target.value), setQuantity(1), setAddCartText('Add To Cart') }
         getQuantity(e.target.value)
       }}>
         {dropValues.map((data, i) =>
@@ -50,8 +51,9 @@ const Select = (props) => {
       }
       {quantity === null ?
         <button className="add-cart" style={{color: 'gray'}}>Add To Cart</button> :
-        <button className="add-cart" onClick={ () => setText('Added ✓') }>{text}</button>
+        <button className="add-cart" onClick={ () => setAddCartText('Added ✓') }>{addCartText}</button>
       }
+      <button className="favorite" onClick={() => {if (star === '☆') { setStar('★') } else { setStar('☆') } }}>{star}</button>
     </div>
   )
 }
