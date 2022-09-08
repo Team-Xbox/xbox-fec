@@ -23,7 +23,7 @@ const ProgressBar = ({bgcolor,progress}) => {
       fontWeight: 900
     }
   return (
-  <div style={Parentdiv}>
+  <div data-testid="progBar" style={Parentdiv}>
     <div style={Childdiv}>
     </div>
   </div>

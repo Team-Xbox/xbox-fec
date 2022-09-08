@@ -7,8 +7,8 @@ import RatingsAndReviews from "./RatingsAndReviews/RatingsAndReviews.jsx";
 // Huzzah for jsx!
 const App = () => {
   return (
-    <div>
-      <h1>Hello World</h1>
+    <div data-testid="hello-world">
+      <h1 >Hello World</h1>
       <ProductDetail />
       <RelatedProductsList />
       <QuestionsList />
