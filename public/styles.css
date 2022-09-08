@@ -69,6 +69,14 @@ body {
   object-fit: cover;
 }
 
+.main-image {
+  cursor: zoom-in;
+}
+
+.zoom-image:hover {
+  cursor: crosshair;
+}
+
 .slideshow-btn-left {
   color: white;
   border-radius: 5px;
