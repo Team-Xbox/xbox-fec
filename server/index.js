@@ -76,7 +76,6 @@ app.put('/helpfulA/:answer_id', (req, res) => {
     console.error(err);
     res.status(404).send(err);
   })
-  console.log("show me server input = ", req.body)
 })
 
 app.get('/productname/:id', (req, res) => {
@@ -94,6 +93,12 @@ app.post('/addquestion', (req, res) => {
 app.post('/addanswer/:questionId', (req, res) => {
   api.addNewAnswer(req.params, req.body)
   .then(response => { res.status(201).send(response.data) })
+  .catch(err => console.log(err));
+})
+
+app.put('/reportanswer/:question_id', (req, res) => {
+  api.reportAnswer(req.params, req.body)
+  .then(response => { res.status(204).send() })
   .catch(err => console.log(err));
 })
 

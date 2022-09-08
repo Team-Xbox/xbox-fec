@@ -575,41 +575,87 @@ body {
 
 /* Beginning of Q&A css styles section */
 .qaListSection {
-  border: 1px solid green;
+  background-color:#6279B8;
+  border: 2px solid black;
+  max-width: 100%;
+  padding: 15px;
+}
 
+.qaTitle {
+  background-color: #496F5D;
+  border: 2px solid black;
+  color: white;
+  padding: 10px;
+}
+
+.qHeightContainer {
+  background-color:#49516F;
+  border: 2px solid black;
+  max-height: 500px;
+  overflow-y: scroll;
+  padding: 10px;
+  color: white;
 }
 
 .searchInput {
-  width: 70%;
+  padding: 10px 0;
 }
 
 .questionButtons {
-  border: 1px solid black;
+  border: 2px solid black;
   background-color: white;
+  padding: 10px;
+  margin: 10px 10px 0 0;
+  font-weight: bold;
 }
 
 .questionSection {
+  background-color: #496F5D;
+  border: 2px solid black;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 70%;
+  padding: 6px;
 }
 
 .qaContainer {
   display: flex;
-  margin: 0 0 10px 0;
+  /* margin: 0 0 15px 0; */
+}
+
+.answerContainer {
+  background-color: #4C9F70;
+  border: 2px solid black;
+  border-top: none;
+  display: flex;
+  margin: 0 0 15px 0;
+  width: 70%;
+  padding: 6px;
 }
 
 .qaLabel {
   margin: 0 6px 0 0;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: bold;
 }
 
 .questionBody {
-  font-size: 15px;
+  font-size: 17px;
   font-weight: bold;
   margin: 0;
+}
+
+.qalink {
+  cursor: pointer;
+}
+
+.qadisable {
+  cursor: not-allowed;
+}
+
+.qHelpfulContainer {
+  font-size: 16px;
 }
 
 .answerSection {
@@ -621,7 +667,16 @@ body {
 
 .answerBody {
   margin: 0;
-  font-size: 14px;
+  font-size: 15px;
+}
+
+.answerThumbnail {
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
+  margin-inline: 0px 13px;
+  padding: 4px;
+  border: 1px solid black;
 }
 
 .answerSideBody {
@@ -640,6 +695,18 @@ body {
   font-weight: bold;
   margin: 10px 0;
   font-size: 12.5px;
+}
+
+.qaAsterik {
+  color: red;
+}
+
+.qaModalInput {
+  margin: 10px;
+}
+
+.qaModalStatements {
+  margin: 0 0 10px 10px;
 }
 
 /* End of Q&A css styles section */
