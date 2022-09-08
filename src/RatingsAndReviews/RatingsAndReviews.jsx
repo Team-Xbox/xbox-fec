@@ -32,12 +32,17 @@ const RatingsAndReviews = (props) => {
   }, [JSON.stringify(ratings), JSON.stringify(recommended), JSON.stringify(characteristics)])
 
   return (
-    <div>
-      <div className='ratings-and-reviews-heading'>
-        RATINGS & REVIEWS
+
+    <div data-testid="ratingsAndReviews">
+      <div className='ratings-and-reviews-total'>
+        <div className='ratings-and-reviews-heading'>
+          <h3>RATINGS & REVIEWS</h3>
+        </div>
+        <div className='center-rar'>
+          <div className='ratings-and-reviews ratings'><Ratings characteristics={characteristics} ratings={ratings} recommended={recommended} parentCallbackFive={callbackFive} parentCallbackFour={callbackFour} parentCallbackThree={callbackThree} parentCallbackTwo={callbackTwo} parentCallbackOne={callbackOne} /></div>
+          <div className='ratings-and-reviews reviews'><Reviews fiveStarButton={fiveStarButton} fourStarButton={fourStarButton} threeStarButton={threeStarButton} twoStarButton={twoStarButton} oneStarButton={oneStarButton} /></div>
+        </div>
       </div>
-      <div className='ratings-and-reviews ratings'><Ratings characteristics={characteristics} ratings={ratings} recommended={recommended} parentCallbackFive={callbackFive} parentCallbackFour={callbackFour} parentCallbackThree={callbackThree} parentCallbackTwo={callbackTwo} parentCallbackOne={callbackOne}/></div>
-      <div className='ratings-and-reviews reviews'><Reviews fiveStarButton = {fiveStarButton} fourStarButton = {fourStarButton} threeStarButton = {threeStarButton} twoStarButton = {twoStarButton} oneStarButton = {oneStarButton}/></div>
     </div>
   )
 }

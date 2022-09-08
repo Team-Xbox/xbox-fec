@@ -23,7 +23,7 @@ const ProductBreakdown = ({ average, characteristic }) => {
     fontWeight: 900
   }
   return (
-    <div>
+    <div data-testid="productBreakdown">
       {(!average) ? <div></div> :
         <div>
           <div style={{ marginLeft: 12, marginTop: 15 }}>
@@ -32,7 +32,7 @@ const ProductBreakdown = ({ average, characteristic }) => {
           <div style={Parentdiv}>
             <div style={Childdiv}>
 
-              <div >	&#9660;</div>
+              <div className = 'rating-arrow'>	&#9660;</div>
             </div>
           </div>
           <div>

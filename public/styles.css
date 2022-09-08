@@ -4,9 +4,11 @@ button {
   outline: none;
   cursor: pointer;
 }
+
 .on {
   color: #000;
 }
+
 .off {
   color: #ccc;
 }
@@ -262,16 +264,46 @@ body {
 
 /* BEGIN REVIEW STYLES */
 @import "rsuite/dist/rsuite.css";
-#root{ padding: 10px; }
+
+#root {
+  padding: 10px;
+}
+
+
+body {
+  color: black;
+  background-color: white;
+}
+
+.single-star-outline {
+  height: 36px;
+  width: 31px;
+}
+
+.single-star-fill {
+  position: relative;
+  display: inline-block;
+  height: 36px;
+  background-color: #333333;
+}
+
+.single-star-container {
+  height: 36px;
+  width: 31px;
+  display: inline-block;
+}
+
+
 
 .main-review {
   width: 700px;
   max-height: 350px;
-  border-color: black;
-  border-style: solid;
-  border-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
   padding: 5px;
 }
+
 .top-review {
   max-width: 700px;
   height: 25px;
@@ -291,12 +323,14 @@ body {
 
 .body-review {
   max-width: 700px;
-  height: auto;
+  max-height: 150px;
+  overflow-y: auto;
   min-height: 50px;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   padding: 5px;
+
 }
 
 .helpful-review {
@@ -329,17 +363,19 @@ body {
   border-radius: 0.25rem;
   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
   box-sizing: border-box;
+  font-family: 'Raleway', sans-serif;
   color: rgba(0, 0, 0, 0.85);
   cursor: pointer;
   display: inline-flex;
-  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
-    Arial, sans-serif;
+  /* font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
+    Arial, sans-serif; */
   font-size: 16px;
   font-weight: 600;
   justify-content: center;
   line-height: 1.25;
-  margin: 0;
-  min-height: 3rem;
+  margin: 5px;
+  margin-top: 10px;
+  height: 2rem;
   padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
   position: relative;
   text-decoration: none;
@@ -358,17 +394,18 @@ body {
   border-radius: 0.25rem;
   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
   box-sizing: border-box;
+  font-family: 'Raleway', sans-serif;
   color: rgba(0, 0, 0, 0.85);
   cursor: pointer;
   display: inline-flex;
-  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
-    Arial, sans-serif;
+  /* font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
+    Arial, sans-serif; */
   font-size: 16px;
   font-weight: 900;
   justify-content: center;
   line-height: 1.25;
   margin: 0;
-  min-height: 3rem;
+  height: 2rem;
   padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
   position: relative;
   text-decoration: none;
@@ -384,6 +421,7 @@ body {
 .button-review:focus {
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  font-family: 'Raleway', sans-serif;
   color: rgba(0, 0, 0, 0.65);
 }
 
@@ -395,6 +433,7 @@ body {
   background-color: #f0f0f1;
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  font-family: 'Raleway', sans-serif;
   color: rgba(0, 0, 0, 0.65);
   transform: translateY(0);
 }
@@ -411,32 +450,39 @@ body {
 }
 
 .ratings-and-reviews-heading {
-  color: darkgray;
-  width: 1075px;
+  font-family: 'Raleway', sans-serif;
+  color: white;
+  width: auto;
   height: auto;
   margin: 2px;
-  border-color: purple;
+  /* border-color: purple; */
   padding: 10px;
-  border-style: solid;
-  border-width: 1px;
+  /* border-style: solid;
+  border-width: 1px; */
+  margin-left: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .ratings {
-  width: 350px;
-  margin-right: 10px;
+  width: 375px;
+  margin-left: 20px;
   height: auto;
   padding: 10px;
-  border-color: red;
+  /* border-color: red;
   border-style: solid;
-  border-width: 1px;
+  border-width: 1px; */
   margin-bottom: 43px;
+  background-color: #49516F;
+  position: relative;
 }
 
 .reviews {
-  position: relative; top: -43px;
-  width: 720px;
+  position: relative;
+  width: 800px;
   height: auto;
-  border-color: blue;
+  background-color: #49516F;
   padding: 10px;
   border-style: solid;
   border-width: 1px;
@@ -479,44 +525,150 @@ body {
   text-decoration: underline;
 }
 
+.reviews-total {
+  background: rgb(66, 138, 97);
+  background: -moz-radial-gradient(circle, rgba(66, 138, 97, 1) 0%, rgba(76, 159, 112, 1) 100%);
+  background: -webkit-radial-gradient(circle, rgba(66, 138, 97, 1) 0%, rgba(76, 159, 112, 1) 100%);
+  background: radial-gradient(circle, rgba(66, 138, 97, 1) 0%, rgba(76, 159, 112, 1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#428a61", endColorstr="#4c9f70", GradientType=1);
+  width: 775px;
+  font-family: 'Raleway', sans-serif;
+  color: white;
+  padding: 10px;
+}
+
+.select-dropdown {
+  color: black;
+}
+
+.reviews-header {
+  max-width: 700px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+
+}
+
+.ratings-total {
+  background: rgb(66, 138, 97);
+  background: -moz-radial-gradient(circle, rgba(66, 138, 97, 1) 0%, rgba(76, 159, 112, 1) 100%);
+  background: -webkit-radial-gradient(circle, rgba(66, 138, 97, 1) 0%, rgba(76, 159, 112, 1) 100%);
+  background: radial-gradient(circle, rgba(66, 138, 97, 1) 0%, rgba(76, 159, 112, 1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#428a61", endColorstr="#4c9f70", GradientType=1);
+  font-family: 'Raleway', sans-serif;
+  color: white;
+  width: 350px;
+  padding: 3px;
+  padding-bottom: 7px;
+}
+
+.ratings-and-reviews-total {
+  background: rgb(98,121,184);
+  background: -moz-radial-gradient(circle, rgba(98,121,184,1) 0%, rgba(142,164,210,1) 100%);
+  background: -webkit-radial-gradient(circle, rgba(98,121,184,1) 0%, rgba(142,164,210,1) 100%);
+  background: radial-gradient(circle, rgba(98,121,184,1) 0%, rgba(142,164,210,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#6279b8",endColorstr="#8ea4d2",GradientType=1);
+}
+
+.rating-arrow {
+  color: #49516F;
+}
+
+.star {
+  font-size: large;
+}
+
+.center-rar {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
 /* END REVIEW STYLES */
 
 /* Beginning of Q&A css styles section */
 .qaListSection {
-  border: 1px solid green;
+  background-color:#6279B8;
+  border: 2px solid black;
+  max-width: 100%;
+  padding: 15px;
+}
+
+.qaTitle {
+  background-color: #496F5D;
+  border: 2px solid black;
+  color: white;
+  padding: 10px;
+}
+
+.qHeightContainer {
+  background-color:#49516F;
+  border: 2px solid black;
+  max-height: 500px;
+  overflow-y: scroll;
+  padding: 10px;
+  color: white;
 }
 
 .searchInput {
-  width: 70%;
+  padding: 10px 0;
 }
 
 .questionButtons {
-  border: 1px solid black;
+  border: 2px solid black;
   background-color: white;
+  padding: 10px;
+  margin: 10px 10px 0 0;
+  font-weight: bold;
 }
 
 .questionSection {
+  background-color: #496F5D;
+  border: 2px solid black;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 70%;
+  padding: 6px;
 }
 
 .qaContainer {
   display: flex;
-  margin: 0 0 10px 0;
+  /* margin: 0 0 15px 0; */
+}
+
+.answerContainer {
+  background-color: #4C9F70;
+  border: 2px solid black;
+  border-top: none;
+  display: flex;
+  margin: 0 0 15px 0;
+  width: 70%;
+  padding: 6px;
 }
 
 .qaLabel {
   margin: 0 6px 0 0;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: bold;
 }
 
 .questionBody {
-  font-size: 15px;
+  font-size: 17px;
   font-weight: bold;
   margin: 0;
+}
+
+.qalink {
+  cursor: pointer;
+}
+
+.qadisable {
+  cursor: not-allowed;
+}
+
+.qHelpfulContainer {
+  font-size: 16px;
 }
 
 .answerSection {
@@ -528,7 +680,16 @@ body {
 
 .answerBody {
   margin: 0;
-  font-size: 14px;
+  font-size: 15px;
+}
+
+.answerThumbnail {
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
+  margin-inline: 0px 13px;
+  padding: 4px;
+  border: 1px solid black;
 }
 
 .answerSideBody {
@@ -547,6 +708,18 @@ body {
   font-weight: bold;
   margin: 10px 0;
   font-size: 12.5px;
+}
+
+.qaAsterik {
+  color: red;
+}
+
+.qaModalInput {
+  margin: 10px;
+}
+
+.qaModalStatements {
+  margin: 0 0 10px 10px;
 }
 
 /* End of Q&A css styles section */

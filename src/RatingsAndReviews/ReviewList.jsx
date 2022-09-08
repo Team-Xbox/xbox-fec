@@ -7,7 +7,7 @@ const ReviewList = ({ sortOn, reviewData }) => {
     arrayReviews.push( <Review key = {i} reviewData = {reviewData[i]} />);
   }
   return (
-    <div>
+    <div data-testid="reviewList">
       {/* <div>
         {reviewData.map((review, i) => (<Review key={i} reviewData={review} />))}
       </div> */}

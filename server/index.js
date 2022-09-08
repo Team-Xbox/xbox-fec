@@ -21,20 +21,20 @@ app.post('/product', (req, res) => {
 })
 
 app.get('/reviews', (req, res) => {
-  api.getReviewData(66642, req.query.sortOn, req.query.count, req.query.page)
+  api.getReviewData(66644, req.query.sortOn, req.query.count, req.query.page)
   .then(response => { res.send(response.data) })
   .catch(err => console.log(err))
 })
 
 app.post('/reviews', (req, res) => {
   console.log('this is the request body at server review post =',req.body);
-  api.postReviewData(66642, req.body)
+  api.postReviewData(66644, req.body)
   .then(response => (res.send(response)))
   .catch(err => console.log(err))
 })
 
 app.get('/ratings', (req, res) => {
-  api.getRatings(66642)
+  api.getRatings(66644)
   .then(response => { res.send(response.data) })
   .catch(err => console.log(err))
 })
@@ -76,7 +76,6 @@ app.put('/helpfulA/:answer_id', (req, res) => {
     console.error(err);
     res.status(404).send(err);
   })
-  console.log("show me server input = ", req.body)
 })
 
 app.get('/productname/:id', (req, res) => {
@@ -94,6 +93,12 @@ app.post('/addquestion', (req, res) => {
 app.post('/addanswer/:questionId', (req, res) => {
   api.addNewAnswer(req.params, req.body)
   .then(response => { res.status(201).send(response.data) })
+  .catch(err => console.log(err));
+})
+
+app.put('/reportanswer/:question_id', (req, res) => {
+  api.reportAnswer(req.params, req.body)
+  .then(response => { res.status(204).send() })
   .catch(err => console.log(err));
 })
 

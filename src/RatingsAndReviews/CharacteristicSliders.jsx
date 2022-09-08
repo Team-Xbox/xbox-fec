@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 import '/public/styles.css';
 
@@ -39,7 +39,7 @@ const Sliders = ({ parentCallbackSliders }) => {
 
 
   return (
-    <div>
+    <div data-testid="charSliders">
       <div style={{ padding: 7 }}>
         {/* Size Slider */}
         <div style={{ width: 700, marginLeft: 70 }}> <h6 >* Size</h6>

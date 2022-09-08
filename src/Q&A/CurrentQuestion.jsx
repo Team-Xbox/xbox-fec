@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import CurrentAnswer from './CurrentAnswer.jsx'
+import CurrentAnswer from './CurrentAnswer.jsx';
+import AnswerImageWidget from './AnswerImageWidget.jsx';
 import '../../public/styles.css';
 import { Modal, Button, ButtonToolbar, Placeholder, Uploader} from 'rsuite';
+import moment from 'moment'
 const axios = require('axios');
 
 const CurrentQuestion = (props) => {
@@ -10,11 +12,12 @@ const CurrentQuestion = (props) => {
   const [displayedAnswerData, setDisplayedAnswerData] = useState([])
   const [nextAnswers, setNextAnswers] = useState([])
   const [question_helpfulness, setQuestionHelpfulness] = useState(props.question.question_helpfulness)
+  const [questionMarkedHelpful, setQuestionMarkedHelpful] = useState(false)
   const [open, setOpen] = useState(false)
   const [answerResponse, setAnswerResponse] = useState("")
   const [nicknameResponse, setNicknameResponse] = useState("")
   const [emailResponse, setEmailResponse] = useState("")
-  const [photos, setPhotos] = useState([])
+  var [answerPhotosUrl, setAnswerPhotosUrl] = useState("")
 
   let url = 'http://localhost:1337'
 
@@ -53,6 +56,7 @@ const CurrentQuestion = (props) => {
     axios.put(url + `/helpfulQ/${questionId}`, updatedCount)
       .then(() => {
         setQuestionHelpfulness(updatedCount.question_helpfulness)
+        setQuestionMarkedHelpful(true)
       })
       .catch(err => {
         console.log(err)
@@ -85,15 +89,25 @@ const CurrentQuestion = (props) => {
       body: answerResponse,
       name: nicknameResponse,
       email: emailResponse,
-      photos: photos
+      photos: [answerPhotosUrl]
     }
 
     axios.post(url + `/addanswer/${questionId}`, newAnswer)
     .then(response => {
+      const newestAnswer = {
+        answerer_name: nicknameResponse,
+        body: answerResponse,
+        date: moment().format(),
+        helpfulness: 0,
+        photos: answerPhotosUrl ? [{url: answerPhotosUrl}] : []
+      }
+
       setAnswerResponse("")
       setNicknameResponse("")
       setEmailResponse("")
-      setPhotos([])
+      setAnswerPhotosUrl("")
+      setOpen(false)
+      setDisplayedAnswerData([... displayedAnswerData, newestAnswer])
     })
     .catch(err => {
       console.log(err)
@@ -108,13 +122,13 @@ const CurrentQuestion = (props) => {
             <p className="qaLabel">Q:</p>
             <p className="questionBody">{props.question.question_body}</p>
           </div>
-          <aside>Helpful? <u onClick={handleHelpfulQA}>Yes</u> ({`${question_helpfulness}`}) | <u onClick={handleOpen}>Add Answer</u></aside>
+          <p className="qHelpfulContainer">Helpful? {questionMarkedHelpful ? <u className="qadisable">Yes</u> : <u className="qalink" onClick={handleHelpfulQA}>Yes</u>} ({`${question_helpfulness}`}) | <u className="qalink" onClick={handleOpen}>Add Answer</u></p>
         </div>
-        <div className="qaContainer">
+        <div className="answerContainer">
           {displayedAnswerData.length > 0 && <p className="qaLabel">A:</p>}
           <div className="answerWrapper">
             {displayedAnswerData.map((answer) => {
-              return <CurrentAnswer key={answer.answer_id} answer={answer}/>
+              return <CurrentAnswer key={answer.answer_id} answer={answer} questionId={questionId}/>
             })}
             {nextAnswers.length > 0 && <button className="moreAnswersButton" onClick={handleMoreAnswers}>LOAD MORE ANSWERS</button>}
           </div>
@@ -132,20 +146,23 @@ const CurrentQuestion = (props) => {
         <Modal.Body>
           <div>
             <form id="answer-form" onSubmit={answerSubmit}>
-              <h6>* Your Answer</h6>
-              <textarea type="text" maxLength="1000" value={answerResponse} onChange={handleAnswerChange}/>
-              <h6>* Your Nickname</h6>
-              <input size="40" type="text" maxLength="60" placeholder="Example: jack543!" value={nicknameResponse} onChange={handleNicknameResponseChange}/>
-              <p>For privacy reasons, do not use your full name or email address.</p>
-              <h6>* Your Email</h6>
-              <input size="40" type="text" maxLength="60" placeholder="Example: jack@email.com" value={emailResponse} onChange={handleEmailResponseChange}/>
-              <p>For authentication reasons, you will not be emailed.</p>
+              <h6><b className="qaAsterik">*</b> Your Answer</h6>
+              <textarea required className="qaModalInput" type="text" rows="5" cols="50" maxLength="1000" value={answerResponse} onChange={handleAnswerChange}/>
+              <h6><b className="qaAsterik">*</b> Your Nickname</h6>
+              <input required className="qaModalInput" size="40" type="text" maxLength="60" placeholder="Example: jack543!" value={nicknameResponse} onChange={handleNicknameResponseChange}/>
+              <p className="qaModalStatements">For privacy reasons, do not use your full name or email address.</p>
+              <h6><b className="qaAsterik">*</b> Your Email</h6>
+              <input required className="qaModalInput" size="40" type="text" maxLength="60" placeholder="Example: jack@email.com" value={emailResponse} onChange={handleEmailResponseChange}/>
+              <p className="qaModalStatements">For authentication reasons, you will not be emailed.</p>
             </form>
-            <Uploader value={photos}/>
+            <button id="upload_widget" className="cloudinary-button" onClick={() => { AnswerImageWidget(setAnswerPhotosUrl = {setAnswerPhotosUrl}) }}>Upload Photo</button>
+            <div>
+              {answerPhotosUrl ? <img className="thumbnail-src" src={answerPhotosUrl}/> : <div></div>}
+            </div>
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button type="submit" form="answer-form" onClick={handleClose} appearance="primary">
+          <Button type="submit" form="answer-form" appearance="primary">
             Submit Answer
           </Button>
           <Button onClick={handleClose} appearance="subtle">

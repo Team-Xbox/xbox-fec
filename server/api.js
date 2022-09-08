@@ -115,6 +115,14 @@ const addNewAnswer = ({questionId}, body) => {
     .catch(err => console.log(err))
 }
 
+const reportAnswer = ({question_id}, body) => {
+  return axios.put(options.url + `qa/questions/${question_id}/report`, body, {headers: options.headers})
+    .then(() => {
+      console.log('success!')
+    })
+    .catch(err => console.log(err))
+}
+
 module.exports.getProductData = getProductData;
 module.exports.getStyleData = getStyleData;
 module.exports.getQuestionsList = getQuestionsList;
@@ -124,6 +132,7 @@ module.exports.updateHelpACount = updateHelpACount;
 module.exports.getProductName = getProductName;
 module.exports.addNewQuestion = addNewQuestion;
 module.exports.addNewAnswer = addNewAnswer;
+module.exports.reportAnswer = reportAnswer;
 module.exports.getReviewData = getReviewData;
 module.exports.getRatings = getRatings;
 module.exports.postReviewData = postReviewData;
