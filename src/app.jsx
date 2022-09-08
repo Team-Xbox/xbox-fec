@@ -10,7 +10,6 @@ const App = () => {
     <div>
       <h1>Hello World</h1>
       <ProductDetail />
-      <RelatedProductsList />
       <QuestionsList />
       <RatingsAndReviews/>
     </div>
