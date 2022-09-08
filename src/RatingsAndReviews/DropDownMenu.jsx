@@ -7,12 +7,12 @@ const DropDownMenu = function ({parentCallback}) {
   const [reviewData, setReviewData] = useState();
 
   return (
-    <div>
-      <select
+    <div data-testid="dropDownMenu">
+      <select  className = 'select-dropdown'
         onChange={(e) => {
           const selectedMenuOption = e.target.value;
           setSortOn(selectedMenuOption);
-        }}>
+        }} data-testid = 'dropdownmenu'>
         <option value='relevant'>Relevance</option>
         <option value='helpful'>Helpful</option>
         <option value='newest'>Newest</option>
