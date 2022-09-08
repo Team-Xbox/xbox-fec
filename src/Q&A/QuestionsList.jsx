@@ -25,7 +25,6 @@ const QuestionsList = (props) => {
   useEffect(() => {
     axios.get(url + `/productname/${id}`)
       .then(response => {
-        console.log('show product id info = ', response.data)
         setProductName(response.data.name)
       })
       .catch(err => {
@@ -36,7 +35,6 @@ const QuestionsList = (props) => {
   useEffect(() => {
     axios.get(url + `/questions/${id}/${page}/6`)
       .then(response => {
-        console.log('show question data = ', response.data.results)
         const firstFour = [];
         const rest = [];
         response.data.results.forEach((el, index) => {
@@ -123,6 +121,7 @@ const QuestionsList = (props) => {
       setQuestion("")
       setNickname("")
       setEmail("")
+      setOpen(false)
     })
     .catch(err => {
       console.log(err)
@@ -157,19 +156,19 @@ const QuestionsList = (props) => {
         <Modal.Body>
           <div>
             <form id="question-form" onSubmit={questionSubmit}>
-              <h6>* Your Question</h6>
-              <textarea type="text" rows="5" cols="50" maxLength="1000" value={question} onChange={handleQuestionChange}/>
-              <h6>* Your Nickname</h6>
-              <input size="40" type="text" maxLength="60" placeholder="Example: jackson11!" value={nickname} onChange={handleNicknameChange}/>
-              <p>For privacy reasons, do not use your full name or email address.</p>
-              <h6>* Your Email</h6>
-              <input size="40" type="text" maxLength="60" placeholder="Example: jackson11@email.com" value={email} onChange={handleEmailChange}/>
-              <p>For authentication reasons, you will not be emailed.</p>
+              <h6><b className="qaAsterik">*</b> Your Question</h6>
+              <textarea required className="qaModalInput" type="text" rows="5" cols="50" maxLength="1000" value={question} onChange={handleQuestionChange}/>
+              <h6><b className="qaAsterik">*</b> Your Nickname</h6>
+              <input required className="qaModalInput" size="40" type="text" maxLength="60" placeholder="Example: jackson11!" value={nickname} onChange={handleNicknameChange}/>
+              <p className="qaModalStatements">For privacy reasons, do not use your full name or email address.</p>
+              <h6><b className="qaAsterik">*</b> Your Email</h6>
+              <input required className="qaModalInput" size="40" type="text" maxLength="60" placeholder="Example: jackson11@email.com" value={email} onChange={handleEmailChange}/>
+              <p className="qaModalStatements">For authentication reasons, you will not be emailed.</p>
             </form>
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button type="submit" form="question-form" onClick={handleClose} appearance="primary">
+          <Button type="submit" form="question-form" appearance="primary">
             Submit Question
           </Button>
           <Button onClick={handleClose} appearance="subtle">

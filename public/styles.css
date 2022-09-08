@@ -592,4 +592,16 @@ body {
   font-size: 12.5px;
 }
 
+.qaAsterik {
+  color: red;
+}
+
+.qaModalInput {
+  margin: 10px;
+}
+
+.qaModalStatements {
+  margin: 0 0 10px 10px;
+}
+
 /* End of Q&A css styles section */

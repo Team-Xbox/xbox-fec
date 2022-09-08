@@ -3,6 +3,7 @@ import CurrentAnswer from './CurrentAnswer.jsx';
 import AnswerImageWidget from './AnswerImageWidget.jsx';
 import '../../public/styles.css';
 import { Modal, Button, ButtonToolbar, Placeholder, Uploader} from 'rsuite';
+import moment from 'moment'
 const axios = require('axios');
 
 const CurrentQuestion = (props) => {
@@ -16,14 +17,13 @@ const CurrentQuestion = (props) => {
   const [answerResponse, setAnswerResponse] = useState("")
   const [nicknameResponse, setNicknameResponse] = useState("")
   const [emailResponse, setEmailResponse] = useState("")
-  const [answerPhotosUrl, setAnswerPhotosUrl] = useState("")
+  var [answerPhotosUrl, setAnswerPhotosUrl] = useState("")
 
   let url = 'http://localhost:1337'
 
   useEffect(() => {
     axios.get(url + `/answers/${questionId}/${page}/4`)
       .then(response => {
-        console.log("show answer data = ", response.data.results)
         const firstTwo = [];
         const rest = [];
         response.data.results.forEach((el, index) => {
@@ -94,19 +94,24 @@ const CurrentQuestion = (props) => {
 
     axios.post(url + `/addanswer/${questionId}`, newAnswer)
     .then(response => {
+      const newestAnswer = {
+        answerer_name: nicknameResponse,
+        body: answerResponse,
+        date: moment().format(),
+        helpfulness: 0,
+        photos: answerPhotosUrl ? [{url: answerPhotosUrl}] : []
+      }
+
       setAnswerResponse("")
       setNicknameResponse("")
       setEmailResponse("")
       setAnswerPhotosUrl("")
+      setOpen(false)
+      setDisplayedAnswerData([... displayedAnswerData, newestAnswer])
     })
     .catch(err => {
       console.log(err)
     })
-  }
-
-  var setStateofAnswerPhotos = (newUrl) => {
-    setAnswerPhotosUrl(newUrl);
-    var tempUrl = answerPhotosUrl;
   }
 
   return (
@@ -141,23 +146,23 @@ const CurrentQuestion = (props) => {
         <Modal.Body>
           <div>
             <form id="answer-form" onSubmit={answerSubmit}>
-              <h6>* Your Answer</h6>
-              <textarea type="text" rows="5" cols="50" maxLength="1000" value={answerResponse} onChange={handleAnswerChange}/>
-              <h6>* Your Nickname</h6>
-              <input size="40" type="text" maxLength="60" placeholder="Example: jack543!" value={nicknameResponse} onChange={handleNicknameResponseChange}/>
-              <p>For privacy reasons, do not use your full name or email address.</p>
-              <h6>* Your Email</h6>
-              <input size="40" type="text" maxLength="60" placeholder="Example: jack@email.com" value={emailResponse} onChange={handleEmailResponseChange}/>
-              <p>For authentication reasons, you will not be emailed.</p>
+              <h6><b className="qaAsterik">*</b> Your Answer</h6>
+              <textarea required className="qaModalInput" type="text" rows="5" cols="50" maxLength="1000" value={answerResponse} onChange={handleAnswerChange}/>
+              <h6><b className="qaAsterik">*</b> Your Nickname</h6>
+              <input required className="qaModalInput" size="40" type="text" maxLength="60" placeholder="Example: jack543!" value={nicknameResponse} onChange={handleNicknameResponseChange}/>
+              <p className="qaModalStatements">For privacy reasons, do not use your full name or email address.</p>
+              <h6><b className="qaAsterik">*</b> Your Email</h6>
+              <input required className="qaModalInput" size="40" type="text" maxLength="60" placeholder="Example: jack@email.com" value={emailResponse} onChange={handleEmailResponseChange}/>
+              <p className="qaModalStatements">For authentication reasons, you will not be emailed.</p>
             </form>
-            <button id="upload_widget" className="cloudinary-button" onClick={() => { AnswerImageWidget(setStateofAnswerPhotos = {setStateofAnswerPhotos}) }}>Upload Photo</button>
+            <button id="upload_widget" className="cloudinary-button" onClick={() => { AnswerImageWidget(setAnswerPhotosUrl = {setAnswerPhotosUrl}) }}>Upload Photo</button>
             <div>
               {answerPhotosUrl ? <img className="thumbnail-src" src={answerPhotosUrl}/> : <div></div>}
             </div>
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button type="submit" form="answer-form" onClick={handleClose} appearance="primary">
+          <Button type="submit" form="answer-form" appearance="primary">
             Submit Answer
           </Button>
           <Button onClick={handleClose} appearance="subtle">

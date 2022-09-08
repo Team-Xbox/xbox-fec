@@ -4,7 +4,7 @@ const uploadPreset = "fec-xbox";
 import "../../public/styles.css";
 
 var answerImage = "";
-var AnswerImageWidget = function ({setStateofAnswerPhotos}) {
+var AnswerImageWidget = function ({setAnswerPhotosUrl}) {
   const myWidget = cloudinary.createUploadWidget(
     {
       cloudName: cloudName,
@@ -15,7 +15,7 @@ var AnswerImageWidget = function ({setStateofAnswerPhotos}) {
       if (!error && result && result.event === "success") {
         console.log('result.info.secure_url = ', result.info.secure_url);
         console.log("Done! Here is the image info: ", result.info);
-        setStateofAnswerPhotos(result.info.secure_url);
+        setAnswerPhotosUrl(result.info.secure_url);
       }
     }
   );
