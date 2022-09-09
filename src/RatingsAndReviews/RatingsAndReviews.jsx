@@ -25,7 +25,9 @@ const RatingsAndReviews = (props) => {
 
     axios.get('/ratings')
       .then(response => {
+        setRecommended(response.data.recommended);
         setRatings(response.data.ratings);
+        setCharacteristics(response.data.characteristics);
       })
       .catch(err => console.log(err))
   }, [JSON.stringify(ratings), JSON.stringify(recommended), JSON.stringify(characteristics)])
