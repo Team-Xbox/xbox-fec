@@ -16,7 +16,7 @@ var currentReviewDataLength=2;
 
 const ReviewsMax = () => {
   let expressUrl = 'http://localhost:1337'
-  axios.get(expressUrl + '/reviews', {
+  axios.get('/reviews', {
     params: {
       count: 100
     }
@@ -87,8 +87,8 @@ useEffect(()=>{
       if (oneStarButton) {
         trueArray.push(1);
       }
-      //console.log('sortOn =', sortOn);
-      axios.get(expressUrl + '/reviews', {
+
+      axios.get('/reviews', {
         params: {
           sortOn: sortOn,
           count: maxReviewAmount
@@ -110,13 +110,7 @@ useEffect(()=>{
         })
     }
     else if (sorted || starChange) {
-
-      //console.log('1.) sorted', sorted);
-      //console.log('sortOn', sortOn);
-      //console.log('page', page);
-      //console.log('reviewData.length', reviewData.length);
-      //console.log('currentReviewDataLength', currentReviewDataLength);
-      axios.get(expressUrl + '/reviews', {
+      axios.get('/reviews', {
         params: {
           sortOn: sortOn,
           page: 1,
@@ -133,14 +127,7 @@ useEffect(()=>{
         .catch(err => console.log(err))
     }
     else if ( !(fiveStarButton || fourStarButton || threeStarButton || twoStarButton || oneStarButton)) {
-      //currentReviewDataLength = currentReviewDataLength + 2;
-      //console.log('2.) sorted', sorted);
-      //console.log('sortOn', sortOn);
-      //console.log('reviewData.length', reviewData.length);
-      //console.log('currentReviewDataLength', currentReviewDataLength);
-      //console.log('page', page);
-
-      axios.get(expressUrl + '/reviews', {
+      axios.get('/reviews', {
         params: {
           sortOn: reviewBoxSortedOn,
           page: page,
@@ -188,7 +175,7 @@ useEffect(()=>{
     console.log('characteristics object =', charObject);
     console.log('data is being posted');
 
-    axios.post(expressUrl + '/reviews',
+    axios.post('/reviews',
       {
         "product_id": 66644,
         "rating": rating,
@@ -210,7 +197,7 @@ useEffect(()=>{
   var handleProductName = function (product_id) {
     let expressUrl = 'http://localhost:1337'
     product_id = 66644;
-    axios.get(expressUrl + `/productname/${product_id}`)
+    axios.get(`/productname/${product_id}`)
       .then(response => {
         setProduct(response.data.name)
       })

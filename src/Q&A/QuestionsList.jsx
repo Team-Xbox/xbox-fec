@@ -23,7 +23,7 @@ const QuestionsList = (props) => {
   let url = 'http://localhost:1337'
 
   useEffect(() => {
-    axios.get(url + `/productname/${id}`)
+    axios.get(`/productname/${id}`)
       .then(response => {
         setProductName(response.data.name)
       })
@@ -33,7 +33,7 @@ const QuestionsList = (props) => {
   }, [])
 
   useEffect(() => {
-    axios.get(url + `/questions/${id}/${page}/6`)
+    axios.get(`/questions/${id}/${page}/6`)
       .then(response => {
         const firstFour = [];
         const rest = [];
@@ -54,7 +54,7 @@ const QuestionsList = (props) => {
   }, [])
 
   useEffect(() => {
-    axios.get(url + `/questions/${id}/${page}/500`)
+    axios.get(`/questions/${id}/${page}/500`)
       .then(response => {
         setDatabaseQuestions(response.data.results)
       })
@@ -65,7 +65,7 @@ const QuestionsList = (props) => {
 
   const handleMoreQuestions = () => {
     setDisplayedQuestionData([... displayedQuestionData, ... nextQuestions])
-    axios.get(url + `/questions/${id}/${page}/2`)
+    axios.get(`/questions/${id}/${page}/2`)
       .then(response => {
         setNextQuestions(response.data.results)
         setPage(page + 1)
@@ -116,7 +116,7 @@ const QuestionsList = (props) => {
       product_id: id
     }
 
-    axios.post(url + '/addquestion', newQuestion)
+    axios.post('/addquestion', newQuestion)
     .then(response => {
       setQuestion("")
       setNickname("")

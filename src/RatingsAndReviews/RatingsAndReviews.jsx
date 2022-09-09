@@ -23,7 +23,7 @@ const RatingsAndReviews = (props) => {
   let expressUrl = 'http://localhost:1337'
   useEffect(() => {
 
-    axios.get(expressUrl + '/ratings')
+    axios.get('/ratings')
       .then(response => {
         setRecommended(response.data.recommended);
         setRatings(response.data.ratings);

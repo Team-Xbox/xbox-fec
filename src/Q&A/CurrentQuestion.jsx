@@ -22,7 +22,7 @@ const CurrentQuestion = (props) => {
   let url = 'http://localhost:1337'
 
   useEffect(() => {
-    axios.get(url + `/answers/${questionId}/${page}/4`)
+    axios.get(`/answers/${questionId}/${page}/4`)
       .then(response => {
         const firstTwo = [];
         const rest = [];
@@ -44,7 +44,7 @@ const CurrentQuestion = (props) => {
 
   const handleMoreAnswers = () => {
     setDisplayedAnswerData([... displayedAnswerData, ... nextAnswers])
-    axios.get(url + `/answers/${questionId}/${page}/2`)
+    axios.get(`/answers/${questionId}/${page}/2`)
       .then(response => {
         setNextAnswers(response.data.results)
         setPage(page + 1)
@@ -53,7 +53,7 @@ const CurrentQuestion = (props) => {
 
   const handleHelpfulQA = () => {
     const updatedCount = {question_helpfulness: props.question.question_helpfulness + 1}
-    axios.put(url + `/helpfulQ/${questionId}`, updatedCount)
+    axios.put(`/helpfulQ/${questionId}`, updatedCount)
       .then(() => {
         setQuestionHelpfulness(updatedCount.question_helpfulness)
         setQuestionMarkedHelpful(true)
@@ -92,7 +92,7 @@ const CurrentQuestion = (props) => {
       photos: [answerPhotosUrl]
     }
 
-    axios.post(url + `/addanswer/${questionId}`, newAnswer)
+    axios.post(`/addanswer/${questionId}`, newAnswer)
     .then(response => {
       const newestAnswer = {
         answerer_name: nicknameResponse,
