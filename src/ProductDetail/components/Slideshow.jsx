@@ -3,7 +3,6 @@ import StyleSelector from '../components/Styles.jsx'
 import MiniCarousel from '../components/MiniCarousel.jsx'
 import InnerImageZoom from 'react-inner-image-zoom';
 import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';
-const axios = require('axios');
 
 const Slideshow = (props) => {
   const [index, setIndex] = useState(0);
@@ -15,7 +14,6 @@ const Slideshow = (props) => {
     <div id="slideshow">
       {!props.styleData[0] ? <div> This Item Does Not Exist </div> :
         <div id="main-images">
-          {console.log('styledata:', props.styleData)}
           <MiniCarousel styleData={props.styleData} photosIndex={photosIndex} setIndex={setIndex} index={index}
             minimized={minimized} setMinimized={setMinimized}
           />
@@ -24,7 +22,6 @@ const Slideshow = (props) => {
           </button>
           <div style={{display: minimized ? 'none' : ''}}>
             <InnerImageZoom
-              imgAttributes={{objectFit: 'cover'}}
               className="zoom-image"
               src={props.styleData[photosIndex].photos[index].url}
               width={500}
