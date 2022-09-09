@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import StarRating from './starRating.jsx'
+import StarRating from './StarRating.jsx'
 import DropDownMenu from './DropDownMenu.jsx'
 import Reviews from './Reviews.jsx'
 import Ratings from './Ratings.jsx'

@@ -19,6 +19,30 @@ body {
   background-color: #8EA4D2;
 }
 
+#header {
+  font-family: 'Raleway', sans-serif;
+  font-style: italic;
+  color: white;
+  padding: 10px;
+  background-color: #4C9F70;
+  margin-bottom: 5px;
+  border: black solid 2px;
+}
+
+.announcement {
+  font-family: 'Raleway', sans-serif;
+  font-style: italic;
+  font-size: 20px;
+  padding: 10px;
+  color: white;
+  background-color: #496F5D;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: black solid 2px;
+  margin-bottom: 5px;
+}
+
 #product-detail {
   background-color: #6279B8;
   border: black solid 2px;
