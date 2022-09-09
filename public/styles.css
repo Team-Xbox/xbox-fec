@@ -139,6 +139,11 @@ body {
   width: 700px;
 }
 
+.stars-div {
+  background-color: #4C9F70;
+  margin-left: 5px;
+}
+
 #select {
   margin-top: 80px;
   margin-left: 10px;
@@ -303,7 +308,7 @@ body {
   position: relative;
   display: inline-block;
   height: 30px;
-  background-color: black;
+  background-color: white;
 }
 
 .single-star-container {

@@ -61,16 +61,7 @@ useEffect(()=>{
   }, []);
   let expressUrl = 'http://localhost:1337'
   useEffect(() => {
-    //console.log('hi from useEffect2');
-    //console.log('sorted from the drop down menu =', sorted);
-  //console.log('some stars to no stars aka starChange=', starChange);
-  //console.log('is there a star button pressed =', (fiveStarButton || fourStarButton || threeStarButton || twoStarButton || oneStarButton));
     if (fiveStarButton || fourStarButton || threeStarButton || twoStarButton || oneStarButton) {
-     //console.log('1A.) sorted', sorted);
-      //console.log('sortOn', sortOn);
-      //console.log('page', page);
-      //console.log('reviewData.length', reviewData.length);
-      //console.log('currentReviewDataLength', currentReviewDataLength);
       var trueArray = [];
       if (fiveStarButton) {
         trueArray.push(5);
@@ -135,7 +126,6 @@ useEffect(()=>{
         }
       })
         .then(response => {
-          //console.log('axios get reviews page sortOn count 2 =', response.data.results);
           return response.data.results;
         })
         .then(data => {
