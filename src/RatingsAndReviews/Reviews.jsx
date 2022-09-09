@@ -22,9 +22,9 @@ const ReviewsMax = () => {
     }
   })
     .then(response => {
-      console.log('responseData results =', response.data.results);
+      //console.log('responseData results =', response.data.results);
       maxReviewAmount = response.data.results.length;
-      console.log('maxReviewAmount =', maxReviewAmount);
+      //console.log('maxReviewAmount =', maxReviewAmount);
       return response.data.results;
     })
 }
@@ -47,21 +47,21 @@ const Reviews = ({ fiveStarButton, fourStarButton, threeStarButton, twoStarButto
   }
 
 useEffect(()=>{
-  console.log('hi from useEffect1');
+  //console.log('hi from useEffect1');
   if (fiveStarButton || fourStarButton || threeStarButton || twoStarButton || oneStarButton) {
-    console.log('setting star change');
+    //console.log('setting star change');
     setStarChange(true);
   }
 },[fiveStarButton, fourStarButton, threeStarButton, twoStarButton, oneStarButton]);
 
   //console.log('reviewBoxSortedOn =',reviewBoxSortedOn);
-  console.log('starChange =', starChange);
+  //console.log('starChange =', starChange);
   const callback = useCallback((sort) => {
     (setSortOn(sort));
   }, []);
   let expressUrl = 'http://localhost:1337'
   useEffect(() => {
-    console.log('hi from useEffect2');
+    //console.log('hi from useEffect2');
     //console.log('sorted from the drop down menu =', sorted);
   //console.log('some stars to no stars aka starChange=', starChange);
   //console.log('is there a star button pressed =', (fiveStarButton || fourStarButton || threeStarButton || twoStarButton || oneStarButton));
@@ -102,7 +102,7 @@ useEffect(()=>{
               starArray.unshift(response.data.results[i]);
             }
           }
-         // console.log('starArray =', starArray);
+         //console.log('starArray =', starArray);
           setReviewData(starArray);
 
          // console.log('currentReviewDataLength', currentReviewDataLength);

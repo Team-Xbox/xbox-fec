@@ -3,6 +3,7 @@ import StarRating from './StarRating.jsx'
 import ReviewList from './ReviewList.jsx'
 import ProgressBar from './BarGraph.jsx'
 import ProductBreakdown from './Factors.jsx'
+import FiveStars from './FiveStars.jsx'
 const axios = require('axios');
 
 
@@ -101,7 +102,7 @@ const Ratings = ({ characteristics, ratings, recommended, parentCallbackFive, pa
         <div className = 'ratings-total'>
           <ul>
             <div className='average-rating banner-rating'>{average}</div>
-            <div className='starrating banner-rating'> <StarRating rating={ave} /></div>
+            <div className='starrating banner-rating'> <FiveStars rating={average}/> </div>
           </ul>
           <div className='recommended-rating'>
             {percentRecommended}% of reviews recommend this product.

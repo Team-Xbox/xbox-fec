@@ -278,13 +278,13 @@ body {
 .single-star-fill {
   position: relative;
   display: inline-block;
-  height: 36px;
-  background-color: #333333;
+  height: 30px;
+  background-color: black;
 }
 
 .single-star-container {
-  height: 36px;
-  width: 31px;
+  height: 30px;
+  width: 27px;
   display: inline-block;
 }
 
@@ -292,7 +292,7 @@ body {
 
 .main-review {
   width: 700px;
-  max-height: 350px;
+  max-height: 375px;
   border-bottom-color: black;
   border-bottom-style: solid;
   border-bottom-width: 1px;
@@ -301,7 +301,7 @@ body {
 
 .top-review {
   max-width: 700px;
-  height: 25px;
+  height: 35px;
   display: flex;
   justify-content: space-between;
 }
@@ -521,10 +521,7 @@ body {
 }
 
 .reviews-total {
-  background: rgb(66, 138, 97);
-  background: -moz-radial-gradient(circle, rgba(66, 138, 97, 1) 0%, rgba(76, 159, 112, 1) 100%);
-  background: -webkit-radial-gradient(circle, rgba(66, 138, 97, 1) 0%, rgba(76, 159, 112, 1) 100%);
-  background: radial-gradient(circle, rgba(66, 138, 97, 1) 0%, rgba(76, 159, 112, 1) 100%);
+  background: #4C9F70;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#428a61", endColorstr="#4c9f70", GradientType=1);
   width: 775px;
   font-family: 'Raleway', sans-serif;
@@ -545,10 +542,7 @@ body {
 }
 
 .ratings-total {
-  background: rgb(66, 138, 97);
-  background: -moz-radial-gradient(circle, rgba(66, 138, 97, 1) 0%, rgba(76, 159, 112, 1) 100%);
-  background: -webkit-radial-gradient(circle, rgba(66, 138, 97, 1) 0%, rgba(76, 159, 112, 1) 100%);
-  background: radial-gradient(circle, rgba(66, 138, 97, 1) 0%, rgba(76, 159, 112, 1) 100%);
+  background: #4C9F70;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#428a61", endColorstr="#4c9f70", GradientType=1);
   font-family: 'Raleway', sans-serif;
   color: white;
@@ -577,6 +571,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
+}
+
+.five-star {
+  height: 35px;
+  width: 145px
 }
 
 /* END REVIEW STYLES */
