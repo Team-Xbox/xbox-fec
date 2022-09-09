@@ -12,6 +12,8 @@ const axios = require('axios');
 // Determining maximum reviews
 var maxReviewAmount;
 
+var currentReviewDataLength=2;
+
 const ReviewsMax = () => {
   let expressUrl = 'http://localhost:1337'
   axios.get(expressUrl + '/reviews', {
@@ -28,8 +30,7 @@ const ReviewsMax = () => {
 }
 ReviewsMax();
 
-var arraySortOn = [];
-
+var reviewBoxSortedOn = 'relevant';
 // Main Reviews Function
 const Reviews = ({ fiveStarButton, fourStarButton, threeStarButton, twoStarButton, oneStarButton }) => {
   const [sortOn, setSortOn] = useState('relevant');
@@ -38,13 +39,14 @@ const Reviews = ({ fiveStarButton, fourStarButton, threeStarButton, twoStarButto
   const [showButton, setShowButton] = useState(true);
   const [page, setPage] = useState(1);
   const [reviewData, setReviewData] = useState([]);
+  if(reviewBoxSortedOn !== sortOn) {
+    setSorted(true);
+    reviewBoxSortedOn = sortOn;
+  }
+  console.log('reviewBoxSortedOn =',reviewBoxSortedOn);
   const callback = useCallback((sort) => {
     (setSortOn(sort));
   }, []);
-  arraySortOn.unshift(sortOn);
-  if ((arraySortOn[1] !== arraySortOn[2] || arraySortOn[0] !== arraySortOn[1]) && arraySortOn.length > 5) {
-    setSorted('true');
-  }
   let expressUrl = 'http://localhost:1337'
   useEffect(() => {
     if (fiveStarButton || fourStarButton || threeStarButton || twoStarButton || oneStarButton) {
@@ -64,7 +66,7 @@ const Reviews = ({ fiveStarButton, fourStarButton, threeStarButton, twoStarButto
       if (oneStarButton) {
         trueArray.push(1);
       }
-      console.log('sortOn =', sortOn);
+      //console.log('sortOn =', sortOn);
       axios.get(expressUrl + '/reviews', {
         params: {
           sortOn: sortOn,
@@ -73,7 +75,7 @@ const Reviews = ({ fiveStarButton, fourStarButton, threeStarButton, twoStarButto
       })
         .then(response => {
           var starArray = [];
-          console.log('axios get maxReviewAmount of the starValue =', response.data.results);
+          //console.log('axios get maxReviewAmount of the starValue =', response.data.results);
           for (var i = 0; i < response.data.results.length; i++) {
             if (trueArray.includes(response.data.results[i].rating)) {
               starArray.unshift(response.data.results[i]);
@@ -81,15 +83,21 @@ const Reviews = ({ fiveStarButton, fourStarButton, threeStarButton, twoStarButto
           }
           console.log('starArray =', starArray);
           setReviewData(starArray);
-          console.log('axios get maxReviewAmount of the starValue =', response.data.results);
+          console.log('currentReviewDataLength', currentReviewDataLength);
+          //console.log('axios get maxReviewAmount of the starValue =', response.data.results);
         })
     }
-    else if (sorted && arraySortOn.length > 5) {
+    else if (sorted) {
+
+      console.log('1.) sorted', sorted);
+      console.log('sortOn', sortOn);
+      console.log('reviewData.length', reviewData.length);
+      console.log('currentReviewDataLength', currentReviewDataLength);
       axios.get(expressUrl + '/reviews', {
         params: {
           sortOn: sortOn,
           page: 1,
-          count: reviewData.length
+          count: 2*page || 2
         }
       })
         .then(response => {
@@ -101,9 +109,16 @@ const Reviews = ({ fiveStarButton, fourStarButton, threeStarButton, twoStarButto
         .catch(err => console.log(err))
     }
     else {
+      //currentReviewDataLength = currentReviewDataLength + 2;
+      console.log('2.) sorted', sorted);
+      console.log('sortOn', sortOn);
+      console.log('reviewData.length', reviewData.length);
+      console.log('currentReviewDataLength', currentReviewDataLength);
+      console.log('page', page);
+
       axios.get(expressUrl + '/reviews', {
         params: {
-          sortOn: sortOn,
+          sortOn: reviewBoxSortedOn,
           page: page,
           count: 2
         }
