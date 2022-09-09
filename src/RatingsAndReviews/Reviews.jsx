@@ -14,7 +14,7 @@ var maxReviewAmount;
 
 const ReviewsMax = () => {
   let expressUrl = 'http://localhost:1337'
-  axios.get(expressUrl + '/reviews', {
+  axios.get('/reviews', {
     params: {
       count: 1000
     }
@@ -62,7 +62,7 @@ const Reviews = ({ fiveStarButton, fourStarButton, threeStarButton, twoStarButto
       if (oneStarButton) {
         trueArray.push(1);
       }
-      axios.get(expressUrl + '/reviews', {
+      axios.get('/reviews', {
         params: {
           sortOn: sortOn,
           count: maxReviewAmount
@@ -79,7 +79,7 @@ const Reviews = ({ fiveStarButton, fourStarButton, threeStarButton, twoStarButto
         })
     }
     else if (sorted && arraySortOn.length > 5) {
-      axios.get(expressUrl + '/reviews', {
+      axios.get('/reviews', {
         params: {
           sortOn: sortOn,
           page: 1,
@@ -94,7 +94,7 @@ const Reviews = ({ fiveStarButton, fourStarButton, threeStarButton, twoStarButto
         .catch(err => console.log(err))
     }
     else {
-      axios.get(expressUrl + '/reviews', {
+      axios.get('/reviews', {
         params: {
           sortOn: sortOn,
           page: page,
@@ -141,7 +141,7 @@ const Reviews = ({ fiveStarButton, fourStarButton, threeStarButton, twoStarButto
     console.log('characteristics object =', charObject);
     console.log('data is being posted');
 
-    axios.post(expressUrl + '/reviews',
+    axios.post('/reviews',
       {
         "product_id": 66644,
         "rating": rating,
@@ -163,7 +163,7 @@ const Reviews = ({ fiveStarButton, fourStarButton, threeStarButton, twoStarButto
   var handleProductName = function (product_id) {
     let expressUrl = 'http://localhost:1337'
     product_id = 66644;
-    axios.get(expressUrl + `/productname/${product_id}`)
+    axios.get(`/productname/${product_id}`)
       .then(response => {
         setProduct(response.data.name)
       })

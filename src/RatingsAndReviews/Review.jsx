@@ -21,7 +21,7 @@ const Review = ({ reviewData }) => {
     let expressUrl = 'http://localhost:1337'
 
     setCount(count + 1);
-    axios.put(expressUrl + `/review/${reviewData.review_id}`)
+    axios.put(`/review/${reviewData.review_id}`)
       .then(response => console.log(response.status))
       .catch(err => console.log(err));
   }

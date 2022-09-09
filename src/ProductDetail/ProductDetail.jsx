@@ -11,7 +11,7 @@ const ProductDetail = (props) => {
   let expressUrl = 'http://localhost:1337';
 
   useEffect(() => {
-    axios.post(expressUrl + '/styles', {product: product_id})
+    axios.post('/styles', {product: product_id})
     .then(response => {
       return response.data.results;
     })
@@ -19,7 +19,7 @@ const ProductDetail = (props) => {
       setStyleData(data);
     })
     .then(() => {
-      return axios.post(expressUrl + '/product', {product: product_id})
+      return axios.post('/product', {product: product_id})
     })
     .then(product => {
       return product.data;

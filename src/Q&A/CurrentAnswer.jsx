@@ -12,7 +12,7 @@ const CurrentAnswer = (props) => {
 
   const handleHelpfulAnswers = () => {
     const updatedCount = {helpfulness: props.answer.helpfulness + 1}
-    axios.put(url + `/helpfulA/${answerId}`, updatedCount)
+    axios.put(`/helpfulA/${answerId}`, updatedCount)
       .then(() => {
         setHelpfulness(updatedCount.helpfulness)
         setAnswerMarkedHelpful(true)
@@ -24,7 +24,7 @@ const CurrentAnswer = (props) => {
 
   const handleAnswerReport = () => {
     const updateQReport = {reported: true}
-    axios.put(url + `/reportanswer/${props.questionId}`, updateQReport)
+    axios.put(`/reportanswer/${props.questionId}`, updateQReport)
     .then(() => {
       setReported(true)
     })
