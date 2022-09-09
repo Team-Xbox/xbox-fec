@@ -16,11 +16,13 @@ const ReviewsMax = () => {
   let expressUrl = 'http://localhost:1337'
   axios.get(expressUrl + '/reviews', {
     params: {
-      count: 1000
+      count: 100
     }
   })
     .then(response => {
+      console.log('responseData results =', response.data.results);
       maxReviewAmount = response.data.results.length;
+      console.log('maxReviewAmount =', maxReviewAmount);
       return response.data.results;
     })
 }
@@ -62,6 +64,7 @@ const Reviews = ({ fiveStarButton, fourStarButton, threeStarButton, twoStarButto
       if (oneStarButton) {
         trueArray.push(1);
       }
+      console.log('sortOn =', sortOn);
       axios.get(expressUrl + '/reviews', {
         params: {
           sortOn: sortOn,
@@ -70,12 +73,15 @@ const Reviews = ({ fiveStarButton, fourStarButton, threeStarButton, twoStarButto
       })
         .then(response => {
           var starArray = [];
+          console.log('axios get maxReviewAmount of the starValue =', response.data.results);
           for (var i = 0; i < response.data.results.length; i++) {
             if (trueArray.includes(response.data.results[i].rating)) {
               starArray.unshift(response.data.results[i]);
             }
           }
+          console.log('starArray =', starArray);
           setReviewData(starArray);
+          console.log('axios get maxReviewAmount of the starValue =', response.data.results);
         })
     }
     else if (sorted && arraySortOn.length > 5) {
@@ -87,6 +93,7 @@ const Reviews = ({ fiveStarButton, fourStarButton, threeStarButton, twoStarButto
         }
       })
         .then(response => {
+          console.log('axios get reviews reviewData.length =', response.data.results);
           var tempArray = response.data.results.reverse();
           setReviewData(tempArray);
           setSorted(false);
@@ -102,6 +109,7 @@ const Reviews = ({ fiveStarButton, fourStarButton, threeStarButton, twoStarButto
         }
       })
         .then(response => {
+          console.log('axios get reviews page sortOn count 2 =', response.data.results);
           return response.data.results;
         })
         .then(data => {

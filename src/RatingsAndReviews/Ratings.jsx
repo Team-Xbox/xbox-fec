@@ -12,9 +12,9 @@ var weightedAverage = function (a, b, c, d, e) {
 }
 const Ratings = ({ characteristics, ratings, recommended, parentCallbackFive, parentCallbackFour, parentCallbackThree, parentCallbackTwo, parentCallbackOne }) => {
   var oneStar = Number(ratings['1']) || 0;
-  console.log(oneStar);
+  //console.log(oneStar);
   var twoStar = Number(ratings['2']) || 0;
-  console.log(twoStar);
+  //console.log(twoStar);
   var threeStar = Number(ratings['3']) || 0;
   var fourStar = Number(ratings['4']) || 0;
   var fiveStar = Number(ratings['5']) || 0;
