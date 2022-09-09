@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import StarRating from './StarRating.jsx'
+import FiveStars from './FiveStars.jsx'
 import DropDownMenu from './DropDownMenu.jsx'
 import moment from 'moment'
 const axios = require('axios');
@@ -26,6 +26,7 @@ const Review = ({ reviewData }) => {
       .catch(err => console.log(err));
   }
 
+  //console.log('reviewData at review =',reviewData)
 
   var handleClickNo = function () {
     setShowYes(false);
@@ -36,7 +37,7 @@ const Review = ({ reviewData }) => {
       {!reviewData ? <div></div> :
         <div className="main-review">
           <div className='top-review'>
-            <StarRating rating={reviewData.rating} />{reviewData.reviewer_name} {moment(reviewData.date).format('MMM DD, YYYY')}
+            <FiveStars rating={reviewData.rating} />{reviewData.reviewer_name} {moment(reviewData.date).format('MMM DD, YYYY')}
           </div>
           <div className="summary-review">
             {reviewData.summary}
