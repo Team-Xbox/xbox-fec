@@ -12,22 +12,25 @@ const axios = require('axios');
 // Determining maximum reviews
 var maxReviewAmount;
 
+var currentReviewDataLength=2;
+
 const ReviewsMax = () => {
   let expressUrl = 'http://localhost:1337'
   axios.get('/reviews', {
     params: {
-      count: 1000
+      count: 100
     }
   })
     .then(response => {
+      //console.log('responseData results =', response.data.results);
       maxReviewAmount = response.data.results.length;
+      //console.log('maxReviewAmount =', maxReviewAmount);
       return response.data.results;
     })
 }
 ReviewsMax();
 
-var arraySortOn = [];
-
+var reviewBoxSortedOn = 'relevant';
 // Main Reviews Function
 const Reviews = ({ fiveStarButton, fourStarButton, threeStarButton, twoStarButton, oneStarButton }) => {
   const [sortOn, setSortOn] = useState('relevant');
@@ -35,17 +38,39 @@ const Reviews = ({ fiveStarButton, fourStarButton, threeStarButton, twoStarButto
   const [count, setCount] = useState(2);
   const [showButton, setShowButton] = useState(true);
   const [page, setPage] = useState(1);
+  const [starChange, setStarChange] = useState(false);
   const [reviewData, setReviewData] = useState([]);
+
+  if(reviewBoxSortedOn !== sortOn) {
+    setSorted(true);
+    reviewBoxSortedOn = sortOn;
+  }
+
+useEffect(()=>{
+  //console.log('hi from useEffect1');
+  if (fiveStarButton || fourStarButton || threeStarButton || twoStarButton || oneStarButton) {
+    //console.log('setting star change');
+    setStarChange(true);
+  }
+},[fiveStarButton, fourStarButton, threeStarButton, twoStarButton, oneStarButton]);
+
+  //console.log('reviewBoxSortedOn =',reviewBoxSortedOn);
+  //console.log('starChange =', starChange);
   const callback = useCallback((sort) => {
     (setSortOn(sort));
   }, []);
-  arraySortOn.unshift(sortOn);
-  if ((arraySortOn[1] !== arraySortOn[2] || arraySortOn[0] !== arraySortOn[1]) && arraySortOn.length > 5) {
-    setSorted('true');
-  }
   let expressUrl = 'http://localhost:1337'
   useEffect(() => {
+    //console.log('hi from useEffect2');
+    //console.log('sorted from the drop down menu =', sorted);
+  //console.log('some stars to no stars aka starChange=', starChange);
+  //console.log('is there a star button pressed =', (fiveStarButton || fourStarButton || threeStarButton || twoStarButton || oneStarButton));
     if (fiveStarButton || fourStarButton || threeStarButton || twoStarButton || oneStarButton) {
+     //console.log('1A.) sorted', sorted);
+      //console.log('sortOn', sortOn);
+      //console.log('page', page);
+      //console.log('reviewData.length', reviewData.length);
+      //console.log('currentReviewDataLength', currentReviewDataLength);
       var trueArray = [];
       if (fiveStarButton) {
         trueArray.push(5);
@@ -62,6 +87,7 @@ const Reviews = ({ fiveStarButton, fourStarButton, threeStarButton, twoStarButto
       if (oneStarButton) {
         trueArray.push(1);
       }
+
       axios.get('/reviews', {
         params: {
           sortOn: sortOn,
@@ -70,42 +96,50 @@ const Reviews = ({ fiveStarButton, fourStarButton, threeStarButton, twoStarButto
       })
         .then(response => {
           var starArray = [];
+          //console.log('axios get maxReviewAmount of the starValue =', response.data.results);
           for (var i = 0; i < response.data.results.length; i++) {
             if (trueArray.includes(response.data.results[i].rating)) {
               starArray.unshift(response.data.results[i]);
             }
           }
+         //console.log('starArray =', starArray);
           setReviewData(starArray);
+
+         // console.log('currentReviewDataLength', currentReviewDataLength);
+          //console.log('axios get maxReviewAmount of the starValue =', response.data.results);
         })
     }
-    else if (sorted && arraySortOn.length > 5) {
+    else if (sorted || starChange) {
       axios.get('/reviews', {
         params: {
           sortOn: sortOn,
           page: 1,
-          count: reviewData.length
+          count: 2*page || 2
         }
       })
         .then(response => {
+          //console.log('axios get reviews reviewData.length =', response.data.results);
           var tempArray = response.data.results.reverse();
           setReviewData(tempArray);
           setSorted(false);
+          setStarChange(false);
         })
         .catch(err => console.log(err))
     }
-    else {
+    else if ( !(fiveStarButton || fourStarButton || threeStarButton || twoStarButton || oneStarButton)) {
       axios.get('/reviews', {
         params: {
-          sortOn: sortOn,
+          sortOn: reviewBoxSortedOn,
           page: page,
           count: 2
         }
       })
         .then(response => {
+          //console.log('axios get reviews page sortOn count 2 =', response.data.results);
           return response.data.results;
         })
         .then(data => {
-          if (reviewData.length === maxReviewAmount) {
+          if (reviewData.length === maxReviewAmount-1 ||reviewData.length === maxReviewAmount-2) {
             setShowButton(false);
           }
           var tempArray = data.concat(reviewData);
@@ -191,6 +225,7 @@ const Reviews = ({ fiveStarButton, fourStarButton, threeStarButton, twoStarButto
             <button className="button-review" role="button" onClick={() => {
               var temp = page;
               setPage(temp + 1);
+
             }}
             >More Reviews</button>
           }

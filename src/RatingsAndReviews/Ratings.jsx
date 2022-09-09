@@ -3,6 +3,7 @@ import StarRating from './StarRating.jsx'
 import ReviewList from './ReviewList.jsx'
 import ProgressBar from './BarGraph.jsx'
 import ProductBreakdown from './Factors.jsx'
+import FiveStars from './FiveStars.jsx'
 const axios = require('axios');
 
 
@@ -12,9 +13,9 @@ var weightedAverage = function (a, b, c, d, e) {
 }
 const Ratings = ({ characteristics, ratings, recommended, parentCallbackFive, parentCallbackFour, parentCallbackThree, parentCallbackTwo, parentCallbackOne }) => {
   var oneStar = Number(ratings['1']) || 0;
-  console.log(oneStar);
+  //console.log(oneStar);
   var twoStar = Number(ratings['2']) || 0;
-  console.log(twoStar);
+  //console.log(twoStar);
   var threeStar = Number(ratings['3']) || 0;
   var fourStar = Number(ratings['4']) || 0;
   var fiveStar = Number(ratings['5']) || 0;
@@ -101,7 +102,7 @@ const Ratings = ({ characteristics, ratings, recommended, parentCallbackFive, pa
         <div className = 'ratings-total'>
           <ul>
             <div className='average-rating banner-rating'>{average}</div>
-            <div className='starrating banner-rating'> <StarRating rating={ave} /></div>
+            <div className='starrating banner-rating'> <FiveStars rating={average}/> </div>
           </ul>
           <div className='recommended-rating'>
             {percentRecommended}% of reviews recommend this product.

@@ -3,6 +3,7 @@ import StarRating from './StarRating.jsx'
 import DropDownMenu from './DropDownMenu.jsx'
 import Reviews from './Reviews.jsx'
 import Ratings from './Ratings.jsx'
+import FiveStars from './FiveStars.jsx'
 const axios = require('axios');
 
 const RatingsAndReviews = (props) => {
