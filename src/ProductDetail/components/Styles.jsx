@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Select from '../components/Select.jsx'
+import ProductRating from '../components/ProductStars.jsx'
 
 const StyleSelector = (props) => {
 
@@ -39,6 +40,7 @@ const StyleSelector = (props) => {
               />
             </div>
             )}
+            <ProductRating />
           </div>
           <Select styleData={props.styleData} skus={props.skuData}/>
         </div>
