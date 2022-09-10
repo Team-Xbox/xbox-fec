@@ -139,7 +139,7 @@ const CurrentQuestion = (props) => {
           <Modal.Title>
             <div>
               <h3>Submit Your Answer</h3>
-              <h4>{props.productName}: {props.question.question_body}</h4>
+              <h4 className="qaModalTitle">{props.productName}: {props.question.question_body}</h4>
             </div>
           </Modal.Title>
         </Modal.Header>

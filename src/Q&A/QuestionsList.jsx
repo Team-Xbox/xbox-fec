@@ -6,7 +6,8 @@ import { Modal, Button, ButtonToolbar, Placeholder } from 'rsuite';
 const axios = require('axios');
 
 const QuestionsList = (props) => {
-  const [id, setId] = useState(66644)
+  const [nameId, setNameId] = useState(66644)
+  const [id, setId] = useState(66690)
   const [productName, setProductName] = useState()
   const [page, setPage] = useState(1)
   const [displayedQuestionData, setDisplayedQuestionData] = useState([])
@@ -23,7 +24,7 @@ const QuestionsList = (props) => {
   let url = 'http://localhost:1337'
 
   useEffect(() => {
-    axios.get(url + `/productname/${id}`)
+    axios.get(`/productname/${nameId}`)
       .then(response => {
         setProductName(response.data.name)
       })
@@ -149,7 +150,7 @@ const QuestionsList = (props) => {
           <Modal.Title>
             <div>
               <h3>Ask Your Question</h3>
-              <h4>About the {productName}</h4>
+              <h4 className="qaModalTitle">About the {productName}</h4>
             </div>
           </Modal.Title>
         </Modal.Header>
