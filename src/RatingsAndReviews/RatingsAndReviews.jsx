@@ -3,6 +3,7 @@ import StarRating from './StarRating.jsx'
 import DropDownMenu from './DropDownMenu.jsx'
 import Reviews from './Reviews.jsx'
 import Ratings from './Ratings.jsx'
+import FiveStars from './FiveStars.jsx'
 const axios = require('axios');
 
 const RatingsAndReviews = (props) => {
@@ -22,7 +23,7 @@ const RatingsAndReviews = (props) => {
   let expressUrl = 'http://localhost:1337'
   useEffect(() => {
 
-    axios.get(expressUrl + '/ratings')
+    axios.get('/ratings')
       .then(response => {
         setRecommended(response.data.recommended);
         setRatings(response.data.ratings);

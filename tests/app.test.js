@@ -16,7 +16,7 @@ import Ratings from '../src/RatingsAndReviews/Ratings.jsx';
 import RatingsAndReviews from '../src/RatingsAndReviews/RatingsAndReviews.jsx';
 import Review from '../src/RatingsAndReviews/Review.jsx';
 import ReviewList from '../src/RatingsAndReviews/ReviewList.jsx';
-import StarRating from '../src/RatingsAndReviews/starRating.jsx';
+import StarRating from '../src/RatingsAndReviews/StarRating.jsx';
 import StarRatingAddReview from '../src/RatingsAndReviews/StarRatingAddReview.jsx';
 import axios from 'axios';
 

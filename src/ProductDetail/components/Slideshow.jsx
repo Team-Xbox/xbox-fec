@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import StyleSelector from '../components/Styles.jsx'
 import MiniCarousel from '../components/MiniCarousel.jsx'
-const axios = require('axios');
+import InnerImageZoom from 'react-inner-image-zoom';
+import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';
 
 const Slideshow = (props) => {
   const [index, setIndex] = useState(0);
@@ -13,17 +14,28 @@ const Slideshow = (props) => {
     <div id="slideshow">
       {!props.styleData[0] ? <div> This Item Does Not Exist </div> :
         <div id="main-images">
-          {console.log('styledata:', props.styleData)}
           <MiniCarousel styleData={props.styleData} photosIndex={photosIndex} setIndex={setIndex} index={index}
             minimized={minimized} setMinimized={setMinimized}
           />
           <button className="slideshow-btn-left" style={{visibility: index <= 0 ? 'hidden' : ''}}
             onClick={() => { if (index > 0) { setIndex(index - 1) } }}> ◀︎
           </button>
+          <div style={{display: minimized ? 'none' : ''}}>
+            <InnerImageZoom
+              className="zoom-image"
+              src={props.styleData[photosIndex].photos[index].url}
+              width={500}
+              height={550}
+              zoomType="click"
+              zoomScale={2.5}
+              hideHint={true}
+              hasSpacer={true}
+            />
+          </div>
           <img
             className="main-image"
             src={props.styleData[photosIndex].photos[index].url}
-            style={{'maxWidth': minimized ? '367px' : 'fit-content'}}
+            style={{'maxWidth': minimized ? '367px' : 'fit-content', display: minimized ? '' : 'none'}}
             onClick={() => setMinimized(false)}
           />
           <button
